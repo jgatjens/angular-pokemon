@@ -23,25 +23,26 @@ gulp.task('scripts', function () {
 });
 
 gulp.task('partials', function () {
-  return gulp.src('app/partials/**/*.html')
+  return gulp.src('app/pages/**/*.tpl.html')
     .pipe($.minifyHtml({
       empty: true,
       spare: true,
       quotes: true
     }))
     .pipe($.ngHtml2js({
-      // moduleName: 'ngVet',
       moduleName: function (file) {
 
-        console.log(file);
-        // var path = file.split('/'),
-            // folder = path[path.length - 2];
+        var path = file.relative.split('/'),
+            folder = path[path.length - 2];
 
-        // console.log(file, folder);
-
-        return 'ngVet1';
+        // console.log(folder);
+        // return folder.replace(/-[a-z]/g, function (match) {
+        //     // return match.substr(1).toUpperCase();
+        // });
+        //
+        return 'ngVet.' + folder;
       },
-      prefix: 'partials/'
+      prefix: 'pages/'
     }))
     .pipe(gulp.dest('.tmp/partials'))
     .pipe($.size());

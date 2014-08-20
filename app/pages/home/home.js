@@ -10,8 +10,7 @@ angular.module('ngVet.home', [ ])
       .state('home', {
         url         : '/',
         controller  : 'HomeCtrl',
-        templateUrl : 'partials/main.html',
-        // templateUrl : 'pages/home/home.tpl.html',
+        templateUrl : 'pages/home/home.tpl.html',
         resolve:{
           data: function () {
             // var Home = resourceURL('home');
