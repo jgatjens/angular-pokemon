@@ -1,0 +1,27 @@
+.profile-tabs {
+  border-bottom : 3px solid #999;
+  list-style    : none;
+  margin        : 50px 0 0 0;
+  padding       : 0;
+  text-align    : center;
+}
+
+  .profile-tabs__tab {
+    display : inline-block;
+    margin  : 0 2%;
+    width   : 45%;
+  }
+
+  .profile-tabs__tab a {
+    background-color : #ccc;
+    border-radius    : 10px 10px 0 0;
+    box-sizing       : border-box;
+    display          : block;
+    padding          : 5px;
+    width            : 100%;
+  }
+
+  .profile-tabs__tab--is-active a,
+  .profile-tabs__tab a:hover {
+    background-color : #aaa;
+  }

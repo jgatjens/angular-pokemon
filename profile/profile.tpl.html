@@ -1,0 +1,14 @@
+<strong>"My profile" page</strong>
+<p>On this page I am using nested views powered by ui-router.</p>
+
+<ul class="profile-tabs">
+  <li class="profile-tabs__tab" ng-click="setTab('about');" ng-class="{ 'profile-tabs__tab--is-active': activeTab === 'about' }">
+    <a ui-sref="profile.about">About me</a>
+  </li>
+
+  <li class="profile-tabs__tab" ng-click="setTab('links');" ng-class="{ 'profile-tabs__tab--is-active': activeTab === 'links' }">
+    <a ui-sref="profile.links">My links</a>
+  </li>
+</ul>
+
+<ui-view></ui-view>
