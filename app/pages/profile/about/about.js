@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngCmApp.profile.about', [ ])
+angular.module('ngVet.profile.about', [ ])
 
   // Module configuration.
   .config(function ($stateProvider) {
@@ -9,6 +9,6 @@ angular.module('ngCmApp.profile.about', [ ])
     $stateProvider
       .state('profile.about', {
         url         : '/about',
-        templateUrl : '/profile/about/about.tpl.html'
+        templateUrl : 'pages/profile/about/about.tpl.html'
       });
   });

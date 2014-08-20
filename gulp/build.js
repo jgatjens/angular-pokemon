@@ -35,11 +35,6 @@ gulp.task('partials', function () {
         var path = file.relative.split('/'),
             folder = path[path.length - 2];
 
-        // console.log(folder);
-        // return folder.replace(/-[a-z]/g, function (match) {
-        //     // return match.substr(1).toUpperCase();
-        // });
-        //
         return 'ngVet.' + folder;
       },
       prefix: 'pages/'

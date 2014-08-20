@@ -20,8 +20,39 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div ui-view></div>
+    <div class="container">
+    <hr />
+    <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Project name</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a ui-sref="home" ng-href="">Home</a></li>
+              <li><a ui-sref="profile" ng-href="#">Profile</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="active"><a href="./">jgatjens</a></li>
+              <li><a href="404.html">logout</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div>
 
+      <div ui-view></div>
+
+      <div class="footer">
+        <p>With ♥ from <a href="https://twitter.com/jgatjens">@jgatjens</a></p>
+      </div>
+    </div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -49,6 +80,10 @@
     <script src="scripts/main.js"></script>
 
     <script src="pages/home/home.js"></script>
+
+    <script src="pages/profile/profile.js"></script>
+    <script src="pages/profile/about/about.js"></script>
+    <script src="pages/profile/links/links.js"></script>
     <!-- inject:partials -->
     <!-- endinject -->
     <!-- endbuild -->

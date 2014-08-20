@@ -11,15 +11,15 @@ angular.module('ngVet', [
   // 'ngApp._common',
 
   // Sections
-  'ngVet.home'
-  // 'ngVet.profile'
+  'ngVet.home',
+  'ngVet.profile'
 ])
 
   // Module configuration.
-  .config(function ($urlRouterProvider, $sceDelegateProvider) {
+  .config(function ($urlRouterProvider, $sceDelegateProvider, $locationProvider) {
 
     // use #! in the url.
-    // $locationProvider.hashPrefix('!');
+    $locationProvider.hashPrefix('!');
 
     // Default application's url.
     $urlRouterProvider.otherwise('/');

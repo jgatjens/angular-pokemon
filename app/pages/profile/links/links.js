@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngCmApp.profile.links', [ ])
+angular.module('ngVet.profile.links', [ ])
 
   // Module configuration.
   .config(function ($stateProvider) {
@@ -10,7 +10,7 @@ angular.module('ngCmApp.profile.links', [ ])
       .state('profile.links', {
         url         : '/links',
         controller  : 'LinksCtrl',
-        templateUrl : '/profile/links/links.tpl.html'
+        templateUrl : 'pages/profile/links/links.tpl.html'
       });
   })
 
