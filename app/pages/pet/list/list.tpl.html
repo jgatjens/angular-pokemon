@@ -1,0 +1,14 @@
+<div class="col-sm-12 col-md-6" ng-repeat="pet in pets | orderBy:'rank'">
+  <div class="thumbnail">
+    <img class="pull-right" ng-src="images/pets/{{pet.logo}}" alt="{{pet.name}}">
+    <div class="caption">
+      <h3>{{pet.name}}</h3>
+      <p>{{pet.weigth}}</p>
+
+      <a href="">Medical Records</a> <br>
+      <a href="">active pet</a> <br>
+      <a class="text-danger" href="">delete pet</a>
+
+    </div>
+  </div>
+</div>

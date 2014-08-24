@@ -12,6 +12,7 @@ angular.module('ngVet', [
 
   // Sections
   'ngVet.home',
+  'ngVet.pet',
   'ngVet.profile'
 ])
 
