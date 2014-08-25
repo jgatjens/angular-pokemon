@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngVet.pet', ['ngVet.pet.list','ngVet.pet.new'])
+angular.module('ngVet.pet', ['ngVet.pet.list','ngVet.pet.new', 'ngVet.pet.record'])
 
   // Module configuration.
   .config(function ($stateProvider) {
@@ -16,7 +16,7 @@ angular.module('ngVet.pet', ['ngVet.pet.list','ngVet.pet.new'])
 
   // pet controller.
   .controller('PetCtrl', function ($state) {
-    // $state.go('pets.list');
+
   });
 
 

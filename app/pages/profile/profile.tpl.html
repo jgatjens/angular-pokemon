@@ -1,5 +1,111 @@
-<strong>"My profile" page</strong>
-<p>On this page I am using nested views powered by ui-router.</p>
+<div class="row">
+  <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
+    <div class="page-header">
+      <h1>
+        <a onclick="window.history.back()" href="">
+          <i class="glyphicon glyphicon-chevron-left"></i>
+        </a> Account Settings
+      </h1>
+    </div>
+  </div>
+</div>
+
+<form class="form-horizontal" role="form">
+
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-3 col-md-4 control-label">Name</label>
+    <div class="col-sm-7 col-md-5">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Name">
+    </div>
+  </div>
+
+  <!-- Save Name -->
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-md-offset-4 col-sm-7 col-md-5">
+      <button type="submit" class="btn btn-primary btn-block">Save name</button>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-3 col-md-4 control-label">Password</label>
+    <div class="col-sm-7 col-md-5">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-3 col-md-4 control-label"></label>
+    <div class="col-sm-7 col-md-5">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Confirm Password">
+    </div>
+  </div>
+
+  <!-- Save Password -->
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-md-offset-4 col-sm-7 col-md-5">
+      <button type="submit" class="btn btn-primary btn-block">Save Password</button>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-3 col-md-4 control-label">Aditional Info</label>
+    <div class="col-sm-7 col-md-5">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-3 col-md-4 control-label"></label>
+    <div class="col-sm-7 col-md-5">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Date of birth">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-3 col-md-4 control-label"></label>
+    <div class="col-sm-7 col-md-5">
+      <div class="form-group form-inline">
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+            Male
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+            Female
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-3 col-md-4 control-label"></label>
+    <div class="col-sm-7 col-md-5">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Allows us to send you emails
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Show phone numbers to doctors
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Save Aditional Info -->
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-md-offset-4 col-sm-7 col-md-5">
+      <button type="submit" class="btn btn-primary btn-block">Save Aditional Info</button>
+    </div>
+  </div>
+
+</form>
+<!--
 
 <ul class="profile-tabs">
   <li class="profile-tabs__tab" ng-click="setTab('about');" ng-class="{ 'profile-tabs__tab--is-active': activeTab === 'about' }">
@@ -10,5 +116,5 @@
     <a ui-sref="profile.links">My links</a>
   </li>
 </ul>
-
-<ui-view></ui-view>
+ -->
+<!-- <ui-view></ui-view> -->

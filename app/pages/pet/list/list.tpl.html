@@ -1,14 +1,36 @@
-<div class="col-sm-12 col-md-6" ng-repeat="pet in pets | orderBy:'rank'">
-  <div class="thumbnail">
-    <img class="pull-right" ng-src="images/pets/{{pet.logo}}" alt="{{pet.name}}">
-    <div class="caption">
-      <h3>{{pet.name}}</h3>
-      <p>{{pet.weigth}}</p>
 
-      <a href="">Medical Records</a> <br>
-      <a href="">active pet</a> <br>
-      <a class="text-danger" href="">delete pet</a>
+<div class="row">
+  <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
+    <div class="page-header">
+      <h1>
+      <a ui-sref="home">
+          <i class="glyphicon glyphicon-chevron-left"></i>
+        </a> Pets <small>List</small>
+      </h1>
+    </div>
+    <input type="email" ng-model="search" class="form-control" placeholder="Search for Pet">
+  </div>
+</div>
 
+<div class="row">
+  <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6" ng-repeat="pet in pets | orderBy:'rank'">
+    <div class="thumbnail">
+      <img class="pull-right" ng-src="images/pets/{{pet.logo}}" alt="{{pet.name}}">
+      <div class="caption">
+        <h3>{{pet.name}}</h3>
+        <p>{{pet.weigth}}</p>
+
+        <a href="">Edit</a> <br>
+        <a href="">Medical Records</a> <br>
+        <a href="">active pet</a> <br>
+        <a class="text-danger" href="">delete pet</a>
+      </div>
     </div>
   </div>
 </div>

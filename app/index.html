@@ -21,46 +21,27 @@
     <![endif]-->
 
     <div class="container">
-    <!-- <hr /> -->
-    <!-- Static navbar -->
-      <!-- <div class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">MyVet</a>
-          </div>
-          <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li class="active"><a ui-sref="home" ng-href="">Home</a></li>
-              <li><a ui-sref="profile" ng-href="#">Profile</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="404.html"><strong>jgatjens</strong></a></li>
-              <li><a href="landing.html">logout</a></li>
-            </ul>
-          </div>
-        </div>
-      </div> -->
 
       <div class="header">
         <ul class="nav nav-pills pull-right">
           <li ui-sref-active="active"><a ui-sref="home" href="#"><i class="glyphicon glyphicon-home"></i></a></li>
-          <li ui-sref-active="active"><a ui-sref="pets">Pets</a></li>
-
-          <li ui-sref-active="active"><a ui-sref="profile"></a></li>
-
+          <!-- <li ui-sref-active="active"><a ui-sref="pets.list">Pets</a></li> -->
+          <li class="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown">Pets <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li ui-sref-active="active"><a ui-sref="pets.record">New Record</a></li>
+              <li class="divider"></li>
+              <li ui-sref-active="active"><a ui-sref="pets.list">List</a></li>
+              <li ui-sref-active="active"><a ui-sref="pets.new">New Pet</a></li>
+            </ul>
+          </li>
           <li class="dropdown">
             <a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-bell"></i> <span class="badge">2</span> <span class="caret"></span></a>
             <ul class="dropdown-menu dropdown-menu-right" style="max-width: 350px; min-width: 300px;" role="menu">
               <li style="text-align:center">Notifications</li>
               <li class="divider"></li>
               <li>
-                <a href="">
+                <a ui-sref="notification">
                   <h6>C. Pokemon Heredia, 01-08-2014</h6>
                   <h4>Acceso info Pokemon</h4>
                   <p style="white-space: normal;">Lorem ipsum dolor sit amet, consectetur  adipisicing elit, sed do eiusmod tempor incididunt.</p>
@@ -68,7 +49,7 @@
               </li>
 
               <li>
-                <a href="">
+                <a ui-sref="notification">
                   <h6>C. Pokemon, 01-09-2014</h6>
                   <h4>Centro Pokemon</h4>
                   <p style="white-space: normal;">Lorem ipsum dolor sit amet, consectetur  adipisicing tempor incididunt.</p>
@@ -80,24 +61,35 @@
           <li class="dropdown">
             <a href="" class="dropdown-toggle" data-toggle="dropdown">jgatjens <span class="caret"></span></a>
             <ul class="dropdown-menu dropdown-menu-right" role="menu">
-              <li><a href="#">Perfil</a></li>
-              <li><a href="#">Change Password</a></li>
+              <li ui-sref-active="active"><a ui-sref="profile">Account settings</a></li>
               <li class="divider"></li>
+              <li ui-sref-active="active"><a ui-sref="notification">Notification Center</a></li>
               <li><a href="#">Contact us</a></li>
               <li class="divider"></li>
               <li><a href="landing.html">Exti app</a></li>
             </ul>
           </li>
-          <!-- <li><a href="#"></a></li> -->
         </ul>
         <h3 class="text-muted">MyVet</h3>
       </div>
-      <br>
+
       <div ui-view></div>
 
-      <div class="footer">
-        <p>With ♥ from <a href="https://twitter.com/jgatjens">@gatjens</a></p>
+
+
+
+      <div class="row">
+        <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
+          <hr>
+          <div class="footer">
+            <p> <a href="">Contact us</a> | <a href="">who we are</a> | With ♥ from <a href="https://twitter.com/jgatjens">@gatjens</a></p>
+          </div>
       </div>
+
+</div>
+
+
+
     </div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
@@ -111,13 +103,7 @@
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
-
-
-
-    <script src="//code.jquery.com/jquery-2.1.1.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
-
+    <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -126,6 +112,8 @@
     <script src="bower_components/lodash/dist/lodash.compat.js"></script>
     <script src="bower_components/restangular/dist/restangular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js"></script>
+    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/button.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -133,12 +121,13 @@
     <script src="scripts/main.js"></script>
 
     <script src="pages/home/home.js"></script>
+    <script src="pages/notification/notification.js"></script>
+    <script src="pages/notification/detail/detail.js"></script>
 
     <script src="pages/pet/pet.js"></script>
     <script src="pages/pet/list/list.js"></script>
     <script src="pages/pet/new/new.js"></script>
-
-
+    <script src="pages/pet/record/record.js"></script>
 
     <script src="pages/profile/profile.js"></script>
     <script src="pages/profile/about/about.js"></script>

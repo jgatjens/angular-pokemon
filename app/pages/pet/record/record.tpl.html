@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
+    <div class="page-header">
+      <h1>
+        <a ui-sref="pets.list">
+          <i class="glyphicon glyphicon-chevron-left"></i>
+        </a> Add <small>New</small> Record
+      </h1>
+    </div>
+  </div>
+</div>
+
+<form class="form-horizontal" role="form">
+
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-3 col-md-4 control-label">Info Basica</label>
+    <div class="col-sm-7 col-md-5">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Title">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-3 col-md-4 control-label"></label>
+    <div class="col-sm-7 col-md-5">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Temperature">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-3 col-md-4 control-label"></label>
+    <div class="col-sm-7 col-md-5">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Weigth in kg">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-3 col-md-4 control-label"></label>
+    <div class="col-sm-7 col-md-5">
+      <div class="input-group">
+        <input type="file" class="form-control">
+        <span class="input-group-addon">Foto</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-3 col-md-4 control-label">Comments</label>
+    <div class="col-sm-7 col-md-5">
+      <textarea type="textarea" rows="6" class="form-control" placeholder="Aditional comments" />
+    </div>
+  </div>
+
+
+  <!-- Save Aditional Info -->
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-md-offset-4 col-sm-7 col-md-5">
+      <button type="submit" class="btn btn-primary btn-block">Save Record</button>
+    </div>
+  </div>
+
+</form>
+<!--
+
+<ul class="profile-tabs">
+  <li class="profile-tabs__tab" ng-click="setTab('about');" ng-class="{ 'profile-tabs__tab--is-active': activeTab === 'about' }">
+    <a ui-sref="profile.about">About me</a>
+  </li>
+
+  <li class="profile-tabs__tab" ng-click="setTab('links');" ng-class="{ 'profile-tabs__tab--is-active': activeTab === 'links' }">
+    <a ui-sref="profile.links">My links</a>
+  </li>
+</ul>
+ -->
+<!-- <ui-view></ui-view> -->

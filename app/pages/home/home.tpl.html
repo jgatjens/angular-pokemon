@@ -1,26 +1,31 @@
 
   <div class="row">
-     <div class="col-sm-6 col-md-8">
+    <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
+      <div class="col-sm-8 col-md-8">
         <div style="width: 45px; margin-right: 10px;" class="pull-left">
           <img src="images/pets/01.jpg" class="img-responsive" alt="Responsive image">
         </div>
         <div class="pull-left">
-          <h2 style="margin:0;">Dog Name</h2>
+          <h2 style="margin:0;">Pokemon Name</h2>
           <p>Last visit: August 29, this year</p>
         </div>
-     </div>
-     <div class="col-sm-6 col-md-4" style="font-size: 30px; text-align: right">
-       <a href=""><i class="glyphicon glyphicon-th"></i> </a>
-       <a href=""><i class="glyphicon glyphicon-th-list"></i> </a>
-     </div>
-
-
+        <div class="clearfix"></div>
+      </div>
+      <!-- <div class="col-md-4" style="font-size: 30px; text-align: right">
+        <a href=""><i class="glyphicon glyphicon-th"></i> </a>
+        <a href=""><i class="glyphicon glyphicon-th-list"></i> </a>
+      </div> -->
+    </div>
   </div>
 
-  <hr>
+  <div class="row">
+    <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
+      <hr>
+    </div>
+  </div>
 
   <div class="row">
-    <div class="col-sm-6 col-md-4" ng-repeat="awesomeThing in awesomeThings | orderBy:'rank'">
+    <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6" ng-repeat="awesomeThing in awesomeThings | orderBy:'rank'">
       <div class="thumbnail">
         <img class="pull-right" ng-src="images/{{awesomeThing.logo}}" alt="{{awesomeThing.title}}">
         <div class="caption">
@@ -31,4 +36,3 @@
       </div>
     </div>
   </div>
-  <hr>
