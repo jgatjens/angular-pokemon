@@ -1,6 +1,10 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap";
 
-@import '../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+
+@import "animate";
+@import "../pages/home/home";
+
 
 .browsehappy {
   margin: 0.2em 0;
@@ -22,10 +26,47 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 }
 
 .page-header {
-
   margin-top: 15px;
-
   h1 {
     margin-top: 5px;
+  }
+}
+
+
+.header {
+  .company {
+    @media (max-width: $screen-xs-min) {
+      float: none !important;
+      display: block;
+      text-align: center;
+      font-size: 30px;
+    }
+  }
+
+  .badge {
+    background-color: #5bc0de;
+  }
+
+  .nav-pills {
+    margin-top: 10px;
+    font-size: 20px;
+
+    @media (max-width: $screen-xs-min) {
+      float: none !important;
+      display: block;
+      text-align: center;
+      font-size: 15px;
+
+      > li {
+        float: none;
+        display: inline-block;
+      }
+    }
+  }
+}
+
+.page-header h1 {
+  @media (max-width: $screen-xs-min) {
+    font-size: 33px;
   }
 }

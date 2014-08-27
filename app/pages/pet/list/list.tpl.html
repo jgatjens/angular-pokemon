@@ -8,7 +8,7 @@
         </a> Pets <small>List</small>
       </h1>
     </div>
-    <input type="email" ng-model="search" class="form-control" placeholder="Search for Pet">
+    <input type="text" ng-model="search.name" class="form-control" placeholder="Search for Pet">
   </div>
 </div>
 
@@ -19,7 +19,7 @@
 </div>
 
 <div class="row">
-  <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6" ng-repeat="pet in pets | orderBy:'rank'">
+  <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6" ng-repeat="pet in pets | orderBy:'rank' | filter:search ">
     <div class="thumbnail">
       <img class="pull-right" ng-src="images/pets/{{pet.logo}}" alt="{{pet.name}}">
       <div class="caption">
@@ -30,13 +30,13 @@
 
         <div class="row">
           <div style="text-align: center; font-size: 400%" class="col-xs-4 col-sm-4 col-md-4">
-            <a ui-sref="pet.edit" tooltip-placement="bottom" tooltip="Edit"><i class="glyphicon glyphicon-edit"></i></a>
+            <a ui-sref="pet.edit" tooltip-placement="bottom" tooltip="Edit"><i style="color: #f0ad4e" class="glyphicon glyphicon-edit"></i></a>
           </div>
           <div style="text-align: center; font-size: 400%" class="col-xs-4 col-sm-4 col-md-4">
             <a ui-sref="pet.detail" tooltip-placement="bottom" tooltip="View Details"><i class="glyphicon glyphicon-file"></i></a>
           </div>
           <div style="text-align: center; font-size: 400%" class="col-xs-4 col-sm-4 col-md-4">
-            <a ui-sref="pet.remove" tooltip-placement="bottom" tooltip="Delete"><i class="glyphicon glyphicon-remove"></i></a>
+            <a ui-sref="pet.remove" tooltip-placement="bottom" tooltip="Delete"><i style="color: red" class="glyphicon glyphicon-remove"></i></a>
           </div>
         </div>
 

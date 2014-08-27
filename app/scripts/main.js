@@ -15,6 +15,7 @@ angular.module('ngVet', [
   'ngVet.home',
   'ngVet.notification',
   'ngVet.pet',
+  'ngVet.login',
   'ngVet.profile'
 ])
 
@@ -33,19 +34,23 @@ angular.module('ngVet', [
       'self'
     ]);
 
-  });
-
-
-/*
-angular.module('myVet', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router'])
-  .config(function ($stateProvider, $urlRouterProvider) {
-    $stateProvider
-      .state('home', {
-        url: '/',
-        templateUrl: 'partials/main.html',
-        controller: 'MainCtrl'
-      });
-
-    $urlRouterProvider.otherwise('/');
   })
-;*/
+
+  .run(function( $rootScope) {
+
+    // temp
+
+
+    $rootScope.$on('$stateChangeSuccess',function(event, toState, toParams, fromState, fromParams){
+
+      // check for child states
+      if (toState.name.match(/\./g)) {
+        // get root state
+        $rootScope.activePage = toState.name.split('.')[0];
+      } else {
+        $rootScope.activePage = toState.name;
+      }
+
+    });
+
+  });

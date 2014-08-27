@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngVet.profile', [ 'ngVet.profile.about', 'ngVet.profile.links' ])
+angular.module('ngVet.profile', [ 'ngVet.profile.about', 'ngVet.login' ])
 
   // Module configuration.
   .config(function ($stateProvider) {
@@ -16,7 +16,5 @@ angular.module('ngVet.profile', [ 'ngVet.profile.about', 'ngVet.profile.links' ]
 
   // Profile controller.
   .controller('ProfileCtrl', function ($scope) {
-    $scope.setTab = function (tab) {
-      $scope.activeTab = tab;
-    };
+
   });
