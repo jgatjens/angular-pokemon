@@ -6,6 +6,7 @@ angular.module('ngVet', [
   // Vendor modules.
   'ui.router',
   'ngAnimate',
+  'ui.bootstrap',
 
   // Principal submodules.
   // 'ngApp._common',

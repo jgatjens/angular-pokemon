@@ -25,60 +25,74 @@ angular.module('ngVet.home', [ ])
   // Home controller.
   .controller('HomeCtrl', function ($scope, data) {
 
-    $scope.awesomeThings = [
+    $scope.histories = [
+      // {
+      //   'id': '1409093271212',
+      //   'title': 'Take care of your cat',
+      //   'doctor': 'Dr. Topo',
+      //   'create_date': '1409093271216',
+      //   'modify_date': '1409093271209',
+      //   'description': 'We saved the cat lives by catching Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.',
+      //   'clinic_logo': 'angular.png'
+      // },
       {
-        'key': 'angular',
-        'title': 'AngularJS',
-        'url': 'https://angularjs.org/',
-        'description': 'HTML enhanced for web apps!',
-        'logo': 'angular.png'
+        'id': '1409093271215',
+        'title': 'Take care of your DOG',
+        'doctor': 'Dr. Topo',
+        'create_date': '1409093271216',
+        'modify_date': '1409093271209',
+        'description': 'We saved the dog lives by catching Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.',
+        'clinic_logo': 'browsersync.png'
       },
       {
-        'key': 'browsersync',
-        'title': 'BrowserSync',
-        'url': 'http://browsersync.io/',
-        'description': 'Time-saving synchronised browser testing.',
-        'logo': 'browsersync.png'
+        'id': '1409093271215',
+        'title': 'Take care of your DOG',
+        'doctor': 'Dr. Topo',
+        'create_date': '1409093271216',
+        'modify_date': '1409093271209',
+        'description': 'We saved the dog lives by sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.',
+        'clinic_logo': 'gulp.png'
       },
       {
-        'key': 'gulp',
-        'title': 'GulpJS',
-        'url': 'http://gulpjs.com/',
-        'description': 'The streaming build system.',
-        'logo': 'gulp.png'
+        'id': '1409093271215',
+        'title': 'Take care of your DOG',
+        'doctor': 'Dr. Topo',
+        'create_date': '1409093271216',
+        'modify_date': '1409093271209',
+        'description': 'We saved the dog lives by sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.',
+        'clinic_logo': 'jasmine.png'
       },
       {
-        'key': 'jasmine',
-        'title': 'Jasmine',
-        'url': 'http://jasmine.github.io/',
-        'description': 'Behavior-Driven JavaScript.',
-        'logo': 'jasmine.png'
+        'id': '1409093271215',
+        'title': 'Take care of your DOG',
+        'doctor': 'Dr. Topo',
+        'create_date': '1409093271216',
+        'modify_date': '1409093271209',
+        'description': 'We saved the dog lives by sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.',
+        'clinic_logo': 'karma.png'
       },
       {
-        'key': 'karma',
-        'title': 'Karma',
-        'url': 'http://karma-runner.github.io/',
-        'description': 'Spectacular Test Runner for JavaScript.',
-        'logo': 'karma.png'
+        'id': '1409093271215',
+        'title': 'Take care of your DOG',
+        'doctor': 'Dr. Topo',
+        'create_date': '1409093271216',
+        'modify_date': '1409093271209',
+        'description': 'We saved the dog lives by sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.',
+        'clinic_logo': 'protractor.png'
       },
       {
-        'key': 'protractor',
-        'title': 'Protractor',
-        'url': 'https://github.com/angular/protractor',
-        'description': 'End to end test framework for AngularJS applications built on top of WebDriverJS.',
-        'logo': 'protractor.png'
-      },
-      {
-        'key': 'bootstrap',
-        'title': 'Bootstrap',
-        'url': 'http://getbootstrap.com/',
-        'description': 'Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.',
-        'logo': 'bootstrap.png'
+        'id': '1409093271215',
+        'title': 'Take care of your DOG',
+        'doctor': 'Dr. Topo',
+        'create_date': '1409093271216',
+        'modify_date': '1409093271209',
+        'description': 'We saved the dog lives by sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.',
+        'clinic_logo': 'bootstrap.png'
       }
     ];
 
-    angular.forEach($scope.awesomeThings, function(awesomeThing) {
-      awesomeThing.rank = Math.random();
+    angular.forEach($scope.histories, function(history) {
+      history.rank = Math.random();
     });
 
 

@@ -26,10 +26,20 @@
         <h3>{{pet.name}}</h3>
         <p>{{pet.weigth}}</p>
 
-        <a href="">Edit</a> <br>
-        <a href="">Medical Records</a> <br>
-        <a href="">active pet</a> <br>
-        <a class="text-danger" href="">delete pet</a>
+        <span ng-show="$index == 0" style="position: absolute; top: 10px;" class="label label-success">Active Pet</span>
+
+        <div class="row">
+          <div style="text-align: center; font-size: 400%" class="col-xs-4 col-sm-4 col-md-4">
+            <a ui-sref="pet.edit" tooltip-placement="bottom" tooltip="Edit"><i class="glyphicon glyphicon-edit"></i></a>
+          </div>
+          <div style="text-align: center; font-size: 400%" class="col-xs-4 col-sm-4 col-md-4">
+            <a ui-sref="pet.detail" tooltip-placement="bottom" tooltip="View Details"><i class="glyphicon glyphicon-file"></i></a>
+          </div>
+          <div style="text-align: center; font-size: 400%" class="col-xs-4 col-sm-4 col-md-4">
+            <a ui-sref="pet.remove" tooltip-placement="bottom" tooltip="Delete"><i class="glyphicon glyphicon-remove"></i></a>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

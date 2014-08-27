@@ -19,22 +19,22 @@ angular.module('ngVet.pet.list', [ ])
 
     $scope.pets = [
       {
-        'name': 'lu',
+        'name': 'Lu',
         'weigth': '15 kg',
         'logo': '01.jpg'
       },
       {
-        'name': 'luke',
+        'name': 'Luke',
         'weigth': '32 kg',
         'logo': '02.jpg'
       },
        {
-        'name': 'tequila',
+        'name': 'Tequila',
         'weigth': '3 kg',
         'logo': '02.jpg'
       },
       {
-        'name': 'toby',
+        'name': 'Toby',
         'weigth': '40 kg',
         'logo': '01.jpg'
       }
@@ -43,5 +43,7 @@ angular.module('ngVet.pet.list', [ ])
     angular.forEach($scope.pets, function(pet) {
       pet.rank = Math.random();
     });
+
+    // $.tootltip();
 
   });
