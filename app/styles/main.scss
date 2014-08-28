@@ -1,10 +1,13 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap";
 
-
-@import "animate";
-@import "../pages/home/home";
-
+// inject:scss
+@import "../pages/home/_home.scss";
+@import "../pages/notification/_notification.scss";
+@import "../pages/pet/_pet.scss";
+@import "../pages/profile/_profile.scss";
+@import "../pages/profile/login/_login.scss";
+// endinject
 
 .browsehappy {
   margin: 0.2em 0;

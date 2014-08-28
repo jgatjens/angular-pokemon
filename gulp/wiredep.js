@@ -24,21 +24,40 @@ gulp.task('wiredep', function () {
 
 // Inject angular modulos into index.html
 var angularFilesort = require('gulp-angular-filesort'),
+    es = require('event-stream'),
     inject = require('gulp-inject');
 
-gulp.task('injectjs', function () {
-  var target = gulp.src('app/index.html');
-  // It's not necessary to read the files (will speed up things), we're only after their paths:
-
-  var sources = gulp.src(['app/pages/**/*.js']).pipe(angularFilesort());
-
-
-  return target.pipe(inject(sources, {
-        transform: function (filepath) {
-          return '<script src="' + filepath.slice(5) + '"></script>';
-        }
+var options = {
+      transform: function (filepath) {
+        return '<script src="' + filepath.slice(5) + '"></script>';
       }
-    ))
-    .pipe(gulp.dest('./app'));
+    };
+
+gulp.task('injectjs', function () {
+
+  var target = gulp.src('./app/index.html');
+  var sources = gulp.src(['./app/pages/**/*.js']).pipe(angularFilesort());
+
+  return target.pipe(inject(sources, options))
+              .pipe(gulp.dest('./app'));
 
 });
+
+gulp.task('injectscss', function () {
+
+  var target = gulp.src('./app/styles/main.scss');
+  var sources = gulp.src(['./app/pages/**/*.scss']);
+
+  return target.pipe(inject(sources, {
+    starttag: '// inject:{{ext}}',
+    endtag: '// endinject',
+    transform: function (filepath) {
+      return '@import "..' + filepath.slice(4) + '";';
+    }
+  }))
+  .pipe(gulp.dest('./app/styles'));
+
+
+});
+
+
