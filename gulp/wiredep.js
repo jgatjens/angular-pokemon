@@ -28,15 +28,15 @@ var angularFilesort = require('gulp-angular-filesort'),
     inject = require('gulp-inject');
 
 var options = {
-      transform: function (filepath) {
-        return '<script src="' + filepath.slice(5) + '"></script>';
-      }
-    };
+  transform: function (filepath) {
+    return '<script src="' + filepath.slice(5) + '"></script>';
+  }
+};
 
 gulp.task('injectjs', function () {
 
   var target = gulp.src('./app/index.html');
-  var sources = gulp.src(['./app/pages/**/*.js']).pipe(angularFilesort());
+  var sources = gulp.src(['./app/pages/**/*.js', './app/common/**/*.js']).pipe(angularFilesort());
 
   return target.pipe(inject(sources, options))
               .pipe(gulp.dest('./app'));
@@ -46,7 +46,7 @@ gulp.task('injectjs', function () {
 gulp.task('injectscss', function () {
 
   var target = gulp.src('./app/styles/main.scss');
-  var sources = gulp.src(['./app/pages/**/*.scss']);
+  var sources = gulp.src(['./app/pages/**/*.scss', './app/common/**/*.scss']);
 
   return target.pipe(inject(sources, {
     starttag: '// inject:{{ext}}',
@@ -60,4 +60,5 @@ gulp.task('injectscss', function () {
 
 });
 
+// gulp.task('inject', ['injectjs', 'injectscss']);
 

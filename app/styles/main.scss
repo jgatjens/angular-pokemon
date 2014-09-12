@@ -7,6 +7,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 @import "../pages/pet/_pet.scss";
 @import "../pages/profile/_profile.scss";
 @import "../pages/profile/login/_login.scss";
+@import "../common/directives/footer/_footer.scss";
+@import "../common/directives/nav/_nav.scss";
 // endinject
 
 .browsehappy {

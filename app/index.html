@@ -9,7 +9,6 @@
 
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-    <!-- <link rel="stylesheet" href="landing/assets/css/flatly/bootstrap.min.css"> -->
     <!-- endbuild -->
 
     <!-- build:js scripts/modernizr.js -->
@@ -23,81 +22,14 @@
 
     <div class="container">
 
-      <div class="header">
-        <h3 class="company pull-left">MyPokemon</h3>
-        <ul class="nav nav-pills pull-right">
-          <li ui-sref-active="active"><a ui-sref="home" href="#"><i class="glyphicon glyphicon-home"></i></a></li>
-          <li class="dropdown">
-            <a href="" class="dropdown-toggle" data-toggle="dropdown">Pets <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li ui-sref-active="active"><a ui-sref="pets.record">New Record</a></li>
-              <li class="divider"></li>
-              <li ui-sref-active="active"><a ui-sref="pets.list">List</a></li>
-              <li ui-sref-active="active"><a ui-sref="pets.new">New Pet</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-bell"></i> <span class="badge">2</span> <span class="caret"></span></a>
-            <ul class="dropdown-menu dropdown-menu-right" style="max-width: 350px; min-width: 300px; right: -110%;" role="menu">
-              <li style="text-align:center">Notifications</li>
-              <li class="divider"></li>
-              <li>
-                <a ui-sref="notification">
-                  <h6>C. Pokemon Heredia, 01-08-2014</h6>
-                  <h4>Acceso info Pokemon</h4>
-                  <p style="white-space: normal;">Lorem ipsum dolor sit amet, consectetur  adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                </a>
-              </li>
-
-              <li>
-                <a ui-sref="notification">
-                  <h6>C. Pokemon, 01-09-2014</h6>
-                  <h4>Centro Pokemon</h4>
-                  <p style="white-space: normal;">Lorem ipsum dolor sit amet, consectetur  adipisicing tempor incididunt.</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="dropdown">
-            <a href="" class="dropdown-toggle" data-toggle="dropdown">jgatjens <span class="caret"></span></a>
-            <ul class="dropdown-menu dropdown-menu-right" role="menu">
-              <li ui-sref-active="active"><a ui-sref="profile">Account settings</a></li>
-              <li class="divider"></li>
-              <li ui-sref-active="active"><a ui-sref="notification">Notification Center</a></li>
-              <li><a href="#">Contact us</a></li>
-              <li class="divider"></li>
-              <li><a href="landing.html">Exti app</a></li>
-            </ul>
-          </li>
-        </ul>
-        <div class="clearfix"></div>
-      </div>
+      <div ng-vet-nav></div>
 
       <div ui-view class="view-animate"></div>
 
-      <div class="row">
-
-        <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
-          <hr>
-          <div class="footer">
-            <p>With ♥ from <a href="https://twitter.com/jgatjens">@gatjens</a></p>
-          </div>
-        </div>
-
-      </div>
+      <div ng-vet-footer></div>
 
     </div>
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 
-    <script>
-      // (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      // function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      // e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      // e.src='//www.google-analytics.com/analytics.js';
-      // r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      // ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
@@ -114,9 +46,23 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:js({app,.tmp}) scripts/main.js -->
-    <script src="scripts/main.js"></script>
+
+    <!-- build:js({.tmp,app}) scripts/main.js -->
     <!-- inject:js -->
+
+
+
+    <script src="common/directives/nav/nav.js"></script>
+    <script src="common/directives/footer/footer.js"></script>
+    <script src="common/directives/debug/debug.js"></script>
+    <script src="common/services/seo.js"></script>
+    <script src="common/services/_services.js"></script>
+    <script src="common/factories/store.js"></script>
+    <script src="common/factories/interceptor.js"></script>
+    <script src="common/factories/_factories.js"></script>
+    <script src="common/directives/_directives.js"></script>
+    <script src="common/config.js"></script>
+    <script src="common/common.js"></script>
     <script src="pages/profile/login/login.js"></script>
     <script src="pages/profile/about/about.js"></script>
     <script src="pages/pet/record/record.js"></script>
@@ -125,9 +71,13 @@
     <script src="pages/notification/detail/detail.js"></script>
     <script src="pages/profile/profile.js"></script>
     <script src="pages/pet/pet.js"></script>
-    <script src="pages/home/home.js"></script>
     <script src="pages/notification/notification.js"></script>
+    <script src="pages/home/home.js"></script>
+
+    <!-- inject:partials -->
     <!-- endinject -->
+    <!-- endinject -->
+    <script src="scripts/main.js"></script>
     <!-- endbuild -->
 
   </body>

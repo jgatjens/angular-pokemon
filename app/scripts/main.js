@@ -9,7 +9,7 @@ angular.module('ngVet', [
   'ui.bootstrap',
 
   // Principal submodules.
-  // 'ngApp._common',
+  'ngVet.common',
 
   // Sections
   'ngVet.home',
@@ -41,7 +41,8 @@ angular.module('ngVet', [
     // temp
 
 
-    $rootScope.$on('$stateChangeSuccess',function(event, toState, toParams, fromState, fromParams){
+    // $rootScope.$on('$stateChangeSuccess',function(event, toState, toParams, fromState, fromParams){
+    $rootScope.$on('$stateChangeSuccess',function(event, toState){
 
       // check for child states
       if (toState.name.match(/\./g)) {

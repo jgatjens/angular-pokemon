@@ -22,26 +22,52 @@ gulp.task('scripts', function () {
     .pipe($.size());
 });
 
-gulp.task('partials', function () {
-  return gulp.src('app/pages/**/*.tpl.html')
+
+function moduleName (file) {
+    var array = file.relative.split('/');
+    // console.log('pathname', file.relative, array);
+    var path = array.slice(0, array.length - 1);
+    // console.log('ngVet.' + path.join('.'));
+    return 'ngVet.' + path.join('.');
+}
+
+// add
+gulp.task('pages', function () {
+  return gulp.src(('app/pages/**/*.tpl.html'))
     .pipe($.minifyHtml({
       empty: true,
       spare: true,
       quotes: true
     }))
     .pipe($.ngHtml2js({
-      moduleName: function (file) {
-
-        var path = file.relative.split('/'),
-            folder = path[path.length - 2];
-
-        return 'ngVet.' + folder;
-      },
+      moduleName: moduleName,
       prefix: 'pages/'
     }))
     .pipe(gulp.dest('.tmp/partials'))
     .pipe($.size());
 });
+
+gulp.task('common', function () {
+  return gulp.src(('app/common/**/*.tpl.html'))
+    .pipe($.minifyHtml({
+      empty: true,
+      spare: true,
+      quotes: true
+    }))
+    .pipe($.ngHtml2js({
+      moduleName: function moduleName (file) {
+          var array = file.relative.split('/');
+          var path = array.slice(0, array.length - 1);
+          return 'ngVet.common.' + path.join('.');
+      },
+      prefix: 'common/'
+    }))
+    .pipe(gulp.dest('.tmp/partials'))
+    .pipe($.size());
+});
+
+gulp.task('partials', ['pages', 'common']);
+
 
 gulp.task('html', ['styles', 'scripts', 'partials'], function () {
   var jsFilter = $.filter('**/*.js');
@@ -54,6 +80,7 @@ gulp.task('html', ['styles', 'scripts', 'partials'], function () {
       addRootSlash: false,
       addPrefix: '../'
     }))
+    // .pipe($.debug({verbose: true, title: "test"}))
     .pipe($.useref.assets())
     .pipe($.rev())
     .pipe(jsFilter)
@@ -61,10 +88,11 @@ gulp.task('html', ['styles', 'scripts', 'partials'], function () {
     .pipe($.uglify({preserveComments: $.uglifySaveLicense}))
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
-    .pipe($.replace('bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap','fonts'))
+    .pipe($.replace('bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap','assets/fonts'))
     .pipe($.csso())
     .pipe(cssFilter.restore())
     .pipe($.useref.restore())
+
     .pipe($.useref())
     .pipe($.revReplace())
     .pipe(gulp.dest('dist'))
@@ -72,13 +100,13 @@ gulp.task('html', ['styles', 'scripts', 'partials'], function () {
 });
 
 gulp.task('images', function () {
-  return gulp.src('app/images/**/*')
+  return gulp.src('app/assets/images/**/*')
     .pipe($.cache($.imagemin({
       optimizationLevel: 3,
       progressive: true,
       interlaced: true
     })))
-    .pipe(gulp.dest('dist/images'))
+    .pipe(gulp.dest('dist/assets/images'))
     .pipe($.size());
 });
 
@@ -86,7 +114,7 @@ gulp.task('fonts', function () {
   return gulp.src($.mainBowerFiles())
     .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
     .pipe($.flatten())
-    .pipe(gulp.dest('dist/fonts'))
+    .pipe(gulp.dest('dist/assets/fonts'))
     .pipe($.size());
 });
 

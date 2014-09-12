@@ -30,7 +30,9 @@ function browserSyncInit(baseDir, files, browser) {
       baseDir: baseDir,
       middleware: proxyMiddleware
     },
-    browser: browser
+    browser: browser,
+    minify: false,
+    logFileChanges: false
   });
 
 }
@@ -43,6 +45,7 @@ gulp.task('serve', ['watch'], function () {
     'app/*.html',
     '.tmp/styles/**/*.css',
     'app/scripts/**/*.js',
+    'app/common/**/{*.js,*.html,*.scss}',
     'app/pages/**/{*.js,*.html}',
     'app/images/**/*'
   ]);
