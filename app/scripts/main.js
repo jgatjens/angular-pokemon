@@ -15,18 +15,18 @@ angular.module('ngVet', [
   'ngVet.home',
   'ngVet.notification',
   'ngVet.pet',
-  'ngVet.login',
   'ngVet.profile'
 ])
 
-  // Module configuration.
+
+  // Configuration.
   .config(function ($urlRouterProvider, $sceDelegateProvider, $locationProvider) {
 
     // use #! in the url.
     $locationProvider.hashPrefix('!');
 
     // Default application's url.
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/login');
 
     // Allow assets from local and external sources
     $sceDelegateProvider.resourceUrlWhitelist([
@@ -34,12 +34,37 @@ angular.module('ngVet', [
       'self'
     ]);
 
+
+    // Parse init
+    Parse.initialize("8WUpXyrczIHufksKvskQ8hrA3eiroUWhvnguAW8l", "tIDTd21YkMetRjQFLwY29GW5zcKBzgk5DoX6gUEj");
+
+    // Init Facebook
+    // 3) Finally, init Facebook
+
+    window.fbAsyncInit = function() {
+      Parse.FacebookUtils.init({
+        appId: '1544086335825154',
+        channelUrl : '//www.slidebean.com/fbchannel.html',
+        status: true,
+        cookie: true,
+        xfbml: true
+      });
+
+    };
+
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
   })
 
-  .run(function( $rootScope) {
+  .run(function( $rootScope, profile, $state) {
 
-    // temp
-
+    var Profile = new profile();
 
     // $rootScope.$on('$stateChangeSuccess',function(event, toState, toParams, fromState, fromParams){
     $rootScope.$on('$stateChangeSuccess',function(event, toState){
@@ -51,6 +76,17 @@ angular.module('ngVet', [
       } else {
         $rootScope.activePage = toState.name;
       }
+
+      $rootScope.profile = Profile
+
+      if (toState.authenticate && !Profile.isAuthenticated()){
+
+        // User isn’t authenticated
+        $state.transitionTo("login");
+        event.preventDefault();
+      }
+
+
 
     });
 

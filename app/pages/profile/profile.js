@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngVet.profile', [ 'ngVet.profile.about', 'ngVet.login' ])
+angular.module('ngVet.profile', [ 'ngVet.profile.about', 'ngVet.profile.login', 'ngVet.profile.register' ])
 
   // Module configuration.
   .config(function ($stateProvider) {

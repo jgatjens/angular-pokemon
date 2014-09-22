@@ -2,7 +2,7 @@
 <html class="no-js" ng-app="ngVet">
   <head>
     <meta charset="utf-8">
-    <title>frontend</title>
+    <title>Myvet - Pokemon</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -11,11 +11,12 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 
-    <!-- build:js scripts/modernizr.js -->
+    <!-- build:js scripts/modernizr.min.js -->
     <script src="bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
   </head>
   <body class="{{activePage}}-page">
+    <div id="fb-root"></div>
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -43,26 +44,29 @@
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/parse-js-sdk/lib/parse.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
 
     <!-- build:js({.tmp,app}) scripts/main.js -->
+
     <!-- inject:js -->
-
-
-
     <script src="common/directives/nav/nav.js"></script>
+    <script src="common/directives/match/match.js"></script>
     <script src="common/directives/footer/footer.js"></script>
     <script src="common/directives/debug/debug.js"></script>
     <script src="common/services/seo.js"></script>
     <script src="common/services/_services.js"></script>
     <script src="common/factories/store.js"></script>
+    <script src="common/factories/profile.js"></script>
     <script src="common/factories/interceptor.js"></script>
     <script src="common/factories/_factories.js"></script>
     <script src="common/directives/_directives.js"></script>
+    <script src="common/constant.js"></script>
     <script src="common/config.js"></script>
     <script src="common/common.js"></script>
+    <script src="pages/profile/register/register.js"></script>
     <script src="pages/profile/login/login.js"></script>
     <script src="pages/profile/about/about.js"></script>
     <script src="pages/pet/record/record.js"></script>
@@ -70,12 +74,11 @@
     <script src="pages/pet/list/list.js"></script>
     <script src="pages/notification/detail/detail.js"></script>
     <script src="pages/profile/profile.js"></script>
-    <script src="pages/pet/pet.js"></script>
     <script src="pages/notification/notification.js"></script>
+    <script src="pages/pet/pet.js"></script>
     <script src="pages/home/home.js"></script>
-
-    <!-- inject:partials -->
     <!-- endinject -->
+
     <!-- endinject -->
     <script src="scripts/main.js"></script>
     <!-- endbuild -->

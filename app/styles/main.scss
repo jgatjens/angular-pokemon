@@ -2,13 +2,14 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap";
 
 // inject:scss
-@import "../pages/home/_home.scss";
-@import "../pages/notification/_notification.scss";
-@import "../pages/pet/_pet.scss";
-@import "../pages/profile/_profile.scss";
-@import "../pages/profile/login/_login.scss";
-@import "../common/directives/footer/_footer.scss";
-@import "../common/directives/nav/_nav.scss";
+@import "../pages/home/home.scss";
+@import "../pages/notification/notification.scss";
+@import "../pages/pet/pet.scss";
+@import "../pages/profile/profile.scss";
+@import "../pages/profile/login/login.scss";
+@import "../pages/profile/register/register.scss";
+@import "../common/directives/footer/footer.scss";
+@import "../common/directives/nav/nav.scss";
 // endinject
 
 .browsehappy {
@@ -35,6 +36,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
   h1 {
     margin-top: 5px;
   }
+}
+
+.alert-danger p:first-letter{
+  text-transform: uppercase;
 }
 
 

@@ -11,6 +11,7 @@ angular.module('ngVet.home', [ ])
         url         : '/',
         controller  : 'HomeCtrl',
         templateUrl : 'pages/home/home.tpl.html',
+        authenticate: true,
         resolve:{
           data: function () {
             // var Home = resourceURL('home');
