@@ -6,6 +6,7 @@ angular.module('ngVet.common.directives.nav', [ ])
     return {
       restrict    : 'EA',
       replace     : true,
+      controller  : 'navCtrl',
       templateUrl : 'common/directives/nav/nav.tpl.html'
     }
   })

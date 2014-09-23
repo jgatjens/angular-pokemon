@@ -49,12 +49,12 @@ angular.module('ngVet.home', [ ])
       },
       {
         'id': '1409093271215',
-        'title': 'Take care of your DOG',
+        'title': 'Take care of your Charmander',
         'doctor': 'Dr. Topo',
         'create_date': '1409093271216',
         'modify_date': '1409093271209',
         'action_type': 'glyphicon glyphicon-calendar',
-        'description': 'We saved the dog lives by sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.',
+        'description': 'We saved the pokemon lives by sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.',
         'clinic_logo': 'gulp.png'
       },
       {
@@ -64,7 +64,7 @@ angular.module('ngVet.home', [ ])
         'create_date': '1409093271216',
         'modify_date': '1409093271209',
         'action_type': 'glyphicon glyphicon-comment',
-        'description': 'We saved the dog lives by sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.',
+        'description': 'We saved the pokemon lives by sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.',
         'clinic_logo': 'jasmine.png'
       },
       {
@@ -74,17 +74,17 @@ angular.module('ngVet.home', [ ])
         'create_date': '1409093271216',
         'modify_date': '1409093271209',
         'action_type': 'glyphicon glyphicon-pushpin',
-        'description': 'We saved the dog lives by sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.',
+        'description': 'We saved the pokemon lives by sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.',
         'clinic_logo': 'karma.png'
       },
       {
         'id': '1409093271215',
-        'title': 'Take care of your Nitetales',
+        'title': 'Take care of your Ninetales',
         'doctor': 'Dr. Topo',
         'create_date': '1409093271216',
         'modify_date': '1409093271209',
         'action_type': 'glyphicon glyphicon-bell',
-        'description': 'We saved the dog lives by sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.',
+        'description': 'We saved the pokemon lives by sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.',
         'clinic_logo': 'protractor.png'
       },
       {
@@ -94,7 +94,7 @@ angular.module('ngVet.home', [ ])
         'create_date': '1409093271216',
         'modify_date': '1409093271209',
         'action_type': 'glyphicon glyphicon-star',
-        'description': 'We saved the dog lives by sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.',
+        'description': 'We saved the pokemon lives by sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.',
         'clinic_logo': 'bootstrap.png'
       }
     ];

@@ -4,8 +4,10 @@ angular.module('ngVet.common.services.profile', [ ])
 
   .service('profile', function ($q, $log, $rootScope) {
 
+    var self = this;
+
     // user obj
-    this.user = null;
+    this.user = Parse.User.current();
 
     /**
     * Public method, myVetSignin assigned to prototype
@@ -29,7 +31,7 @@ angular.module('ngVet.common.services.profile', [ ])
         user.signUp(null, {
           success: function(user) {
             // Hooray! Let them use the app now.
-            selt.user = user;
+            self.user = user;
 
             _setUser(user);
             defer.resolve(user);
@@ -79,20 +81,17 @@ angular.module('ngVet.common.services.profile', [ ])
     * @Object, user
     */
     this.myVetSaveName = function (user) {
-      var defer = $q.defer(),
-          user = new Parse.User();
+      this.user.set("name", user.name);
+      return _saveUser();
+    }
 
-      user.set("name", user.username);
-
-      user.save(null, {
-        success: function (user) {
-          defer.resolve({ success: true });
-        },
-        error: function () {
-          defer.reject({ success: false });
-        }
-      });
-
+    /**
+    * Public method, myVetSaveName assigned to prototype
+    * @Object, user
+    */
+    this.myVetSavePassword = function (user) {
+      this.user.set("password", user.password);
+      return _saveUser();
     }
 
     /**
@@ -143,10 +142,44 @@ angular.module('ngVet.common.services.profile', [ ])
       return this.user.get('emailVerified');
     }
 
-    var _setUser = function(user) {
+    /**
+    * Private method, set user to angular root scope
+    */
+
+    var _setUser = function (user) {
+
+      if (!user) return;
+
       $rootScope.user = user.toJSON();
       $rootScope.user.isAuthenticated = user.authenticated();
     }
 
+
+    /**
+    * Private method, save profile info
+    */
+
+    var _saveUser = function () {
+
+      if (!self.user)
+        return defer.reject({ error: { message: 'Object user is not present' } });
+
+      var defer = $q.defer();
+
+      self.user.save(null, {
+        success: function (user) {
+          _setUser(user);
+          defer.resolve({ success: true, user: user });
+        },
+        error: function (user, error) {
+          defer.reject(error);
+        }
+      });
+
+      return defer.promise;
+    }
+
+    // set
+    _setUser(this.user);
 
   });
