@@ -29,7 +29,7 @@ angular.module('ngVet.home', [ ])
     $scope.histories = [
       {
         'id': '1409093271212',
-        'title': 'Take care of your cat',
+        'title': 'Take care of your Jiglypo',
         'doctor': 'Dr. Topo',
         'create_date': '1409093271216',
         'modify_date': '1409093271209',
@@ -39,7 +39,7 @@ angular.module('ngVet.home', [ ])
       },
       {
         'id': '1409093271215',
-        'title': 'Take care of your Pet',
+        'title': 'Take care of your Pikachu',
         'doctor': 'Dr. Topo',
         'create_date': '1409093271216',
         'modify_date': '1409093271209',
@@ -59,7 +59,7 @@ angular.module('ngVet.home', [ ])
       },
       {
         'id': '1409093271215',
-        'title': 'Take care of your Parrot',
+        'title': 'Take care of your Piyoto',
         'doctor': 'Dr. Topo',
         'create_date': '1409093271216',
         'modify_date': '1409093271209',
@@ -69,7 +69,7 @@ angular.module('ngVet.home', [ ])
       },
       {
         'id': '1409093271215',
-        'title': 'Take care of your DOG',
+        'title': 'Take care of your Myau',
         'doctor': 'Dr. Topo',
         'create_date': '1409093271216',
         'modify_date': '1409093271209',
@@ -79,7 +79,7 @@ angular.module('ngVet.home', [ ])
       },
       {
         'id': '1409093271215',
-        'title': 'Take care of your DOGGY',
+        'title': 'Take care of your Nitetales',
         'doctor': 'Dr. Topo',
         'create_date': '1409093271216',
         'modify_date': '1409093271209',
@@ -89,7 +89,7 @@ angular.module('ngVet.home', [ ])
       },
       {
         'id': '1409093271215',
-        'title': 'Take care of your Cat',
+        'title': 'Take care of your Bulbazor',
         'doctor': 'Dr. Topo',
         'create_date': '1409093271216',
         'modify_date': '1409093271209',

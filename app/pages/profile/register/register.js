@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngVet.profile.register', ['ngVet.common.factories.profile', 'ngVet.common.directives.match'])
+angular.module('ngVet.profile.register', ['ngVet.common.directives.match'])
 
   // Module configuration.
   .config(function ($stateProvider) {
@@ -17,8 +17,6 @@ angular.module('ngVet.profile.register', ['ngVet.common.factories.profile', 'ngV
   // register controller.
   .controller('RegisterCtrl', function ($rootScope, $scope, $state, profile) {
 
-    var Profile = new profile();
-
     $scope.user = {};
     $scope.confirmEmail = false;
     $scope.submitted = false;
@@ -33,7 +31,7 @@ angular.module('ngVet.profile.register', ['ngVet.common.factories.profile', 'ngV
         return;
       }
 
-      Profile.myVetSignin($scope.user)
+      profile.myVetSignin($scope.user)
         .then(function (user){
           $scope.confirmEmail = true;
           // $state.go('home');

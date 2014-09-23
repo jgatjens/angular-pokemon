@@ -8,7 +8,7 @@ angular.module('ngVet.profile.login', [ ])
     // Module routing.
     $stateProvider
       .state('login', {
-        url         : '/login',
+        url         : '/login?errorCode',
         controller  : 'LoginCtrl',
         templateUrl : 'pages/profile/login/login.tpl.html'
       });
@@ -17,12 +17,12 @@ angular.module('ngVet.profile.login', [ ])
   // Login controller.
   .controller('LoginCtrl', function ($rootScope, $scope, $state, profile) {
 
-    var Profile = new profile();
-
     $scope.user = {};
     $scope.submitted = false;
     $scope.confirmEmail = false;
     $scope.errorSubmitted = false;
+
+    $scope.accessDenied = $state.params.errorCode;
 
     $scope.login = function () {
 
@@ -35,20 +35,18 @@ angular.module('ngVet.profile.login', [ ])
       }
 
 
-      Profile.myVetLogin($scope.user.username, $scope.user.password)
-        .then(function (user){
-          console.log(user);
+      profile.myVetLogin($scope.user.username, $scope.user.password)
+        .then(function (user) {
+
 
           // Verified email
-          if (Profile.isEmailVerified) {
+          if (!profile.isEmailVerified()) {
             $scope.confirmEmail = true;
             return;
           }
 
-
-          $rootScope.profile = user;
+          // $rootScope.profile = user;
           $state.go('home');
-
 
         }, function(error){
           $scope.errorSubmitted = true;

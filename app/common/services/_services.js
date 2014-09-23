@@ -1,5 +1,5 @@
 'use strict';
 
 angular.module('ngVet.common.services', [
-  // 'ngVet.common.services.seo'
+  'ngVet.common.services.profile'
 ]);

@@ -10,6 +10,7 @@ angular.module('ngVet.profile', [ 'ngVet.profile.about', 'ngVet.profile.login', 
       .state('profile', {
         url         : '/profile',
         controller  : 'ProfileCtrl',
+        authenticate: true,
         templateUrl : 'pages/profile/profile.tpl.html'
       });
   })

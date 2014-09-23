@@ -64,7 +64,6 @@ angular.module('ngVet', [
 
   .run(function( $rootScope, profile, $state) {
 
-    var Profile = new profile();
 
     // $rootScope.$on('$stateChangeSuccess',function(event, toState, toParams, fromState, fromParams){
     $rootScope.$on('$stateChangeSuccess',function(event, toState){
@@ -77,17 +76,16 @@ angular.module('ngVet', [
         $rootScope.activePage = toState.name;
       }
 
-      $rootScope.profile = Profile
-
-      if (toState.authenticate && !Profile.isAuthenticated()){
-
+      if (toState.authenticate && !profile.isAuthenticated()){
         // User isn’t authenticated
-        $state.transitionTo("login");
+        $state.transitionTo("login", { errorCode: 403 });
         event.preventDefault();
       }
 
 
-
+      // if (toState.name == 'login' && Profile.isAuthenticated()) {
+      //   $state.transitionTo("home");
+      // }
     });
 
   });

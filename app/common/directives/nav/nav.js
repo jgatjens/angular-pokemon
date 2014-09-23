@@ -9,13 +9,10 @@ angular.module('ngVet.common.directives.nav', [ ])
       templateUrl : 'common/directives/nav/nav.tpl.html'
     }
   })
-  .controller('navCtrl', function ($scope, Profile) {
+  .controller('navCtrl', function ($scope, profile) {
 
-    var profile = new Profile();
     $scope.logout = function () {
-      // $rootScope.isLogin = false;
-      Profile.myVetLogout();
-
+      profile.myVetLogout();
     };
 
   });
