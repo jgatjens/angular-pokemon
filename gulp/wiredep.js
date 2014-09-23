@@ -52,7 +52,7 @@ gulp.task('injectscss', function () {
     starttag: '// inject:{{ext}}',
     endtag: '// endinject',
     transform: function (filepath) {
-      return '@import "..' + filepath.slice(4) + '";';
+      return '@import "..' + filepath.replace('_','').slice(4) + '";';
     }
   }))
   .pipe(gulp.dest('./app/styles'));
