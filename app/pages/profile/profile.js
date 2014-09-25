@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngVet.profile', ['ngVet.common.directives.match', 'ngVet.profile.about', 'ngVet.profile.login', 'ngVet.profile.register' ])
+angular.module('ngVet.profile', ['ngVet.common.directives.match', 'ngVet.profile.password', 'ngVet.profile.about', 'ngVet.profile.login', 'ngVet.profile.register' ])
 
   // Module configuration.
   .config(function ($stateProvider) {
@@ -19,6 +19,7 @@ angular.module('ngVet.profile', ['ngVet.common.directives.match', 'ngVet.profile
   .controller('ProfileCtrl', function ($scope, $rootScope, profile) {
 
     $scope.userInfo = {};
+
     $scope.okName = false;
     $scope.submitted = false;
 
@@ -27,12 +28,13 @@ angular.module('ngVet.profile', ['ngVet.common.directives.match', 'ngVet.profile
       $scope.submitted = true
 
       // If form is invalid, return and let AngularJS show validation errors.
-      if ($scope.profileForm.$invalid) {
+      if (!$scope.profileForm.name.$valid) {
         return;
       }
 
       profile.myVetSaveName($scope.user)
         .then(function (user){
+          console.log(user);
           $scope.okName = true;
         }, function(error){
           $scope.errorSubmitted = true;
@@ -41,18 +43,23 @@ angular.module('ngVet.profile', ['ngVet.common.directives.match', 'ngVet.profile
 
     }
 
+
+    $scope.okPassword = false;
+    $scope.submittedPassword = false;
+
     $scope.savePassword = function () {
 
-      $scope.submitted = true
+      $scope.submittedPassword = true
 
       // If form is invalid, return and let AngularJS show validation errors.
-      if ($scope.profileForm.$invalid) {
+      if ($scope.passwordForm.password.$valid) {
         return;
       }
 
       profile.myVetSavePassword($scope.user)
         .then(function (user){
-          $scope.okName = true;
+          console.log(user);
+          $scope.okPassword = true;
         }, function(error){
           $scope.errorSubmitted = true;
           $scope.user.errorMessage = error.message;

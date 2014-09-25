@@ -94,6 +94,26 @@ angular.module('ngVet.common.services.profile', [ ])
       return _saveUser();
     }
 
+    this.myVetResetPassword = function (email) {
+
+      var defer = $q.defer();
+
+      console.log(email);
+
+      Parse.User.requestPasswordReset(email, {
+        success: function () {
+          // Password reset request was sent successfully
+          defer.resolve({ success: true, message: 'Password reset request was sent successfully' });
+        },
+        error: function (error) {
+          // Show the error message somewhere
+          defer.reject(error);
+        }
+      });
+
+      return defer.promise;
+    }
+
     /**
     * Public method, myVetLinkFacebook assigned to prototype
     */
