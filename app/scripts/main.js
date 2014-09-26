@@ -36,7 +36,7 @@ angular.module('ngVet', [
 
 
     // Parse init
-    Parse.initialize("8WUpXyrczIHufksKvskQ8hrA3eiroUWhvnguAW8l", "tIDTd21YkMetRjQFLwY29GW5zcKBzgk5DoX6gUEj");
+    Parse.initialize('8WUpXyrczIHufksKvskQ8hrA3eiroUWhvnguAW8l', 'tIDTd21YkMetRjQFLwY29GW5zcKBzgk5DoX6gUEj');
 
     // Init Facebook
     // 3) Finally, init Facebook
@@ -56,7 +56,7 @@ angular.module('ngVet', [
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) {return;}
       js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js";
+      js.src = '//connect.facebook.net/en_US/all.js';
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
@@ -78,11 +78,9 @@ angular.module('ngVet', [
 
       if (toState.authenticate && !profile.isAuthenticated()){
         // User isn’t authenticated
-        $state.transitionTo("login", { errorCode: 403 });
+        $state.transitionTo('login', { errorCode: 403 });
         event.preventDefault();
       }
-
-
       // if (toState.name == 'login' && Profile.isAuthenticated()) {
       //   $state.transitionTo("home");
       // }

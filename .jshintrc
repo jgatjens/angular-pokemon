@@ -20,6 +20,9 @@
   "white": true,
   "globals": {
     "angular": false,
-    "$": false
+    "$": false,
+    "Parse": false,
+    "window": false,
+    "document": false
   }
 }
