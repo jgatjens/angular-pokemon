@@ -10,6 +10,7 @@ angular.module('ngVet.pet.record', [ ])
       .state('pets.record', {
         url         : '/record',
         // controller  : 'RecordPetCtrl',
+        authenticate: true,
         templateUrl : 'pages/pet/record/record.tpl.html'
       });
   });

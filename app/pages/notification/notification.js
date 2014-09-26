@@ -10,6 +10,7 @@ angular.module('ngVet.notification', ['ngVet.notification.detail'])
       .state('notification', {
         url         : '/notification',
         controller  : 'NotificationCtrl',
+        authenticate: true,
         templateUrl : 'pages/notification/notification.tpl.html'
       });
   })

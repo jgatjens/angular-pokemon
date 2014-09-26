@@ -10,6 +10,7 @@ angular.module('ngVet.pet.list', [ ])
       .state('pets.list', {
         url         : '/list',
         controller  : 'ListPetCtrl',
+        authenticate: true,
         templateUrl : 'pages/pet/list/list.tpl.html'
       });
   })

@@ -10,6 +10,7 @@ angular.module('ngVet.pet', ['ngVet.pet.list','ngVet.pet.new', 'ngVet.pet.record
       .state('pets', {
         url         : '/pets',
         controller  : 'PetCtrl',
+        authenticate: true,
         templateUrl : 'pages/pet/pet.tpl.html'
       });
   })
