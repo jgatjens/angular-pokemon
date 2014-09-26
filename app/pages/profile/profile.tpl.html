@@ -14,14 +14,18 @@
   <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
 
     <div ng-show="okName" class="alert alert-success" role="alert">
-      <p>Profile has been updated successfully !</p>
+      <p>Your <strong>name</strong> has been updated successfully !</p>
     </div>
 
     <div ng-show="okPassword" class="alert alert-success" role="alert">
       <p>Your <strong>password</strong> has been updated successfully !</p>
     </div>
 
-    <div ng-show="errorSubmitted && loginForm.$valid" class="alert alert-danger" role="alert">
+    <div ng-show="okAditionalInfo" class="alert alert-success" role="alert">
+      <p>Your <strong>aditional info</strong> has been updated successfully !</p>
+    </div>
+
+    <div ng-show="errorSubmitted && (profileForm.$valid || passwordForm.$valid || aditionalForm.$valid)" class="alert alert-danger" role="alert">
       <p>{{ user.errorMessage }}</p>
     </div>
 
@@ -52,32 +56,34 @@
 
 
 <form novalidate name="passwordForm" class="form-horizontal" role="form">
+
+  <!-- <div class="form-group" ng-class="{ 'has-error': submittedPassword && passwordForm.password.$error.required || passwordForm.password.$error.minlength }"> -->
   <div class="form-group" ng-class="{ 'has-error': submittedPassword && passwordForm.password.$error.required || passwordForm.password.$error.minlength }">
     <label for="password" class="col-sm-3 col-md-4 control-label">Password</label>
     <div class="col-sm-7 col-md-5">
-      <span class="label label-danger" ng-show="submittedPassword && passwordForm.password.$error.required">Name required!</span>
+      <span class="label label-danger" ng-show="submittedPassword && passwordForm.password.$error.required">Password required!</span>
       <span class="label label-danger" ng-show="passwordForm.password.$error.minlength">Min 5 letters</span>
-      <input ng-minlength="5" required type="password" name="password" ng-model="user.password"  class="form-control input-lg" placeholder="Password">
+      <input ng-minlength="5" required type="password" name="password" ng-model="userInfo.password"  class="form-control input-lg" placeholder="Password">
     </div>
   </div>
-  <div class="form-group" ng-class="{ 'has-error': submittedPassword && passwordForm.password.$error.required || passwordForm.password.$error.minlength } ">
+  <div class="form-group" ng-class="{ 'has-error': submittedPassword && passwordForm.confirmPassword.$error.required }">
     <label for="confirmPasword" class="col-sm-3 col-md-4 control-label"></label>
     <div class="col-sm-7 col-md-5">
-      <span class="label label-danger" ng-show="submittedPassword && passwordForm.confirmPassword.$error.required">Name required!</span>
-      <span class="label label-danger" ng-show="submittedPassword && passwordForm.confirmPassword.$error.required">Passowrd no match!</span>
-      <input ng-disabled="!passwordForm.password.$valid" required type="password" name="confirmPassword" data-match="user.password" ng-model="user.confirmPassword" class="form-control input-lg" placeholder="Confirm Password">
+      <span class="label label-info" ng-if="passwordForm.password.$valid && userInfo.password == userInfo.confirmPassword">Passwords match!</span>
+      <span class="label label-danger" ng-show="submittedPassword && passwordForm.confirmPassword.$error.match">Confirm Passowrd do no match!</span>
+      <input ng-disabled="!passwordForm.password.$valid" required type="password" name="confirmPassword" data-match="userInfo.password" ng-model="userInfo.confirmPassword" class="form-control input-lg" placeholder="Confirm Password">
     </div>
   </div>
 
   <div class="form-group">
     <div class="col-sm-offset-3 col-md-offset-4 col-sm-7 col-md-5">
-      <button ng-disabled="!passwordForm.password.$valid && !passwordForm.confirmPassword.$valid" class="btn btn-primary  btn-lg btn-block">Save Password</button>
+      <button ng-click="savePassword()" ng-disabled="!passwordForm.password.$valid" class="btn btn-primary  btn-lg btn-block">Save Password</button>
     </div>
   </div>
 </form>
 
 
-<!--
+
 <form novalidate name="aditionalForm" class="form-horizontal" role="form">
   <div class="form-group">
     <label for="email" class="col-sm-3 col-md-4 control-label">Email</label>
@@ -92,26 +98,26 @@
       <input disabled type="text" class="form-control input-lg" id="username" ng-model="user.username"  placeholder="Username">
     </div>
   </div>
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label for="inputEmail3" class="col-sm-3 col-md-4 control-label">Aditional Info</label>
     <div class="col-sm-7 col-md-5">
-      <input type="password" class="form-control input-lg" id="inputPassword3" placeholder="Date of birth">
+      <input type="phone" class="form-control input-lg" id="phone" placeholder="Date of birth">
     </div>
-  </div>
+  </div> -->
 
   <div class="form-group">
-    <label for="inputPassword3" class="col-xs-3 col-md-4 control-label"></label>
+    <label for="temp" class="col-xs-3 col-md-4 control-label"></label>
     <div class="col-sm-7 col-md-5">
       <div class="form-group form-inline">
         <div class="radio">
           <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+            <input type="radio" name="male" ng-model="user.gender" value="male">
             Male
           </label>
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+            <input type="radio" name="female" ng-model="user.gender" value="female">
             Female
           </label>
         </div>
@@ -124,22 +130,22 @@
     <div class="col-sm-7 col-md-5">
       <div class="checkbox">
         <label>
-          <input type="checkbox"> Allows us to send you emails
+          <input ng-model="user.allowEmails" type="checkbox"> Allows us to send you emails
         </label>
       </div>
-      <div class="checkbox">
+      <!-- <div class="checkbox">
         <label>
-          <input type="checkbox"> Show phone numbers to doctors
+          <input ng-model="" type="checkbox"> Show phone numbers to doctors
         </label>
-      </div>
+      </div> -->
     </div>
   </div>
 
   <div class="form-group">
     <div class="col-sm-offset-3 col-md-offset-4 col-sm-7 col-md-5">
-      <button type="submit" class="btn btn-primary  btn-lg btn-block">Save Aditional Info</button>
+      <button type="submit" ng-disabled="!aditionalForm.$dirty" ng-click="saveAditionalInfo()" class="btn btn-primary  btn-lg btn-block">Save Aditional Info</button>
     </div>
   </div>
 </form>
--->
+
 

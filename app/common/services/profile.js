@@ -94,6 +94,21 @@ angular.module('ngVet.common.services.profile', [ ])
       return _saveUser();
     }
 
+    /**
+    * Public method, myVetSaveName assigned to prototype
+    * @Object, user
+    */
+    this.myVetSaveAditionalInfo = function (user) {
+
+      if (user.allowEmails) this.user.set("allowEmails", user.allowEmails);
+      if (user.gender) this.user.set("gender", user.gender);
+      return _saveUser();
+    }
+
+    /**
+    * Public method, myVetResetPassword assigned to prototype
+    * @Object, email
+    */
     this.myVetResetPassword = function (email) {
 
       var defer = $q.defer();
