@@ -23,6 +23,8 @@
     "$": false,
     "Parse": false,
     "window": false,
+    "XMLHttpRequest": false,
+    "NProgress": false,
     "document": false
   }
 }

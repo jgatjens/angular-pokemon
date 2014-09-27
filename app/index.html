@@ -7,7 +7,13 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <!-- build:css({.tmp,app}) styles/main.css -->
+    <!-- build:css styles/vendor.min.js -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/nprogress/nprogress.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css({.tmp,app}) styles/app.min.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 
@@ -31,7 +37,6 @@
 
     </div>
 
-
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
@@ -39,12 +44,11 @@
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
-    <script src="bower_components/restangular/dist/restangular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/parse-js-sdk/lib/parse.js"></script>
+    <script src="bower_components/nprogress/nprogress.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

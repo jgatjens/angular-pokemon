@@ -14,6 +14,19 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 @import "../common/directives/nav/nav.scss";
 // endinject
 
+// NProgress error color
+$redcolor: #a94442;
+#nprogress.fail .bar{
+  background: $redcolor;
+}
+#nprogress.fail .peg {
+  box-shadow: 0 0 10px $redcolor, 0 0 5px $redcolor;
+}
+#nprogress.fail .spinner-icon {
+  border-top-color: $redcolor;
+  border-left-color: $redcolor;
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
