@@ -15,35 +15,32 @@ angular.module('ngVet.common.services.profile', [ ])
     */
 
     this.myVetSignin = function (form) {
-        var user = new Parse.User(),
-            self = this;
+      var user = new Parse.User(),
+          self = this;
 
-        user.set("name", form.name);
-        user.set("username", form.username);
-        user.set("password",form.password);
-        user.set("email", form.email);
+      user.set("name", form.name);
+      user.set("username", form.username);
+      user.set("password",form.password);
+      user.set("email", form.email);
 
-        // other fields can be set just like with Parse.Object
-        // user.set("phone", "415-392-0202");
+      // other fields can be set just like with Parse.Object
+      // user.set("phone", "415-392-0202");
 
-        var defer = $q.defer();
+      var defer = $q.defer();
 
-        user.signUp(null, {
-          success: function(user) {
-            // Hooray! Let them use the app now.
-            self.user = user;
+      user.signUp(null, {
+        success: function(user) {
+          // Hooray! Let them use the app now.
+          _setUser(user);
+          defer.resolve(user);
+        },
+        error: function(user, error) {
+          // Show the error message somewhere and let the user try again.
+          defer.reject(_checkErros(error));
+        }
+      });
 
-            _setUser(user);
-            defer.resolve(user);
-          },
-          error: function(user, error) {
-            // Show the error message somewhere and let the user try again.
-            $log.error("Error: " + error.code + " " + error.message);
-            defer.reject(error);
-          }
-        });
-
-        return defer.promise;
+      return defer.promise;
     };
 
     /**
@@ -52,28 +49,54 @@ angular.module('ngVet.common.services.profile', [ ])
     * @string, password
     */
     this.myVetLogin = function (username, password) {
-        var defer = $q.defer(),
-            self = this;
+      var defer = $q.defer(),
+          self = this;
 
-        // $log.info(username, password);
+      // $log.info(username, password);
 
-        Parse.User.logIn(username, password, {
-          success: function(user) {
-            // Do stuff after successful login.
-            self.user = user;
+      Parse.User.logIn(username, password, {
+        success: function(user) {
+          // Do stuff after successful login.
+          self.user = user;
 
-            _setUser(user);
-            defer.resolve(user);
-          },
-          error: function(user, error) {
-            $log.error(error);
-            // The login failed. Check error to see why.
-            defer.reject(error);
+          _setUser(user);
+          defer.resolve(user);
+        },
+        error: function(user, error) {
+          // The login failed. Check error to see why.
+          defer.reject(_checkErros(error));
+        }
+      });
+
+      return defer.promise;
+    }
+
+    /**
+    * Public method, myVetLoginWithFacebook assigned to prototype
+    */
+    this.myVetLoginWithFacebook = function () {
+      var defer = $q.defer();
+
+      Parse.FacebookUtils.logIn('user_likes, email', {
+        success: function(user) {
+          if (!user.existed()) {
+            $log.error("User signed up and logged in through Facebook!");
+          } else {
+            $log.error("User logged in through Facebook!");
           }
-        });
 
-        return defer.promise;
 
+          _setUser(user);
+          defer.resolve(user);
+        },
+        error: function(user, error) {
+          defer.reject(user);
+          defer.reject(_checkErros(error));
+          $log.error("User cancelled the Facebook login or did not fully authorize.");
+        }
+      });
+
+      return defer.promise;
     }
 
     /**
@@ -122,9 +145,33 @@ angular.module('ngVet.common.services.profile', [ ])
         },
         error: function (error) {
           // Show the error message somewhere
-          defer.reject(error);
+          defer.reject(_checkErros(error));
         }
       });
+
+      return defer.promise;
+    }
+
+
+
+
+    /**
+    * Public method, myVetLinkFacebook assigned to prototype
+    */
+    this.myVetLinkFacebook = function () {
+      var defer = $q.defer();
+
+      if (!Parse.FacebookUtils.isLinked(this.user)) {
+        Parse.FacebookUtils.link(this.user, null, {
+          success: function(user) {
+            self.user = user;
+            alert("Woohoo, user logged in with Facebook!");
+          },
+          error: function(user, error) {
+            alert("User cancelled the Facebook login or did not fully authorize.");
+          }
+        });
+      }
 
       return defer.promise;
     }
@@ -132,28 +179,19 @@ angular.module('ngVet.common.services.profile', [ ])
     /**
     * Public method, myVetLinkFacebook assigned to prototype
     */
-    this.myVetLinkFacebook = function () {
-        var defer = $q.defer();
+    this.myVetUnLinkFacebook = function () {
+      var defer = $q.defer();
 
-        Parse.FacebookUtils.logIn(null, {
+      if (Parse.FacebookUtils.isLinked()) {
+        Parse.FacebookUtils.unlink(user, {
           success: function(user) {
-            if (!user.existed()) {
-              $log.error("User signed up and logged in through Facebook!");
-            } else {
-              $log.error("User logged in through Facebook!");
-            }
-            defer.resolve(user);
-          },
-          error: function(user, error) {
-            defer.reject(user);
-            $log.error("User cancelled the Facebook login or did not fully authorize.");
+            alert("The user is no longer associated with their Facebook account.");
           }
         });
+      }
 
-        return defer.promise;
+      return defer.promise;
     }
-
-
 
     /**
     * Public method, myVetLogin assigned to prototype
@@ -177,6 +215,21 @@ angular.module('ngVet.common.services.profile', [ ])
       return this.user.get('emailVerified');
     }
 
+     /**
+    * Private method, valided nextwork connection
+    */
+
+    var _checkErros = function (error) {
+
+      if (error.code === 100){
+        // throw new TypeError('XMLHttpRequest failed');
+        return { code: error.code, message: 'No connection with the server' };
+      } else {
+        return error;
+      }
+
+    }
+
     /**
     * Private method, set user to angular root scope
     */
@@ -196,10 +249,11 @@ angular.module('ngVet.common.services.profile', [ ])
 
     var _saveUser = function () {
 
+      var defer = $q.defer();
+
       if (!self.user)
         return defer.reject({ error: { message: 'Object user is not present' } });
 
-      var defer = $q.defer();
 
       self.user.save(null, {
         success: function (user) {

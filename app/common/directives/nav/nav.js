@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngVet.common.directives.nav', [ ])
+angular.module('ngVet.common.directives.nav', ['ui.bootstrap.dropdown',])
   // nav directive.
   .directive('ngVetNav', function () {
     return {
@@ -17,3 +17,5 @@ angular.module('ngVet.common.directives.nav', [ ])
     };
 
   });
+
+

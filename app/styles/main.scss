@@ -14,6 +14,9 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 @import "../common/directives/nav/nav.scss";
 // endinject
 
+// Modules
+@import "animate";
+
 // NProgress error color
 $redcolor: #a94442;
 #nprogress.fail .bar{
@@ -61,6 +64,7 @@ form .label-danger, form .label-info {
   position: absolute;
   top: -10px;
   right: 24px;
+  z-index: 4;
 }
 
 

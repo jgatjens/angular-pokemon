@@ -6,7 +6,6 @@ angular.module('ngVet', [
   // Vendor modules.
   'ui.router',
   'ngAnimate',
-  'ui.bootstrap',
 
   // Principal submodules.
   'ngVet.common',
@@ -41,7 +40,7 @@ angular.module('ngVet', [
     // Init Facebook
     window.fbAsyncInit = function() {
       Parse.FacebookUtils.init({
-        appId: '1544086335825154',
+        appId: '1548089038758217',
         channelUrl : '//www.slidebean.com/fbchannel.html',
         status: true,
         cookie: true,
@@ -66,42 +65,43 @@ angular.module('ngVet', [
     var oldOpen = XMLHttpRequest.prototype.open;
 
     function onStateChange() {
-
       // fires on every readystatechange ever
       // use `this` to determine which XHR object fired the change event
       if (this.readyState === 1) {
         NProgress.start();
       }
-
+      // use status == 200 to know if the request was successfully
       if (this.readyState === 4 && this.status === 200) {
         NProgress.done(true);
       }
 
-      // Add red color
-      if (this.readyState === 4 && this.status === 404) {
-          var NProgressDOM =  document.getElementById('nprogress');
-          NProgressDOM.className = 'fail';
-
-          NProgress.inc(60);
-
-          setTimeout(function() {
-            NProgress.done();
-          }, 500);
-
-          setTimeout(function() {
-            NProgressDOM.className = '';
-          }, 1500);
-      }
+      // If request fail show progress bar in red
+      if (this.readyState === 4 && this.status === 404 ) { NProgress.fail(); }
+      if (this.readyState === 4 && this.status === 0 ) { NProgress.fail(); }
     }
 
-    XMLHttpRequest.prototype.open = function() {
-        // when an XHR object is opened, add a listener for its readystatechange events
-        this.addEventListener('readystatechange', onStateChange);
-        // this.addEventListener("load", onLoadSuccess);
-        // run the real `open`
-        oldOpen.apply(this, arguments);
+    NProgress.fail = function () {
+      var NProgressDOM =  document.getElementById('nprogress');
+      NProgressDOM.className = 'fail';
+
+      NProgress.inc(60);
+
+      setTimeout(function() {
+        NProgress.done();
+      }, 500);
+
+      setTimeout(function() {
+        NProgressDOM.className = '';
+      }, 1500);
     };
 
+    XMLHttpRequest.prototype.open = function() {
+      // when an XHR object is opened, add a listener for its readystatechange events
+      this.addEventListener('readystatechange', onStateChange);
+      // this.addEventListener("load", onLoadSuccess);
+      // run the real `open`
+      oldOpen.apply(this, arguments);
+    };
 
   })
 
@@ -116,7 +116,7 @@ angular.module('ngVet', [
     // $rootScope.$on('$stateChangeSuccess',function(event, toState, toParams, fromState, fromParams){
     $rootScope.$on('$stateChangeSuccess',function(event, toState){
 
-      NProgress.done();
+      NProgress.done(true);
 
       // check for child states
       if (toState.name.match(/\./g)) {
@@ -131,9 +131,7 @@ angular.module('ngVet', [
         $state.transitionTo('login', { errorCode: 403 });
         event.preventDefault();
       }
-      // if (toState.name == 'login' && Profile.isAuthenticated()) {
-      //   $state.transitionTo("home");
-      // }
+
     });
 
   });

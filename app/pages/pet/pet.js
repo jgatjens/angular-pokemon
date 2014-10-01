@@ -8,7 +8,7 @@ angular.module('ngVet.pet', ['ngVet.pet.list','ngVet.pet.new', 'ngVet.pet.record
     // Module routing.
     $stateProvider
       .state('pets', {
-        url         : '/pets',
+        url         : '/pokemon',
         controller  : 'PetCtrl',
         authenticate: true,
         templateUrl : 'pages/pet/pet.tpl.html'

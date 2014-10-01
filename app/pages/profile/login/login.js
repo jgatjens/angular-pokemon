@@ -34,10 +34,8 @@ angular.module('ngVet.profile.login', [ ])
         return;
       }
 
-
       profile.myVetLogin($scope.user.username, $scope.user.password)
         .then(function (user) {
-
 
           // Verified email
           if (!profile.isEmailVerified()) {
@@ -53,6 +51,20 @@ angular.module('ngVet.profile.login', [ ])
           $scope.user.errorMessage = error.message;
           // console.log(error);
         });
+    }
+
+    $scope.loginWithFacebook = function () {
+
+      // $scope.errorSubmitted = false;
+      // $scope.submitted = true;
+
+      // profile.myVetLoginWithFacebook()
+      //   .then(function (user) {
+      //     $state.go('home');
+      //   }, function(error){
+      //     $scope.errorSubmitted = true;
+      //     $scope.user.errorMessage = error.message;
+      //   });
 
     }
 
