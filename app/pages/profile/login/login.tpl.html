@@ -41,17 +41,19 @@
         <!-- <br> -->
         <form novalidate name="loginForm" class="form-horizontal" role="form">
 
-          <div class="form-group" ng-class="{ 'has-error': submitted && loginForm.username.$error.required }">
+          <div class="form-group has-feedback" ng-class="{ 'has-error': submitted && loginForm.username.$error.required }">
             <div class="col-md-12">
               <span class="label label-danger" ng-show="submitted && loginForm.username.$error.required">username required!</span>
               <input type="text" name="username" ng-model="user.username" required class="form-control input-lg" placeholder="Username">
+              <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
           </div>
-          <div class="form-group" ng-class="{ 'has-error': submitted && loginForm.password.$error.required }">
+          <div class="form-group has-feedback" ng-class="{ 'has-error': submitted && loginForm.password.$error.required }">
             <!-- <label for="inputPassword3" class="col-sm-3 col-md-4 control-label"></label> -->
             <div class="col-md-12">
               <span class="label label-danger" ng-show="submitted && loginForm.password.$error.required">Password required!</span>
               <input type="password" name="password" ng-model="user.password" required class="form-control input-lg" placeholder="Password">
+              <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
             </div>
           </div>
 

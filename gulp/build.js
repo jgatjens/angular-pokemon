@@ -6,10 +6,17 @@ var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license']
 });
 
+function handleError(err) {
+  console.error(err.toString());
+  this.emit('end');
+}
+
 gulp.task('styles', function () {
-  return gulp.src('app/styles/main.scss')
-    .pipe($.plumber())
-    .pipe($.rubySass({style: 'expanded'}))
+  return gulp.src('app/styles/*.scss')
+    // .pipe($.plumber())
+    // .pipe($.rubySass({style: 'expanded'}))
+    .pipe($.sass({style: 'expanded'}))
+    .on('error', handleError)
     .pipe($.autoprefixer('last 1 version'))
     .pipe(gulp.dest('.tmp/styles'))
     .pipe($.size());

@@ -1,0 +1,9 @@
+
+// Nav
+
+#main-nav {
+  a { color: black; }
+  &.nav-pills > li.active > a {
+    background-color: #C7C7C7
+  }
+}

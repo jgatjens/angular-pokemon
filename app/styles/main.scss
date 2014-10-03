@@ -1,3 +1,9 @@
+
+$border-radius-base: 0;
+$input-border-radius: 0;
+$border-radius-base: 0;
+$border-radius-large: 0;
+
 $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap";
 
@@ -12,10 +18,16 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 @import "../common/directives/footer/footer.scss";
 @import "../common/directives/header/header.scss";
 @import "../common/directives/nav/nav.scss";
+@import "../common/directives/passwordstrength/passwordStrength.scss";
 // endinject
 
 // Modules
 @import "animate";
+
+body {
+  // font-family: 'Lato';
+}
+
 
 // NProgress error color
 $redcolor: #a94442;

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngVet.profile.register', ['ngVet.common.directives.match'])
+angular.module('ngVet.profile.register', ['ngVet.common.directives.match', 'ngVet.common.directives.passwordStrength'])
 
   // Module configuration.
   .config(function ($stateProvider) {

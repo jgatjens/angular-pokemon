@@ -71,13 +71,14 @@ angular.module('ngVet', [
         NProgress.start();
       }
       // use status == 200 to know if the request was successfully
-      if (this.readyState === 4 && this.status === 200) {
+      if (this.readyState === 4 && ( this.status === 200 || this.status === 201)) {
         NProgress.done(true);
       }
 
       // If request fail show progress bar in red
-      if (this.readyState === 4 && this.status === 404 ) { NProgress.fail(); }
-      if (this.readyState === 4 && this.status === 0 ) { NProgress.fail(); }
+      if (this.readyState === 4 && ( this.status === 404 || this.status === 0 )) {
+        NProgress.fail();
+      }
     }
 
     NProgress.fail = function () {
@@ -92,12 +93,32 @@ angular.module('ngVet', [
 
       setTimeout(function() {
         NProgressDOM.className = '';
-      }, 1500);
+      }, 1000);
     };
 
     XMLHttpRequest.prototype.open = function() {
       // when an XHR object is opened, add a listener for its readystatechange events
       this.addEventListener('readystatechange', onStateChange);
+      // this.onloadstart = function () {
+      //   console.log('onload ');
+      //   NProgress.start();
+      // }
+      // this.onloadend = function () {
+      //   console.log('onloadend ');
+      //   NProgress.done(true);
+      // }
+      // this.onprogress =  function () {
+      //   console.log('onprogress');
+      //   NProgress.inc(60);
+      // }
+      // this.onabort = function () {
+      //   console.log('onabort');
+      //   NProgress.fail();
+      // }
+      // this.onerror = function () {
+      //   console.log('onerror');
+      //   NProgress.fail();
+      // }
       // this.addEventListener("load", onLoadSuccess);
       // run the real `open`
       oldOpen.apply(this, arguments);

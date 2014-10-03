@@ -13,6 +13,9 @@ var proxy = httpProxy.createProxyServer({
   target: proxyTarget
 });
 
+
+/* proxyMiddleware forwards static file requests to BrowserSync server
+   and forwards dynamic requests to your real backend */
 function proxyMiddleware(req, res, next) {
   if (req.url.indexOf(proxyApiPrefix) !== -1) {
     proxy.web(req, res);
@@ -25,14 +28,12 @@ function browserSyncInit(baseDir, files, browser) {
   browser = browser === undefined ? 'default' : browser;
 
   browserSync.instance = browserSync.init(files, {
-    startPath: '/',
+    startPath: '/index.html',
     server: {
       baseDir: baseDir,
       middleware: proxyMiddleware
     },
-    browser: browser,
-    minify: false,
-    logFileChanges: false
+    browser: browser
   });
 
 }
@@ -47,7 +48,6 @@ gulp.task('serve', ['watch'], function () {
     'app/scripts/**/*.js',
     'app/common/**/{*.js,*.html,*.scss}',
     'app/pages/**/{*.js,*.html}'
-    // 'app/images/**/*'
   ]);
 });
 
