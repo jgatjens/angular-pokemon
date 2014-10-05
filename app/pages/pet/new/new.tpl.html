@@ -45,7 +45,7 @@
             <!-- erros -->
             <span class="label label-danger" ng-show="submitted && newPetForm.weigth.$error.required">Weigth required!</span>
             <span class="label label-danger" ng-show="submitted && newPetForm.weigth.$error.number">Please use only numbers</span>
-            <span class="label label-danger" ng-show="submitted && newPetForm.weigth.$error.max">is it a hourse ?</span>
+            <span class="label label-danger" ng-show="submitted && newPetForm.weigth.$error.max">is it a horse ?</span>
 
             <input required min="0.1" max="100" type="number" maxlength="4" name="weigth" ng-model="pet.weigth" class="form-control input-lg" placeholder="Weigth">
             <span class="input-group-addon">KG</span>
@@ -56,7 +56,7 @@
       <div class="row">
         <div class="col-xs-12 col-md-6">
           <div class="form-group">
-            <input type="text" class="form-control input-lg" placeholder="Food brand">
+            <input type="text" ng-model="selected" typeahead="brand for brand in brands | limitTo:8" class="form-control input-lg" placeholder="Food brand">
           </div>
         </div>
         <div class="col-xs-12 col-md-6">

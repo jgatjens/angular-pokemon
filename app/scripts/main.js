@@ -6,6 +6,7 @@ angular.module('ngVet', [
   // Vendor modules.
   'ui.router',
   'ngAnimate',
+  'ui.bootstrap',
 
   // Principal submodules.
   'ngVet.common',
@@ -25,7 +26,7 @@ angular.module('ngVet', [
     $locationProvider.hashPrefix('!');
 
     // Default application's url.
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/');
 
     // Allow assets from local and external sources
     $sceDelegateProvider.resourceUrlWhitelist([

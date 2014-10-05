@@ -5,7 +5,7 @@
 
 angular.module('ngVet.common.directives.match', [])
   // nav directive.
-  .directive('match', function () {
+  .directive('ngVetMatch', function () {
     return {
       require: 'ngModel',
       restrict: 'A',

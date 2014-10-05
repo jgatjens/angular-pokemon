@@ -20,9 +20,16 @@ angular.module('ngVet.pet.new', [ ])
   .controller('NewPetCtrl', function ($scope) {
 
     $scope.pet = {};
+    $scope.pet.brand = undefined;
+
+
     $scope.okRequest = false;
     $scope.errorSubmitted = false;
     $scope.submitted = false;
+
+    // Food Brand Arrays
+    $scope.selected = undefined;
+    $scope.brands = ['Propet', 'Eukanuba', 'super perro', 'chaw chaw', 'prodog', 'procat', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Dakota', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
 
     $scope.createPet = function () {
 

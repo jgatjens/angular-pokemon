@@ -18,7 +18,6 @@ angular.module('ngVet.profile.register', ['ngVet.common.directives.match', 'ngVe
   .controller('RegisterCtrl', function ($rootScope, $scope, $state, profile) {
 
     $scope.user = {};
-    $scope.confirmEmail = false;
     $scope.submitted = false;
     $scope.errorSubmitted = false;
 
@@ -33,8 +32,16 @@ angular.module('ngVet.profile.register', ['ngVet.common.directives.match', 'ngVe
 
       profile.myVetSignin($scope.user)
         .then(function (user){
-          $scope.confirmEmail = true;
-          // $state.go('home');
+          swal({
+            title: "Thanks for sign in.",
+            text: "Now please confirm your email before login !",
+            type: "success",
+            confirmButtonText: 'Login',
+            showCancelButton: true
+          },
+          function() {
+            $state.go('login');
+          });
         }, function(error){
           $scope.errorSubmitted = true;
           $scope.user.errorMessage = error.message;

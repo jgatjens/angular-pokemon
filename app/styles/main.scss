@@ -117,3 +117,14 @@ form .label-danger, form .label-info {
     font-size: 33px;
   }
 }
+
+
+// Alerts
+
+.sweet-alert {
+  box-sizing: content-box;
+  button {
+    border-radius: 0;
+    margin-bottom: 20px;
+  }
+}
