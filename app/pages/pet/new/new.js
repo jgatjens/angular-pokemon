@@ -17,33 +17,43 @@ angular.module('ngVet.pet.new', [ ])
   })
 
   // new pet controller.
-  .controller('NewPetCtrl', function ($scope) {
+  .controller('NewPetCtrl', function ($scope, pet) {
 
-    $scope.pet = {};
-    $scope.pet.brand = undefined;
+    $scope.pet = {
+      name: undefined,
+      brand: undefined,
+      type: undefined,
+      weigth: undefined,
+      birthday: undefined,
+      gender: undefined,
+      pedigree: false,
+      crossdog: false,
+      onsale: false,
+      description: ''
+    }
 
-
-    $scope.okRequest = false;
+    // $scope.okRequest = false;
     $scope.errorSubmitted = false;
     $scope.submitted = false;
 
     // Food Brand Arrays
-    $scope.selected = undefined;
-    $scope.brands = ['Addiction Foods', 'Alpo', 'Artemis', 'AvoDerm', 'Beggin Strips', 'Beneful', 'Bonio', 'By Nature', 'Dog Chow', 'Essential Foods', 'Eukanuba', 'Freshpet', 'Friskies', 'Frosty Paws', 'Gaines-Burgers', 'The Goodlife Recipe', 'Gravy Train', 'Happidog', 'Hills Pet Nutrition', 'The Honest Kitchen', 'Iams', 'Kal Kan', 'Ken-L Ration', 'Kennomeat', 'Kibbles n Bits', 'Milk-Bone', 'Natural Balance Pet Foods', 'Natures Variety', 'Nestlé Purina PetCare', 'Ralston Purina', 'Nutro Products', 'Ol Roy', 'Pedigree Petfoods', 'Purina ONE', 'Royal Canin', 'Science Diet', 'Solid Gold (pet food)', 'Vegepet', 'WellPet', 'Winalot'];
+    $scope.brands = ['Addiction Foods', 'Pro pet', 'Alpo', 'Artemis', 'AvoDerm', 'Beggin Strips', 'Beneful', 'Bonio', 'By Nature', 'Dog Chow', 'Essential Foods', 'Eukanuba', 'Freshpet', 'Friskies', 'Frosty Paws', 'Gaines-Burgers', 'The Goodlife Recipe', 'Gravy Train', 'Happidog', 'Hills Pet Nutrition', 'The Honest Kitchen', 'Iams', 'Kal Kan', 'Ken-L Ration', 'Kennomeat', 'Kibbles n Bits', 'Milk-Bone', 'Natural Balance Pet Foods', 'Natures Variety', 'Nestlé Purina PetCare', 'Ralston Purina', 'Nutro Products', 'Ol Roy', 'Pedigree Petfoods', 'Purina ONE', 'Royal Canin', 'Science Diet', 'Solid Gold', 'Vegepet', 'WellPet', 'Winalot'];
 
+      // Datapicker
+      $scope.dateOptions = {
+        formatYear: 'yy',
+        startingDay: 1
+      };
 
-    // Datapicker
-    $scope.dateOptions = {
-      formatYear: 'yy',
-      startingDay: 1
-    };
+      $scope.open = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
 
-    $scope.open = function($event) {
-      $event.preventDefault();
-      $event.stopPropagation();
+        $scope.opened = true;
+      };
 
-      $scope.opened = true;
-    };
+    // Pets type
+    $scope.types = ['Pets type', 'Dogs', 'Cats', 'Fish', 'Small Pets', 'Box Turtles', 'Ferrets', 'Cute Pet', 'Rabbits', 'Parrots', 'Guinea Pigs', 'Reptile Pets', 'Green Iguanas', 'House Pets', 'Birds']
 
     $scope.createPet = function () {
 
@@ -56,15 +66,26 @@ angular.module('ngVet.pet.new', [ ])
         return;
       }
 
-      // profile.myVetResetPassword($scope.user.email)
-      //   .then(function (user) {
+      pet.myVetCreatePet($scope.pet)
+        .then(function (pet) {
+          // $scope.okRequest = true;
+          swal({
+            title: "You just created a new pet",
+            text: "Do you want to add more?",
+            type: "success",
+            confirmButtonText: 'Create another',
+            showCancelButton: true
+          },
+          function() {
+            $scope.pet = {};
+            $scope.errorSubmitted = false;
+            $scope.submitted = false;
+          });
 
-      //     $scope.okRequest = true;
-
-      //   }, function (error){
-      //     $scope.errorSubmitted = true;
-      //     $scope.user.errorMessage = error.message;
-      //   });
+        }, function (error){
+          $scope.errorSubmitted = true;
+          $scope.user.errorMessage = error.message;
+        });
 
     }
 
