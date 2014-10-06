@@ -15,7 +15,7 @@ angular.module('ngVet.profile.register', ['ngVet.common.directives.match', 'ngVe
   })
 
   // register controller.
-  .controller('RegisterCtrl', function ($rootScope, $scope, $state, profile) {
+  .controller('RegisterCtrl', function ($rootScope, $scope, $state, Profile) {
 
     $scope.user = {};
     $scope.submitted = false;
@@ -30,7 +30,7 @@ angular.module('ngVet.profile.register', ['ngVet.common.directives.match', 'ngVe
         return;
       }
 
-      profile.myVetSignin($scope.user)
+      Profile.signin($scope.user)
         .then(function (user){
           swal({
             title: "Thanks for sign in.",

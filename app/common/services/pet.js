@@ -2,37 +2,38 @@
 
 angular.module('ngVet.common.services.pet', [ ])
 
-  .service('pet', function ($q, $log, profile) {
+  .service('Pet', function ($q, $log, Profile) {
 
     var self = this;
 
     /**
-    * Public method, myVetCreatePet assigned to prototype
+    * Public method, createPet assigned to prototype
     * @Object, form
     */
 
-    this.myVetCreatePet = function (pet) {
+
+    this.create = function (form) {
 
       self = this;
 
-      var Pet = Parse.Object.extend("Pets");
-      var pet = new Pet();
+      var Pets = Parse.Object.extend("Pets");
+      var pet = new Pets();
 
-      pet.set("name", pet.name);
-      pet.set("brand", pet.brand);
-      pet.set("type", pet.type);
-      pet.set("weigth", pet.weigth);
-      pet.set("birthday", pet.birthday);
-      pet.set("gender", pet.gender);
-      pet.set("pedigree", pet.pedigree);
-      pet.set("crossdog", pet.crossdog);
-      pet.set("onsale", pet.onsale);
-      pet.set("description", pet.description);
-      pet.set("user", profile.user);
+      pet.set("name", form.name);
+      pet.set("brand", form.brand);
+      pet.set("type", form.type);
+      pet.set("weigth", form.weigth);
+      pet.set("birthday", form.birthday);
+      pet.set("gender", form.gender);
+      pet.set("pedigree", form.pedigree);
+      pet.set("crossdog", form.crossdog);
+      pet.set("onsale", form.onsale);
+      pet.set("description", form.description);
+      pet.set("user", Profile.user);
 
       var defer = $q.defer();
 
-      /*pet.save(null, {
+      pet.save(null, {
         success: function(obj) {
           // Hooray! Let them use the app now.
           defer.resolve(obj);
@@ -41,10 +42,40 @@ angular.module('ngVet.common.services.pet', [ ])
           // Show the error message somewhere and let the user try again.
           defer.reject(_checkErros(error));
         }
-      });*/
+      });
 
       return defer.promise;
     };
+
+
+    /**
+    * Public method, petList assigned to prototype
+    * @Object, form
+    */
+
+    this.list = function () {
+
+      var self  = this,
+          defer = $q.defer(),
+          Pets   = Parse.Object.extend("Pets");
+
+      var query = new Parse.Query(Pets);
+
+      query.equalTo("user", Profile.user);
+      query.find({
+        success: function(pets) {
+          // userPosts contains all of the posts by the current user.
+          defer.resolve(pets);
+        },
+        error: function(obj, error) {
+          // Show the error message somewhere and let the user try again.
+          defer.reject(_checkErros(error));
+        }
+      });
+
+      return defer.promise;
+    };
+
 
 
 

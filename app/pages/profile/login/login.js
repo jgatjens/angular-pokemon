@@ -15,7 +15,7 @@ angular.module('ngVet.profile.login', [ ])
   })
 
   // Login controller.
-  .controller('LoginCtrl', function ($rootScope, $scope, $state, profile) {
+  .controller('LoginCtrl', function ($rootScope, $scope, $state, Profile) {
 
     $scope.user = {};
     $scope.submitted = false;
@@ -34,16 +34,15 @@ angular.module('ngVet.profile.login', [ ])
         return;
       }
 
-      profile.myVetLogin($scope.user.username, $scope.user.password)
+      Profile.login($scope.user.username, $scope.user.password)
         .then(function (user) {
 
           // Verified email
-          if (!profile.isEmailVerified()) {
+          if (!Profile.isEmailVerified()) {
             $scope.confirmEmail = true;
             return;
           }
 
-          // $rootScope.profile = user;
           $state.go('home');
 
         }, function(error){
@@ -58,7 +57,7 @@ angular.module('ngVet.profile.login', [ ])
       // $scope.errorSubmitted = false;
       // $scope.submitted = true;
 
-      // profile.myVetLoginWithFacebook()
+      // Profile.loginWithFacebook()
       //   .then(function (user) {
       //     $state.go('home');
       //   }, function(error){

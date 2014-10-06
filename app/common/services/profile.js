@@ -2,7 +2,7 @@
 
 angular.module('ngVet.common.services.profile', [ ])
 
-  .service('profile', function ($q, $log, $rootScope) {
+  .service('Profile', function ($q, $log, $rootScope) {
 
     var self = this;
 
@@ -10,11 +10,11 @@ angular.module('ngVet.common.services.profile', [ ])
     this.user = Parse.User.current();
 
     /**
-    * Public method, myVetSignin assigned to prototype
+    * Public method, Signin assigned to prototype
     * @Object, form
     */
 
-    this.myVetSignin = function (form) {
+    this.signin = function (form) {
       var user = new Parse.User(),
           self = this;
 
@@ -44,11 +44,11 @@ angular.module('ngVet.common.services.profile', [ ])
     };
 
     /**
-    * Public method, myVetLogin assigned to prototype
+    * Public method, Login assigned to prototype
     * @string, username
     * @string, password
     */
-    this.myVetLogin = function (username, password) {
+    this.login = function (username, password) {
       var defer = $q.defer(),
           self = this;
 
@@ -72,9 +72,9 @@ angular.module('ngVet.common.services.profile', [ ])
     }
 
     /**
-    * Public method, myVetLoginWithFacebook assigned to prototype
+    * Public method, LoginWithFacebook assigned to prototype
     */
-    this.myVetLoginWithFacebook = function () {
+    this.loginWithFacebook = function () {
       var defer = $q.defer();
 
       Parse.FacebookUtils.logIn('user_likes, email', {
@@ -100,28 +100,28 @@ angular.module('ngVet.common.services.profile', [ ])
     }
 
     /**
-    * Public method, myVetSaveName assigned to prototype
+    * Public method, SaveName assigned to prototype
     * @Object, user
     */
-    this.myVetSaveName = function (user) {
+    this.saveName = function (user) {
       this.user.set("name", user.name);
       return _saveUser();
     }
 
     /**
-    * Public method, myVetSaveName assigned to prototype
+    * Public method, SaveName assigned to prototype
     * @Object, user
     */
-    this.myVetSavePassword = function (user) {
+    this.savePassword = function (user) {
       this.user.set("password", user.password);
       return _saveUser();
     }
 
     /**
-    * Public method, myVetSaveName assigned to prototype
+    * Public method, SaveName assigned to prototype
     * @Object, user
     */
-    this.myVetSaveAditionalInfo = function (user) {
+    this.saveAditionalInfo = function (user) {
 
       if (user.allowEmails) this.user.set("allowEmails", user.allowEmails);
       if (user.gender) this.user.set("gender", user.gender);
@@ -129,10 +129,10 @@ angular.module('ngVet.common.services.profile', [ ])
     }
 
     /**
-    * Public method, myVetResetPassword assigned to prototype
+    * Public method, ResetPassword assigned to prototype
     * @Object, email
     */
-    this.myVetResetPassword = function (email) {
+    this.resetPassword = function (email) {
 
       var defer = $q.defer();
 
@@ -156,9 +156,9 @@ angular.module('ngVet.common.services.profile', [ ])
 
 
     /**
-    * Public method, myVetLinkFacebook assigned to prototype
+    * Public method, LinkFacebook assigned to prototype
     */
-    this.myVetLinkFacebook = function () {
+    this.linkFacebook = function () {
       var defer = $q.defer();
 
       if (!Parse.FacebookUtils.isLinked(this.user)) {
@@ -177,9 +177,9 @@ angular.module('ngVet.common.services.profile', [ ])
     }
 
     /**
-    * Public method, myVetLinkFacebook assigned to prototype
+    * Public method, LinkFacebook assigned to prototype
     */
-    this.myVetUnLinkFacebook = function () {
+    this.unLinkFacebook = function () {
       var defer = $q.defer();
 
       if (Parse.FacebookUtils.isLinked()) {
@@ -194,9 +194,9 @@ angular.module('ngVet.common.services.profile', [ ])
     }
 
     /**
-    * Public method, myVetLogin assigned to prototype
+    * Public method, Login assigned to prototype
     */
-    this.myVetLogout = function () {
+    this.logout = function () {
       $rootScope.user = {};
       Parse.User.logOut();
     }

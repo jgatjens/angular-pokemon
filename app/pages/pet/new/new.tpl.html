@@ -54,8 +54,11 @@
 
       <div class="row">
         <div class="col-xs-12 col-md-6">
-          <div class="form-group">
-            <select ng-model="pet.type" ng-options="type for type in types" class="form-control input-lg">
+          <div class="form-group" ng-class="{ 'has-error': submitted && newPetForm.type.$error.required }">
+            <!-- erros -->
+            <span class="label label-danger" ng-show="submitted && newPetForm.weigth.$error.required">Type required!</span>
+
+            <select required ng-model="pet.type" name="type" ng-options="type for type in types" class="form-control input-lg">
               <option value="">-- choose type --</option>
             </select>
            </div>
@@ -143,7 +146,7 @@
         </div>
       </div>
 
-      <button type="submit" ng-click="createPet()" class="btn btn-primary btn-lg btn-lg btn-block">Submit New Pokemon</button>
+      <button type="submit" ng-click="createPet()" class="btn btn-primary btn-lg btn-lg btn-block">Save Pokemon</button>
 
 
       <!--

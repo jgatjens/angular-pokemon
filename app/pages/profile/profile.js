@@ -16,7 +16,7 @@ angular.module('ngVet.profile', ['ngVet.common.directives.match', 'ngVet.profile
   })
 
   // Profile controller.
-  .controller('ProfileCtrl', function ($scope, profile) {
+  .controller('ProfileCtrl', function ($scope, Profile) {
 
     $scope.userInfo = {};
 
@@ -36,7 +36,7 @@ angular.module('ngVet.profile', ['ngVet.common.directives.match', 'ngVet.profile
         return;
       }
 
-      profile.myVetSaveName($scope.user)
+      Profile.saveName($scope.user)
         .then(function (user){
           console.log(user);
           $scope.okName = true;
@@ -63,7 +63,7 @@ angular.module('ngVet.profile', ['ngVet.common.directives.match', 'ngVet.profile
         return;
       }
 
-      profile.myVetSavePassword($scope.userInfo)
+      Profile.savePassword($scope.userInfo)
         .then(function (user){
           console.log(user);
           $scope.okPassword = true;
@@ -89,7 +89,7 @@ angular.module('ngVet.profile', ['ngVet.common.directives.match', 'ngVet.profile
         return;
       }
 
-      profile.myVetSaveAditionalInfo($scope.user)
+      Profile.saveAditionalInfo($scope.user)
         .then(function (user){
           $scope.okAditionalInfo = true;
         }, function(error){

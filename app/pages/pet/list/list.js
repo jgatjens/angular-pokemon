@@ -11,12 +11,21 @@ angular.module('ngVet.pet.list', [ ])
         url         : '/list',
         controller  : 'ListPetCtrl',
         authenticate: true,
-        templateUrl : 'pages/pet/list/list.tpl.html'
+        templateUrl : 'pages/pet/list/list.tpl.html',
+        resolve: {
+          data: function (Pet) {
+            return Pet.list().then(function(pets) {
+              return pets;
+            });
+          }
+        }
       });
   })
 
   // List pet controller.
-  .controller('ListPetCtrl', function ($scope) {
+  .controller('ListPetCtrl', function ($scope, data) {
+
+    console.log(data);
 
     $scope.pets = [
       {

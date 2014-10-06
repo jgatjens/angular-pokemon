@@ -15,7 +15,7 @@ angular.module('ngVet.profile.password', [ ])
   })
 
   // password controller.
-  .controller('PasswordCtrl', function ($rootScope, $scope, $state, profile) {
+  .controller('PasswordCtrl', function ($rootScope, $scope, $state, Profile) {
 
     $scope.user = {};
     $scope.okRequest = false;
@@ -33,7 +33,7 @@ angular.module('ngVet.profile.password', [ ])
         return;
       }
 
-      profile.myVetResetPassword($scope.user.email)
+      Profile.resetPassword($scope.user.email)
         .then(function (user) {
 
           $scope.okRequest = true;

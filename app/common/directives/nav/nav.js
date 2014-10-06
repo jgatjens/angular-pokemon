@@ -10,7 +10,7 @@ angular.module('ngVet.common.directives.nav', [ ])
       templateUrl : 'common/directives/nav/nav.tpl.html'
     }
   })
-  .controller('navCtrl', function ($scope, profile) {
+  .controller('navCtrl', function ($scope, Profile) {
 
     $scope.logout = function () {
 
@@ -21,10 +21,10 @@ angular.module('ngVet.common.directives.nav', [ ])
       //   showCancelButton: true
       // },
       // function() {
-      //   profile.myVetLogout();
+      //   Profile.logout();
       // });
 
-      profile.myVetLogout();
+      Profile.logout();
 
     };
 

@@ -127,7 +127,7 @@ angular.module('ngVet', [
 
   })
 
-  .run(function( $rootScope, profile, $state) {
+  .run(function( $rootScope, Profile, $state) {
 
 
     $rootScope.$on('$stateChangeStart', function(){
@@ -148,7 +148,7 @@ angular.module('ngVet', [
         $rootScope.activePage = toState.name;
       }
 
-      if (toState.authenticate && !profile.isAuthenticated()){
+      if (toState.authenticate && !Profile.isAuthenticated()){
         // User isn’t authenticated
         $state.transitionTo('login', { errorCode: 403 });
         event.preventDefault();
