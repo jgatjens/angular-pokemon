@@ -65,7 +65,16 @@ angular.module('ngVet.common.services.pet', [ ])
       query.find({
         success: function(pets) {
           // userPosts contains all of the posts by the current user.
-          defer.resolve(pets);
+
+          var log = [];
+
+          // angular for each
+          angular.forEach(pets, function(child, key) {
+            // backbone method toJSON, get obj info from model
+            this.push(child.toJSON());
+          }, log);
+
+          defer.resolve(log);
         },
         error: function(obj, error) {
           // Show the error message somewhere and let the user try again.
