@@ -76,6 +76,7 @@ angular.module('ngVet.pet.new', [ ])
             text: "Do you want to add more?",
             type: "success",
             confirmButtonText: 'Create another',
+            cancelButtonText: 'Continue',
             showCancelButton: true
           },
           function() {

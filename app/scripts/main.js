@@ -4,8 +4,9 @@
 angular.module('ngVet', [
 
   // Vendor modules.
-  'ui.router',
   'ngAnimate',
+  'ui.router',
+  // 'angularMoment',
   'ui.bootstrap',
 
   // Principal submodules.
@@ -34,6 +35,24 @@ angular.module('ngVet', [
       'self'
     ]);
 
+
+    // moment.locale('en', {
+    //   relativeTime : {
+    //     future: "in %s",
+    //     past:   "%s old",
+    //     s:  "seconds",
+    //     m:  "a minute",
+    //     mm: "%d minutes",
+    //     h:  "an hour",
+    //     hh: "%d hours",
+    //     d:  "a day",
+    //     dd: "%d days",
+    //     M:  "a month",
+    //     MM: "%d months",
+    //     y:  "a year",
+    //     yy: "%d years"
+    //   }
+    // });
 
     // Parse init
     Parse.initialize('8WUpXyrczIHufksKvskQ8hrA3eiroUWhvnguAW8l', 'tIDTd21YkMetRjQFLwY29GW5zcKBzgk5DoX6gUEj');
@@ -68,16 +87,17 @@ angular.module('ngVet', [
     function onStateChange() {
       // fires on every readystatechange ever
       // use `this` to determine which XHR object fired the change event
+
       if (this.readyState === 1) {
         NProgress.start();
       }
       // use status == 200 to know if the request was successfully
-      if (this.readyState === 4 && ( this.status === 200 || this.status === 201)) {
+      if (this.readyState === 4 && ( this.status === 200 || this.status === 201 || this.status === 202)) {
         NProgress.done(true);
       }
 
       // If request fail show progress bar in red
-      if (this.readyState === 4 && ( this.status === 404 || this.status === 0 )) {
+      if (this.readyState === 4 && ( this.status === 404 || this.status === 0 || this.status === 400 || this.status === 403 )) {
         NProgress.fail();
       }
     }

@@ -27,33 +27,17 @@ angular.module('ngVet.pet.list', [ ])
 
     console.log(data);
 
-    $scope.pets = [
-      {
-        'name': 'Lu',
-        'weigth': '15 kg',
-        'logo': '01.jpg'
-      },
-      {
-        'name': 'Luke',
-        'weigth': '32 kg',
-        'logo': '02.jpg'
-      },
-       {
-        'name': 'Tequila',
-        'weigth': '3 kg',
-        'logo': '02.jpg'
-      },
-      {
-        'name': 'Toby',
-        'weigth': '40 kg',
-        'logo': '01.jpg'
-      }
-    ];
+    $scope.pets = data;
+
+    //   {
+    //     'name': 'Lu',
+    //     'weigth': '15 kg',
+    //     'logo': '01.jpg'
+    //   },
+
 
     angular.forEach($scope.pets, function(pet) {
       pet.rank = Math.random();
     });
-
-    // $.tootltip();
 
   });
