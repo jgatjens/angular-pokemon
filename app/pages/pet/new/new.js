@@ -32,14 +32,12 @@ angular.module('ngVet.pet.new', [ ])
       description: ''
     }
 
-
-
     // $scope.okRequest = false;
     $scope.errorSubmitted = false;
     $scope.submitted = false;
 
     // Food Brand Arrays
-    $scope.brands = ['Addiction Foods', 'Pro pet', 'Alpo', 'Artemis', 'AvoDerm', 'Beggin Strips', 'Beneful', 'Bonio', 'By Nature', 'Dog Chow', 'Essential Foods', 'Eukanuba', 'Freshpet', 'Friskies', 'Frosty Paws', 'Gaines-Burgers', 'The Goodlife Recipe', 'Gravy Train', 'Happidog', 'Hills Pet Nutrition', 'The Honest Kitchen', 'Iams', 'Kal Kan', 'Ken-L Ration', 'Kennomeat', 'Kibbles n Bits', 'Milk-Bone', 'Natural Balance Pet Foods', 'Natures Variety', 'Nestlé Purina PetCare', 'Ralston Purina', 'Nutro Products', 'Ol Roy', 'Pedigree Petfoods', 'Purina ONE', 'Royal Canin', 'Science Diet', 'Solid Gold', 'Vegepet', 'WellPet', 'Winalot'];
+    $scope.brands = Pet.getBrands()
 
     // Datapicker
     $scope.dateOptions = {
@@ -55,7 +53,7 @@ angular.module('ngVet.pet.new', [ ])
     };
 
     // Pets type
-    $scope.types = ['Dogs', 'Cats', 'Fish', 'Small Pets', 'Box Turtles', 'Ferrets', 'Cute Pet', 'Rabbits', 'Parrots', 'Guinea Pigs', 'Reptile Pets', 'Green Iguanas', 'House Pets', 'Birds']
+    $scope.types = Pet.getTypes()
 
     $scope.createPet = function () {
 

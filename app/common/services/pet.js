@@ -7,7 +7,37 @@ angular.module('ngVet.common.services.pet', [ ])
     var self = this;
 
     /**
-    * Public method, createPet assigned to prototype
+    * Public method, createPet
+    * @Object, form
+    */
+
+
+    this.remove = function (obejctId) {
+
+      self = this;
+      var defer = $q.defer();
+
+      var Pets = Parse.Object.extend("Pets");
+      var query = new Parse.Query(Pets);
+
+
+      query.get(obejctId, {
+        success: function(myObj) {
+          // The object was retrieved successfully.
+          myObj.destroy({});
+          defer.resolve(true);
+        },
+        error: function(object, error) {
+          // The object was not retrieved successfully.
+           defer.reject(_checkErros(error));
+        }
+      });
+
+      return defer.promise;
+    };
+
+    /**
+    * Public method, createPet
     * @Object, form
     */
 
@@ -48,9 +78,26 @@ angular.module('ngVet.common.services.pet', [ ])
     };
 
 
+
+
     /**
-    * Public method, petList assigned to prototype
-    * @Object, form
+    * Public method, getBrands
+    */
+
+    this.getBrands = function () {
+      return ['Addiction Foods', 'Pro pet', 'Alpo', 'Artemis', 'AvoDerm', 'Beggin Strips', 'Beneful', 'Bonio', 'By Nature', 'Dog Chow', 'Essential Foods', 'Eukanuba', 'Freshpet', 'Friskies', 'Frosty Paws', 'Gaines-Burgers', 'The Goodlife Recipe', 'Gravy Train', 'Happidog', 'Hills Pet Nutrition', 'The Honest Kitchen', 'Iams', 'Kal Kan', 'Ken-L Ration', 'Kennomeat', 'Kibbles n Bits', 'Milk-Bone', 'Natural Balance Pet Foods', 'Natures Variety', 'Nestlé Purina PetCare', 'Ralston Purina', 'Nutro Products', 'Ol Roy', 'Pedigree Petfoods', 'Purina ONE', 'Royal Canin', 'Science Diet', 'Solid Gold', 'Vegepet', 'WellPet', 'Winalot'];
+    };
+
+    /**
+    * Public method, getTypes
+    */
+
+    this.getTypes = function () {
+      return ['Dogs', 'Cats', 'Fish', 'Small Pets', 'Box Turtles', 'Ferrets', 'Cute Pet', 'Rabbits', 'Parrots', 'Guinea Pigs', 'Reptile Pets', 'Green Iguanas', 'House Pets', 'Birds'];
+    };
+
+    /**
+    * Public method, petList
     */
 
     this.list = function () {
@@ -86,9 +133,7 @@ angular.module('ngVet.common.services.pet', [ ])
     };
 
 
-
-
-     /**
+    /**
     * Private method, valided nextwork connection
     */
 
