@@ -34,7 +34,7 @@
           <div class="form-group" ng-class="{ 'has-error': submitted && newPetForm.name.$error.required }">
 
             <!-- error -->
-            <span class="label label-danger" ng-show="submitted && newPetForm.name.$error.required">Name required!</span>
+            <span class="label label-danger" ng-show="submitted && newPetForm.name.$error.required">required!</span>
 
             <input required type="text" name="name" ng-model="pet.name" class="form-control input-lg" placeholder="Name">
           </div>
@@ -42,7 +42,7 @@
         <div class="col-xs-12 col-md-6">
          <div class="input-group form-group" ng-class="{ 'has-error': submitted && newPetForm.weigth.$error.required || newPetForm.weigth.$error.number || newPetForm.weigth.$error.max}">
             <!-- erros -->
-            <span class="label label-danger" ng-show="submitted && newPetForm.weigth.$error.required">Weigth required!</span>
+            <span class="label label-danger" ng-show="submitted && newPetForm.weigth.$error.required">required!</span>
             <span class="label label-danger" ng-show="submitted && newPetForm.weigth.$error.number">Please use only numbers</span>
             <span class="label label-danger" ng-show="submitted && newPetForm.weigth.$error.max">is it a horse ?</span>
 
@@ -56,7 +56,7 @@
         <div class="col-xs-12 col-md-6">
           <div class="form-group" ng-class="{ 'has-error': submitted && newPetForm.type.$error.required }">
             <!-- erros -->
-            <span class="label label-danger" ng-show="submitted && newPetForm.weigth.$error.required">Type required!</span>
+            <span class="label label-danger" ng-show="submitted && newPetForm.weigth.$error.required">required!</span>
 
             <select required ng-model="pet.type" name="type" ng-options="type for type in types" class="form-control input-lg">
               <option value="">-- choose type --</option>
@@ -73,28 +73,20 @@
       <div class="row">
         <div class="col-xs-12 col-md-6">
 
-          <div class="form-group">
+          <div class="form-group" ng-class="{ 'has-error': submitted && newPetForm.birthday.$invalid }">
             <div class="input-group">
-              <input type="text" class="form-control input-lg" datepicker-popup="dd-MM-yyyy" ng-model="pet.birthday" is-open="opened" datepicker-options="dateOptions" min-date="'1990-01-01'" ng-required="true" close-text="Close" placeholder="Pet's Birthday (dd-mm-yyyy)">
+              <!-- erros -->
+              <span class="label label-danger" ng-show="submitted && newPetForm.birthday.$invalid && !newPetForm.birthday.$error.required">Invalid date !</span>
+              <span class="label label-danger" ng-show="submitted && newPetForm.birthday.$error.required">required!</span>
+
+              <input type="text" class="form-control input-lg" name="birthday" datepicker-popup="dd-MM-yyyy" ng-model="pet.birthday" is-open="opened" datepicker-options="dateOptions" min-date="'1990-01-01'" ng-required="true" close-text="Close" placeholder="Pet's Birthday (dd-mm-yyyy)">
               <a href="" ng-click="open($event)" class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></a>
             </div>
 
           </div>
 
         </div>
-       <!--  <div class="col-xs-12 col-md-6">
 
-          <div class="form-group">
-            <select class="form-control input-lg">
-              <option>Race</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-           </div>
-
-        </div> -->
       </div>
 
       <div class="row">
@@ -146,7 +138,7 @@
         </div>
       </div>
 
-      <button type="submit" ng-click="createPet()" class="btn btn-primary btn-lg btn-lg btn-block">Save Pokemon</button>
+      <button type="submit" ng-disabled="newPetForm.$invalid" ng-click="createPet()" class="btn btn-primary btn-lg btn-lg btn-block">Save Pokemon</button>
 
 
       <!--

@@ -13,7 +13,7 @@ angular.module('ngVet.pet.list', [ ])
         authenticate: true,
         templateUrl : 'pages/pet/list/list.tpl.html',
         resolve: {
-          data: function (Pet) {
+          json: function (Pet) {
             return Pet.list().then(function(pets) {
               return pets;
             });
@@ -23,12 +23,20 @@ angular.module('ngVet.pet.list', [ ])
   })
 
   // List pet controller.
-  .controller('ListPetCtrl', function ($scope, data) {
+  .controller('ListPetCtrl', function ($scope, json) {
 
-    console.log(data);
+    // console.log(data);
+    $scope.colmd = 4;
+    $scope.colsm = 6;
+    $scope.pets = json;
 
-    $scope.pets = data;
-
+    if (json.length == 1) {
+       $scope.colmd = 6;
+       $scope.colsm = 8;
+    } else if (json.length <= 3 ) {
+      $scope.colmd = 12 / json.length;
+      $scope.colsm = 12 / (json.length);
+    }
     //   {
     //     'name': 'Lu',
     //     'weigth': '15 kg',
