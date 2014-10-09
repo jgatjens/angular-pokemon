@@ -5,7 +5,7 @@
       <h1>
         <a onclick="window.history.back()" href="">
           <i class="glyphicon glyphicon-chevron-left"></i>
-        </a> Create <small>new</small> Pokemon
+        </a> <small ng-hide="edit">new</small>  <small ng-show="edit">edit</small> Pokemon
       </h1>
     </div>
   </div>
@@ -14,9 +14,9 @@
 <div class="row">
   <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
 
-    <!-- <div ng-show="okRequest" class="alert alert-info" role="alert">
-      <p>Password reset request was sent successfully !</p>
-    </div> -->
+    <div ng-show="okRequest" class="alert alert-success" role="alert">
+      <p>Pokemon <strong>info</strong> has been updated successfully !</p>
+    </div>
 
     <div ng-show="errorSubmitted" class="alert alert-danger" role="alert">
       <p>{{ user.errorMessage }}</p>
@@ -27,24 +27,24 @@
 
 <div class="row">
   <div class="col-sm-offset-2 col-md-offset-2 col-sm-8 col-md-8">
-    <form novalidate role="form" name="newPetForm" >
+    <form novalidate role="form" name="petForm" >
 
       <div class="row">
         <div class="col-xs-12 col-md-6">
-          <div class="form-group" ng-class="{ 'has-error': submitted && newPetForm.name.$error.required }">
+          <div class="form-group" ng-class="{ 'has-error': submitted && petForm.name.$error.required }">
 
             <!-- error -->
-            <span class="label label-danger" ng-show="submitted && newPetForm.name.$error.required">required!</span>
+            <span class="label label-danger" ng-show="submitted && petForm.name.$error.required">required!</span>
 
             <input required type="text" name="name" ng-model="pet.name" class="form-control input-lg" placeholder="Name">
           </div>
         </div>
         <div class="col-xs-12 col-md-6">
-         <div class="input-group form-group" ng-class="{ 'has-error': submitted && newPetForm.weigth.$error.required || newPetForm.weigth.$error.number || newPetForm.weigth.$error.max}">
+         <div class="input-group form-group" ng-class="{ 'has-error': submitted && petForm.weigth.$error.required || petForm.weigth.$error.number || petForm.weigth.$error.max}">
             <!-- erros -->
-            <span class="label label-danger" ng-show="submitted && newPetForm.weigth.$error.required">required!</span>
-            <span class="label label-danger" ng-show="submitted && newPetForm.weigth.$error.number">Please use only numbers</span>
-            <span class="label label-danger" ng-show="submitted && newPetForm.weigth.$error.max">is it a horse ?</span>
+            <span class="label label-danger" ng-show="submitted && petForm.weigth.$error.required">required!</span>
+            <span class="label label-danger" ng-show="submitted && petForm.weigth.$error.number">Please use only numbers</span>
+            <span class="label label-danger" ng-show="submitted && petForm.weigth.$error.max">is it a horse ?</span>
 
             <input required min="0.1" max="100" type="number" maxlength="4" name="weigth" ng-model="pet.weigth" class="form-control input-lg" placeholder="Weigth">
             <span class="input-group-addon">KG</span>
@@ -54,9 +54,9 @@
 
       <div class="row">
         <div class="col-xs-12 col-md-6">
-          <div class="form-group" ng-class="{ 'has-error': submitted && newPetForm.type.$error.required }">
+          <div class="form-group" ng-class="{ 'has-error': submitted && petForm.type.$error.required }">
             <!-- erros -->
-            <span class="label label-danger" ng-show="submitted && newPetForm.weigth.$error.required">required!</span>
+            <span class="label label-danger" ng-show="submitted && petForm.weigth.$error.required">required!</span>
 
             <select required ng-model="pet.type" name="type" ng-options="type for type in types" class="form-control input-lg">
               <option value="">-- choose type --</option>
@@ -73,11 +73,11 @@
       <div class="row">
         <div class="col-xs-12 col-md-6">
 
-          <div class="form-group" ng-class="{ 'has-error': submitted && newPetForm.birthday.$invalid }">
+          <div class="form-group" ng-class="{ 'has-error': submitted && petForm.birthday.$invalid }">
             <div class="input-group">
               <!-- erros -->
-              <span class="label label-danger" ng-show="submitted && newPetForm.birthday.$invalid && !newPetForm.birthday.$error.required">Invalid date !</span>
-              <span class="label label-danger" ng-show="submitted && newPetForm.birthday.$error.required">required!</span>
+              <span class="label label-danger" ng-show="submitted && petForm.birthday.$invalid && !petForm.birthday.$error.required">Invalid date !</span>
+              <span class="label label-danger" ng-show="submitted && petForm.birthday.$error.required">required!</span>
 
               <input type="text" class="form-control input-lg" name="birthday" datepicker-popup="dd-MM-yyyy" ng-model="pet.birthday" is-open="opened" datepicker-options="dateOptions" min-date="'1990-01-01'" ng-required="true" close-text="Close" placeholder="Pet's Birthday (dd-mm-yyyy)">
               <a href="" ng-click="open($event)" class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></a>
@@ -138,7 +138,8 @@
         </div>
       </div>
 
-      <button type="submit" ng-disabled="newPetForm.$invalid" ng-click="createPet()" class="btn btn-primary btn-lg btn-lg btn-block">Save Pokemon</button>
+      <button type="submit" ng-hide="edit" ng-disabled="petForm.$invalid" ng-click="createPet()" class="btn btn-primary btn-lg btn-lg btn-block">Save Pokemon</button>
+      <button type="submit" ng-show="edit" ng-disabled="petForm.$invalid" ng-click="editPet()" class="btn btn-primary btn-lg btn-lg btn-block">Update Pokemon</button>
 
 
       <!--

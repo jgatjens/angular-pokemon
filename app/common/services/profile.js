@@ -23,9 +23,6 @@ angular.module('ngVet.common.services.profile', [ ])
       user.set("password",form.password);
       user.set("email", form.email);
 
-      // other fields can be set just like with Parse.Object
-      // user.set("phone", "415-392-0202");
-
       var defer = $q.defer();
 
       user.signUp(null, {

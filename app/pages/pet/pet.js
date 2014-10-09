@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngVet.pet', ['ngVet.pet.list','ngVet.pet.new', 'ngVet.pet.record'])
+angular.module('ngVet.pet', ['ngVet.pet.list','ngVet.pet.new', 'ngVet.pet.edit', 'ngVet.pet.record'])
 
   // Module configuration.
   .config(function ($stateProvider) {

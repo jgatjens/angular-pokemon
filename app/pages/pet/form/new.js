@@ -7,13 +7,14 @@ angular.module('ngVet.pet.new', [ ])
 
     // Module routing.
     $stateProvider
+
+      // state for new entrys
       .state('pets.new', {
         url         : '/new',
         controller  : 'NewPetCtrl',
-        controllerAs: 'newPet',
         authenticate: true,
-        templateUrl : 'pages/pet/new/new.tpl.html'
-      });
+        templateUrl : 'pages/pet/form/form.tpl.html'
+      })
   })
 
   // new pet controller.
@@ -32,7 +33,7 @@ angular.module('ngVet.pet.new', [ ])
       description: ''
     }
 
-    // $scope.okRequest = false;
+    $scope.okRequest = false;
     $scope.errorSubmitted = false;
     $scope.submitted = false;
 
@@ -62,7 +63,7 @@ angular.module('ngVet.pet.new', [ ])
       $scope.errorSubmitted = false;
 
       // If form is invalid, return and let AngularJS show validation errors.
-      if ($scope.newPetForm.$invalid) {
+      if ($scope.petForm.$invalid) {
         return;
       }
 
@@ -81,7 +82,7 @@ angular.module('ngVet.pet.new', [ ])
             $scope.pet = {};
             $scope.errorSubmitted = false;
             $scope.submitted = false;
-            $scope.$apply();
+            // $scope.$apply();
           });
 
         }, function (error){
@@ -92,4 +93,3 @@ angular.module('ngVet.pet.new', [ ])
     }
 
   });
-

@@ -11,40 +11,7 @@ angular.module('ngVet.common.services.pet', [ ])
     * @Object, form
     */
 
-
-    this.remove = function (obejctId) {
-
-      self = this;
-      var defer = $q.defer();
-
-      var Pets = Parse.Object.extend("Pets");
-      var query = new Parse.Query(Pets);
-
-
-      query.get(obejctId, {
-        success: function(myObj) {
-          // The object was retrieved successfully.
-          myObj.destroy({});
-          defer.resolve(true);
-        },
-        error: function(object, error) {
-          // The object was not retrieved successfully.
-           defer.reject(_checkErros(error));
-        }
-      });
-
-      return defer.promise;
-    };
-
-    /**
-    * Public method, createPet
-    * @Object, form
-    */
-
-
     this.create = function (form) {
-
-      self = this;
 
       var Pets = Parse.Object.extend("Pets");
       var pet = new Pets();
@@ -77,7 +44,95 @@ angular.module('ngVet.common.services.pet', [ ])
       return defer.promise;
     };
 
+    /**
+    * Public method, remove
+    * @Object, form
+    */
 
+
+    this.remove = function (obejctId) {
+
+      var defer = $q.defer();
+
+      var Pets = Parse.Object.extend("Pets");
+      var query = new Parse.Query(Pets);
+
+
+      query.get(obejctId, {
+        success: function(myObj) {
+          // The object was retrieved successfully.
+          myObj.destroy({});
+          defer.resolve(true);
+        },
+        error: function(object, error) {
+          // The object was not retrieved successfully.
+           defer.reject(_checkErros(error));
+        }
+      });
+
+      return defer.promise;
+    };
+
+    /**
+    * Public method, getById
+    * @Object, form
+    */
+
+
+    this.getById = function (obejctId) {
+
+      var defer = $q.defer();
+
+      var Pets = Parse.Object.extend("Pets");
+      var query = new Parse.Query(Pets);
+
+      query.get(obejctId, {
+        success: function(myObj) {
+          self.pet = myObj;
+          // The object was retrieved successfully.
+          defer.resolve(myObj.attributes);
+        },
+        error: function(object, error) {
+          // The object was not retrieved successfully.
+           defer.reject(_checkErros(error));
+        }
+      });
+
+      return defer.promise;
+    };
+
+    /**
+    * Public method, save
+    * @Object, form
+    */
+
+
+    this.save = function (petInfo) {
+
+      var defer = $q.defer();
+
+      this.pet.set('birthday', petInfo.birthday);
+      this.pet.set('brand', petInfo.brand);
+      this.pet.set('crossdog', petInfo.crossdog);
+      this.pet.set('description', petInfo.description);
+      this.pet.set('gender', petInfo.gender);
+      this.pet.set('name', petInfo.name);
+      this.pet.set('onsale', petInfo.onsale);
+      this.pet.set('pedigree', petInfo.pedigree);
+      this.pet.set('type', petInfo.type);
+      this.pet.set('weigth', petInfo.weigth);
+
+      this.pet.save(null, {
+        success: function (pet) {
+          defer.resolve({ success: true, pet: pet });
+        },
+        error: function (user, error) {
+          defer.reject(error);
+        }
+      });
+
+      return defer.promise;
+    };
 
 
     /**
@@ -102,8 +157,7 @@ angular.module('ngVet.common.services.pet', [ ])
 
     this.list = function () {
 
-      var self  = this,
-          defer = $q.defer(),
+      var defer = $q.defer(),
           Pets   = Parse.Object.extend("Pets");
 
       var query = new Parse.Query(Pets);
