@@ -19,26 +19,6 @@
 </div>
 
 <div class="row">
-  <!--
-  <div class="col-sm-4 col-md-3" ng-repeat="pet in pets | orderBy:'rank' | filter:search ">
-    <div class="thumbnail">
-      <div class="caption">
-        <h3>{{pet.name}}</h3>
-        <p>{{pet.weigth}} KG</p>
-
-        <div class="row">
-          <div style="text-align: center; font-size: 400%" class="col-xs-4 col-sm-4 col-md-4">
-            <a ui-sref="pet.edit" tooltip-placement="right" tooltip="Edit"><i style="color: #f0ad4e" class="glyphicon glyphicon-edit"></i></a>
-          </div>
-          <div style="text-align: center; font-size: 400%" class="col-xs-4 col-sm-4 col-md-4">
-            <a ui-sref="pet.remove" tooltip-placement="right" tooltip="Delete"><i style="color: red" class="glyphicon glyphicon-remove"></i></a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  -->
 
   <div ng-class="{ 'col-sm-offset-2 col-md-offset-3': pets.length == 1 }" class="col-sm-{{colsm}} col-md-{{colmd}}" ng-repeat="pet in pets | orderBy:'rank' | filter:search ">
     <div class="card-container">
@@ -47,9 +27,6 @@
               <div class="cover">
                 <i id="pet-remove" ng-click="remove(pet)" class="glyphicon glyphicon-remove-sign"></i>
                 <i id="pet-edit" ui-sref="pets.edit({ id: pet.objectId })" class="glyphicon glyphicon-edit"></i>
-                <!-- <i ui-sref="edit(pet)" class="glyphicon glyphicon-edit"></i> -->
-
-                  <!-- <img src="images/rotating_card_thumb2.png"> -->
               </div>
               <div class="user">
                   <img class="img-circle" alt="Pet Avatar" src="/assets/images/pets/01.jpg">
@@ -59,7 +36,7 @@
                       <h3 class="name" ng-bind="pet.name"></h3>
                       <p class="birthday" ng-clock> {{ pet.birthday.iso | timeago }} </p>
                       <!-- <p class="birthday" am-time-ago="pet.birthday.iso"></p> -->
-                      <h5 ng-clock>"{{ pet.description }}"</h5>
+                      <h5 ng-clock>"{{ pet.description | truncate:40 }}"</h5>
                   </div>
                   <div class="footer">
                       <div class="rating">
