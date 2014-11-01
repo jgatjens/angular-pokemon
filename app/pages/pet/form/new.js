@@ -11,14 +11,14 @@ angular.module('ngVet.pet.new', [ ])
       // state for new entrys
       .state('pets.new', {
         url         : '/new',
-        controller  : 'NewPetCtrl',
+        controller  : 'FormNewCtrl',
         authenticate: true,
         templateUrl : 'pages/pet/form/form.tpl.html'
       })
   })
 
   // new pet controller.
-  .controller('NewPetCtrl', function ($scope, Pet) {
+  .controller('FormNewCtrl', function ($scope, Pet, $state) {
 
     $scope.pet = {
       name: undefined,
@@ -78,11 +78,16 @@ angular.module('ngVet.pet.new', [ ])
             cancelButtonText: 'Continue',
             showCancelButton: true
           },
-          function() {
-            $scope.pet = {};
-            $scope.errorSubmitted = false;
-            $scope.submitted = false;
-            // $scope.$apply();
+          function(isConfirm) {
+
+            if (isConfirm) {
+              $scope.pet = {};
+              $scope.errorSubmitted = false;
+              $scope.submitted = false;
+            } else {
+              $state.go('pets.list')
+            }
+
           });
 
         }, function (error){

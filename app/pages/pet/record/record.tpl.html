@@ -10,40 +10,47 @@
   </div>
 </div>
 
-<form class="form-horizontal" role="form">
+<form novalidate class="form-horizontal" name="recordForm" role="form">
 
   <div class="form-group">
-    <label for="inputEmail3" class="col-sm-3 col-md-4 control-label">Info Basica</label>
+    <label for="record-title" class="col-sm-3 col-md-4 control-label">Info Basica</label>
     <div class="col-sm-7 col-md-5">
-      <input type="email" class="form-control input-lg" id="inputEmail3" placeholder="Title">
+      <input type="email" class="form-control input-lg" name='record-title' ng-model="record.title" id="title" placeholder="Title">
     </div>
   </div>
   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-3 col-md-4 control-label"></label>
+    <label for="record-temp" class="col-sm-3 col-md-4 control-label"></label>
     <div class="col-sm-7 col-md-5">
-      <input type="password" class="form-control input-lg" id="inputPassword3" placeholder="Temperature">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputPassword3" class="col-sm-3 col-md-4 control-label"></label>
-    <div class="col-sm-7 col-md-5">
-      <input type="password" class="form-control input-lg" id="inputPassword3" placeholder="Weigth in kg">
+      <div class="input-group">
+        <input type="number" required min="1" max="100" maxlength="3" ng-model="record.temperature" name="record-temp" class="form-control input-lg" id="inputPassword3" placeholder="Temperature">
+        <span class="input-group-addon"> ºC</span>
+      </div>
+
     </div>
   </div>
   <div class="form-group">
     <label for="inputPassword3" class="col-sm-3 col-md-4 control-label"></label>
     <div class="col-sm-7 col-md-5">
       <div class="input-group">
-        <input type="file" class="form-control input-lg">
+        <input type="number" required min="1" max="100" maxlength="3" ng-model="record.weight" class="form-control input-lg" id="inputPassword3" placeholder="Actual weigth">
+        <span class="input-group-addon"> kg</span>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="img-record" class="col-sm-3 col-md-4 control-label"></label>
+    <div class="col-sm-7 col-md-5">
+      <div class="input-group">
+        <input type="file" name="img-record" class="form-control input-lg">
         <span class="input-group-addon">Foto</span>
       </div>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="inputEmail3" class="col-sm-3 col-md-4 control-label">Comments</label>
+    <label for="record-comment" class="col-sm-3 col-md-4 control-label">Comments</label>
     <div class="col-sm-7 col-md-5">
-      <textarea type="textarea" rows="6" class="form-control input-lg" placeholder="Aditional comments"></textarea>
+      <textarea type="textarea" name="record-comment" rows="6" class="form-control input-lg" placeholder="Aditional comments"></textarea>
     </div>
   </div>
 

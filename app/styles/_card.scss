@@ -97,7 +97,7 @@
 .card .cover{
     height: 70px;
     overflow: hidden;
-    border-radius: 4px 4px 0 0;
+    border-radius: 0;
     background-color: #428bca;
 }
 .card .cover img{
@@ -148,7 +148,7 @@
 }
 .card .footer {
     border-top: 1px solid #EEEEEE;
-    color: #999999;
+    color: coral;
     margin: 20px 0 0;
     padding: 10px 0 0;
     text-align: center;

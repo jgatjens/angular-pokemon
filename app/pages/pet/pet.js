@@ -16,7 +16,7 @@ angular.module('ngVet.pet', ['ngVet.pet.list','ngVet.pet.new', 'ngVet.pet.edit',
   })
 
   // pet controller.
-  .controller('PetCtrl', function ($state) {
+  .controller('PetCtrl', function () {
 
   });
 

@@ -51,22 +51,32 @@ angular.module('ngVet.pet.list', [ ])
         type: "warning",
         confirmButtonColor: "#DD6B55",
         confirmButtonText: "Yes, delete it!",
-        cancelButtonText: 'Cancel',
-        showCancelButton: true
+        cancelButtonText: "No, cancel plx!",
+        showCancelButton: true,
+        closeOnConfirm: false,
+        closeOnCancel: false
       },
-      function() {
+      function(isConfirm) {
         console.log('Delete pet id: ', pet.objectId);
 
-        Pet.remove(pet.objectId).then(function () {
-          var index = $scope.pets.indexOf(pet);
-          $scope.pets.splice(index, 1);
-          $scope.$apply();
-        }, function (error){
-          swal({
-            title: "Something went wrong",
-            type: "error"
-          })
-        });
+        if (isConfirm) {
+            Pet.remove(pet.objectId).then(function () {
+              var index = $scope.pets.indexOf(pet);
+              $scope.pets.splice(index, 1);
+              // $scope.$apply();
+
+              swal("Deleted!", "Your pokemon has been deleted.", "success");
+
+            }, function (error){
+              swal({
+                title: "Something went wrong",
+                type: "error"
+              })
+            });
+        } else {
+            swal("Cancelled", "Your imaginary pokemon is safe :)", "error");
+        }
+
 
       });
 

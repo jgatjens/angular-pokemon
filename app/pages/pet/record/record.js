@@ -9,13 +9,18 @@ angular.module('ngVet.pet.record', [ ])
     $stateProvider
       .state('pets.record', {
         url         : '/record',
-        // controller  : 'RecordPetCtrl',
+        controller  : 'RecordCtrl',
         authenticate: true,
         templateUrl : 'pages/pet/record/record.tpl.html'
       });
+  })
+
+  // Record controller.
+  .controller('RecordCtrl', function ($scope) {
+
+    $scope.record = {
+      title: undefined,
+      temperature: undefined
+    }
+
   });
-
-  // record pet controller.
-  // .controller('RecordPetCtrl', function ($scope) {
-
-  // });
