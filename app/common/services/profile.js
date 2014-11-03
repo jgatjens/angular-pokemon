@@ -4,10 +4,10 @@ angular.module('ngVet.common.services.profile', [ ])
 
   .service('Profile', function ($q, $log, $rootScope) {
 
-    var self = this;
+    var self        = this;
 
     // user obj
-    this.user = Parse.User.current();
+    this.user       = Parse.User.current();
 
     /**
     * Public method, Signin assigned to prototype
@@ -115,6 +115,22 @@ angular.module('ngVet.common.services.profile', [ ])
     }
 
     /**
+    * Public method, SaveCurrentPet assigned to prototype
+    * @Object, id
+    */
+    this.saveCurrentPet = function (id) {
+      this.user.set("currentPet", id);
+      return _saveUser();
+    }
+
+    /**
+    * Public method, getCurrentPet assigned to prototype
+    */
+    this.getCurrentPetId = function () {
+      return this.user.get("currentPet");
+    }
+
+    /**
     * Public method, SaveName assigned to prototype
     * @Object, user
     */
@@ -148,9 +164,6 @@ angular.module('ngVet.common.services.profile', [ ])
 
       return defer.promise;
     }
-
-
-
 
     /**
     * Public method, LinkFacebook assigned to prototype
@@ -238,7 +251,6 @@ angular.module('ngVet.common.services.profile', [ ])
       $rootScope.user = user.toJSON();
       $rootScope.user.isAuthenticated = user.authenticated();
     }
-
 
     /**
     * Private method, save profile info

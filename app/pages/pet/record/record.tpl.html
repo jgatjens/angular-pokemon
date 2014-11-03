@@ -13,19 +13,16 @@
 <form novalidate class="form-horizontal" name="recordForm" role="form">
 
   <div class="form-group">
-    <label for="record-title" class="col-sm-3 col-md-4 control-label">Info Basica</label>
+    <label for="record-title" class="col-sm-3 col-md-4 control-label">Assing to</label>
     <div class="col-sm-7 col-md-5">
-      <input type="email" class="form-control input-lg" name='record-title' ng-model="record.title" id="title" placeholder="Title">
+      <select ng-model="record.pet" ng-options="pet.name for pet in record.petList">
+      </select>
     </div>
   </div>
   <div class="form-group">
-    <label for="record-temp" class="col-sm-3 col-md-4 control-label"></label>
+    <label for="record-title" class="col-sm-3 col-md-4 control-label">Info Basica</label>
     <div class="col-sm-7 col-md-5">
-      <div class="input-group">
-        <input type="number" required min="1" max="100" maxlength="3" ng-model="record.temperature" name="record-temp" class="form-control input-lg" id="inputPassword3" placeholder="Temperature">
-        <span class="input-group-addon"> ºC</span>
-      </div>
-
+      <input type="email" class="form-control input-lg" name='record-title' ng-model="record.title" id="title" placeholder="Title">
     </div>
   </div>
   <div class="form-group">

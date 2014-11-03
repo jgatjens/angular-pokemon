@@ -23,9 +23,10 @@ angular.module('ngVet.pet.list', [ ])
   })
 
   // List pet controller.
-  .controller('ListPetCtrl', function ($scope, json, $filter, Pet) {
+  .controller('ListPetCtrl', function ($scope, $rootScope, json, $filter, Pet, Profile) {
 
     // console.log(data);
+    $scope.activePet = $rootScope.user.currentPet;
     $scope.colmd = 4;
     $scope.colsm = 6;
     $scope.pets = json;
@@ -40,6 +41,14 @@ angular.module('ngVet.pet.list', [ ])
 
 
     $scope.edit = function (pet) {
+
+    }
+
+    $scope.active = function (pet) {
+
+      Profile.saveCurrentPet(pet.objectId).then(function () {
+        $scope.activePet = pet.objectId;
+      });
 
     }
 
@@ -82,8 +91,8 @@ angular.module('ngVet.pet.list', [ ])
 
     }
 
-    angular.forEach($scope.pets, function(pet) {
-      pet.rank = Math.random();
-    });
+    // angular.forEach($scope.pets, function(pet) {
+    //   pet.rank = Math.random();
+    // });
 
   });

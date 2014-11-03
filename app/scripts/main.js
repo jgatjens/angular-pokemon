@@ -120,27 +120,7 @@ angular.module('ngVet', [
     XMLHttpRequest.prototype.open = function() {
       // when an XHR object is opened, add a listener for its readystatechange events
       this.addEventListener('readystatechange', onStateChange);
-      // this.onloadstart = function () {
-      //   console.log('onload ');
-      //   NProgress.start();
-      // }
-      // this.onloadend = function () {
-      //   console.log('onloadend ');
-      //   NProgress.done(true);
-      // }
-      // this.onprogress =  function () {
-      //   console.log('onprogress');
-      //   NProgress.inc(60);
-      // }
-      // this.onabort = function () {
-      //   console.log('onabort');
-      //   NProgress.fail();
-      // }
-      // this.onerror = function () {
-      //   console.log('onerror');
-      //   NProgress.fail();
-      // }
-      // this.addEventListener("load", onLoadSuccess);
+
       // run the real `open`
       oldOpen.apply(this, arguments);
     };

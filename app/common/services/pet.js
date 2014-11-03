@@ -6,6 +6,8 @@ angular.module('ngVet.common.services.pet', [ ])
 
     var self = this;
 
+    this.list = [];
+
     /**
     * Public method, createPet
     * @Object, form
@@ -26,7 +28,7 @@ angular.module('ngVet.common.services.pet', [ ])
       pet.set("crossdog", form.crossdog);
       pet.set("onsale", form.onsale);
       pet.set("description", form.description);
-      pet.set("user", Profile.user);
+      pet.set("user", Profile.user.id);
 
       var defer = $q.defer();
 
@@ -167,15 +169,17 @@ angular.module('ngVet.common.services.pet', [ ])
         success: function(pets) {
           // userPosts contains all of the posts by the current user.
 
-          var log = [];
+          var list = [];
 
           // angular for each
           angular.forEach(pets, function(child, key) {
             // backbone method toJSON, get obj info from model
             this.push(child.toJSON());
-          }, log);
+          }, list);
 
-          defer.resolve(log);
+          // self.list = angular.copy(list);
+
+          defer.resolve(list);
         },
         error: function(obj, error) {
           // Show the error message somewhere and let the user try again.
@@ -185,6 +189,26 @@ angular.module('ngVet.common.services.pet', [ ])
 
       return defer.promise;
     };
+
+    /**
+    * Public method, getPetFromListById
+    * String Id
+    */
+
+    // this.getPetFromListById = function (id) {
+
+    //   // angular for each
+    //   var currentPet = {};
+
+    //   angular.forEach(self.list, function(child, key) {
+    //     // backbone method toJSON, get obj info from model
+    //     if (child.objectId === id) {
+    //       currentPet = child;
+    //     }
+    //   });
+
+    //   return currentPet;
+    // };
 
 
     /**

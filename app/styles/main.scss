@@ -4,6 +4,10 @@ $input-border-radius: 0;
 $border-radius-base: 0;
 $border-radius-large: 0;
 
+$link-color:            #2C3E50;
+//** Link hover color set via `darken()` function.
+// $link-hover-color:      darken($link-color, 10%);
+
 $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap";
 

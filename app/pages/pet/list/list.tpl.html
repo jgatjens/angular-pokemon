@@ -22,9 +22,10 @@
 
   <div ng-class="{ 'col-sm-offset-2 col-md-offset-3': pets.length == 1 }" class="col-sm-{{colsm}} col-md-{{colmd}}" ng-repeat="pet in pets | orderBy:'rank' | filter:search ">
     <div class="card-container">
-      <div class="card">
+      <div class="card" ng-class="{active:  pet.objectId == activePet }">
           <div class="front">
               <div class="cover">
+                <i id="pet-active" ng-click="active(pet)"  class="glyphicon glyphicon glyphicon-heart"></i>
                 <i id="pet-remove" ng-click="remove(pet)" class="glyphicon glyphicon-remove-sign"></i>
                 <i id="pet-edit" ui-sref="pets.edit({ id: pet.objectId })" class="glyphicon glyphicon-edit"></i>
               </div>

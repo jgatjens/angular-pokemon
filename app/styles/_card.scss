@@ -64,25 +64,6 @@
 /*        Style       */
 
 
-#pet-remove, #pet-edit {
-  color: white;
-  font-size: 2em;
-  position: absolute; top:  10px;
-  cursor: pointer;
-  display: inline-block;
-
-  &:hover {
-    opacity: 0.8;
-  }
-}
-
-#pet-remove {
-  right: 10px;
-}
-
-#pet-edit {
-  left: 10px;
-}
 
 .card{
     background: none repeat scroll 0 0 #FFFFFF;
