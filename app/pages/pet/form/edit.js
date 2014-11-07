@@ -32,7 +32,7 @@ angular.module('ngVet.pet.edit', [ ])
     $scope.submitted = false;
 
     // Food Brand Arrays
-    $scope.brands = Pet.getBrands()
+    $scope.brands = Pet.getBrands();
 
     // Datapicker
     $scope.dateOptions = {

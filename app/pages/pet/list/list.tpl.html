@@ -27,6 +27,7 @@
               <div class="cover">
                 <i id="pet-active" ng-click="active(pet)"  class="glyphicon glyphicon glyphicon-heart"></i>
                 <i id="pet-remove" ng-click="remove(pet)" class="glyphicon glyphicon-remove-sign"></i>
+                <i id="pet-add-record" ui-sref="pets.record({ id: pet.objectId })" class="glyphicon glyphicon-plus"></i>
                 <i id="pet-edit" ui-sref="pets.edit({ id: pet.objectId })" class="glyphicon glyphicon-edit"></i>
               </div>
               <div class="user">
