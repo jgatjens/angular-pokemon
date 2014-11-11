@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('ngVet.pet.record', [ ])
+angular.module('ngVet.record.new', [ ])
 
   // Module configuration.
   .config(function ($stateProvider) {
 
     // Module routing.
     $stateProvider
-      .state('pets.record', {
+      .state('petsNewRecord', {
         url         : '/record/:id',
         params: {
           id: { value: null }
@@ -98,7 +98,7 @@ angular.module('ngVet.pet.record', [ ])
               $scope.submitted = false;
 
             } else {
-              $state.go('home')
+              $state.go('pets');
             }
 
           });

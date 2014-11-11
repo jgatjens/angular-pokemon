@@ -2,7 +2,7 @@
 
 angular.module('ngVet.common.services.record', [ ])
 
-  .service('Record', function ($q, $log, $rootScope) {
+  .service('Record', function ($q, $log, $rootScope, Profile) {
 
     var self = this;
 
@@ -27,6 +27,7 @@ angular.module('ngVet.common.services.record', [ ])
       pet.id = form.pet.objectId;
 
       record.set("pet", pet);
+      record.set("user", Profile.user);
 
       var defer = $q.defer();
 
@@ -44,6 +45,72 @@ angular.module('ngVet.common.services.record', [ ])
       return defer.promise;
     };
 
+
+    /**
+    * Public method, List
+    */
+
+    this.list = function () {
+
+      var defer = $q.defer(),
+          Pets   = Parse.Object.extend("Records");
+
+      var query = new Parse.Query(Pets);
+
+      query.equalTo("user", Profile.user);
+      query.find({
+        success: function(pets) {
+          // userPosts contains all of the posts by the current user.
+
+          var list = [];
+
+          // angular for each
+          angular.forEach(pets, function(child, key) {
+            // backbone method toJSON, get obj info from model
+            this.push(child.toJSON());
+          }, list);
+
+          // self.list = angular.copy(list);
+
+          defer.resolve(list);
+        },
+        error: function(obj, error) {
+          // Show the error message somewhere and let the user try again.
+          defer.reject(_checkErros(error));
+        }
+      });
+
+      return defer.promise;
+    };
+
+    /**
+    * Public method, remove
+    * @Object, form
+    */
+
+
+    this.remove = function (obejctId) {
+
+      var defer = $q.defer();
+
+      var Record = Parse.Object.extend("Records");
+      var query = new Parse.Query(Record);
+
+
+      query.get(obejctId, {
+        success: function(myObj) {
+          // The object was retrieved successfully.
+          myObj.destroy({});
+          defer.resolve(true);
+        },
+        error: function(object, error) {
+          // The object was not retrieved successfully.
+           defer.reject(_checkErros(error));
+        }
+      });
+
+      return defer.promise;
+    };
 
     /**
      * Private method, valided nextwork connection

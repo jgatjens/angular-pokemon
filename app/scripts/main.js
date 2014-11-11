@@ -13,9 +13,8 @@ angular.module('ngVet', [
   'ngVet.common',
 
   // Sections
-  'ngVet.home',
-  'ngVet.notification',
   'ngVet.pet',
+  'ngVet.notification',
   'ngVet.profile'
 ])
 

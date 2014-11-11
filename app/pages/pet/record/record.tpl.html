@@ -2,7 +2,7 @@
   <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
     <div class="page-header">
       <h1>
-        <a ui-sref="pets.list">
+        <a ui-sref="petsList">
           <i class="glyphicon glyphicon-chevron-left"></i>
         </a> Add <small>New</small> Record
       </h1>
@@ -31,7 +31,12 @@
   <div class="form-group">
     <label for="record-title" class="col-sm-3 col-md-4 control-label">Assing to</label>
     <div class="col-sm-7 col-md-5">
-      <select class="form-control input-lg" ng-model="record.pet" ng-options="pet.name for pet in record.petList">
+
+      <!-- error -->
+      <span class="label label-danger" ng-show="submitted && recordForm.pet.$error.required">required!</span>
+
+
+      <select required name="pet" class="form-control input-lg" ng-model="record.pet" ng-options="pet.name for pet in record.petList">
       </select>
     </div>
   </div>
@@ -42,7 +47,7 @@
       <!-- error -->
       <span class="label label-danger" ng-show="submitted && recordForm.title.$error.required">required!</span>
 
-      <input type="text" class="form-control input-lg" name='record-title' name="title" ng-model="record.title" id="title" placeholder="Title">
+      <input type="text" required class="form-control input-lg" name="title" ng-model="record.title" id="title" placeholder="Title">
     </div>
   </div>
   <div class="form-group">

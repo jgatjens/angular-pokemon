@@ -7,7 +7,7 @@ angular.module('ngVet.pet.edit', [ ])
 
     // Module routing.
     $stateProvider
-      .state('pets.edit', {
+      .state('petsEdit', {
         url         : '/edit/:id',
         controller  : 'EditPetCtrl',
         authenticate: true,

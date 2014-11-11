@@ -3,32 +3,32 @@
   <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
     <div class="page-header">
       <h1>
-      <a ui-sref="home">
+      <a ui-sref="pets">
           <i class="glyphicon glyphicon-chevron-left"></i>
         </a> Pokemon <small>List</small>
       </h1>
     </div>
-    <input type="text" ng-model="search.name" class="form-control" placeholder="Search for Pet">
   </div>
 </div>
 
-<div class="row">
+<div ng-show="{{ pets.length > 0 }}" class="row">
   <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
+    <input type="text" ng-model="search.name" class="form-control" placeholder="Search for Pet">
     <hr>
   </div>
 </div>
 
 <div class="row">
 
-  <div ng-class="{ 'col-sm-offset-2 col-md-offset-3': pets.length == 1 }" class="col-sm-{{colsm}} col-md-{{colmd}}" ng-repeat="pet in pets | orderBy:'rank' | filter:search ">
+  <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6" ng-repeat="pet in pets | orderBy:'rank' | filter:search ">
     <div class="card-container">
       <div class="card" ng-class="{active:  pet.objectId == activePet }">
           <div class="front">
               <div class="cover">
                 <i id="pet-active" ng-click="active(pet)"  class="glyphicon glyphicon glyphicon-heart"></i>
                 <i id="pet-remove" ng-click="remove(pet)" class="glyphicon glyphicon-remove-sign"></i>
-                <i id="pet-add-record" ui-sref="pets.record({ id: pet.objectId })" class="glyphicon glyphicon-plus"></i>
-                <i id="pet-edit" ui-sref="pets.edit({ id: pet.objectId })" class="glyphicon glyphicon-edit"></i>
+                <i id="pet-add-record" ui-sref="petsNewRecord({ id: pet.objectId })" class="glyphicon glyphicon-plus"></i>
+                <i id="pet-edit" ui-sref="petsEdit({ id: pet.objectId })" class="glyphicon glyphicon-edit"></i>
               </div>
               <div class="user">
                   <img class="img-circle" alt="Pet Avatar" src="/assets/images/pets/01.jpg">
@@ -72,5 +72,10 @@
       </div> <!-- end card -->
     </div> <!-- end card-container -->
   </div>
+
+  <div ng-show="{{ pets.length == 0 }}" class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
+    <a href="" class="btn btn-primary btn-block btn-lg"  ui-sref="petsNewRecord">Add your first pet</a>
+  </div>
+
 
 </div>

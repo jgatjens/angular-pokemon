@@ -9,7 +9,7 @@ angular.module('ngVet.pet.new', [ ])
     $stateProvider
 
       // state for new entrys
-      .state('pets.new', {
+      .state('petsNew', {
         url         : '/new',
         controller  : 'FormNewCtrl',
         authenticate: true,
@@ -85,7 +85,7 @@ angular.module('ngVet.pet.new', [ ])
               $scope.errorSubmitted = false;
               $scope.submitted = false;
             } else {
-              $state.go('pets.list')
+              $state.go('petsList');
             }
 
           });
