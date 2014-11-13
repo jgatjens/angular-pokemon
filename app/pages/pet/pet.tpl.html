@@ -6,7 +6,7 @@
       </div> -->
       <div class="pull-left">
         <h2 style="margin:0;">{{ user.name }}</h2>
-        <p>Last visit: August 29, this year</p>
+        <p>Today's date: {{ user.lastVisit.iso | date : medium }}</p>
       </div>
       <div class="clearfix"></div>
     </div>

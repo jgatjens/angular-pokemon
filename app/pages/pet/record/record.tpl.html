@@ -12,7 +12,7 @@
 
 
 <div class="row">
-  <div class="col-sm-offset-2 col-md-offset-2 col-sm-8 col-md-8">
+  <div class="col-sm-offset-3 col-md-offset-3 col-sm-8 col-md-6">
 
     <div ng-show="okRequest" class="alert alert-success" role="alert">
       <p>Record <strong>info</strong> has been updated successfully !</p>
@@ -20,6 +20,10 @@
 
     <div ng-show="errorSubmitted" class="alert alert-danger" role="alert">
       <p>{{ user.errorMessage }}</p>
+    </div>
+
+    <div ng-show="warningNoPet" class="alert alert-warning" role="alert">
+      <p>You need to add a pokemon before creating a new record <a href="" ui-sref="petsNew">new pet</a></p>
     </div>
 
   </div>

@@ -31,9 +31,15 @@ angular.module('ngVet.record.new', [ ])
     var id = Profile.getCurrentPetId();
     var currentPet, i = 0;
 
+    $scope.warningNoPet = false;
     $scope.okRequest = false;
     $scope.errorSubmitted = false;
     $scope.submitted = false;
+
+    // No Pets
+    if (petList.length === 0 ) {
+      $scope.warningNoPet = true
+    }
 
     angular.forEach(petList, function(pet) {
 
