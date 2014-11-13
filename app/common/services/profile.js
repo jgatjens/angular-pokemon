@@ -100,6 +100,15 @@ angular.module('ngVet.common.services.profile', [ ])
     * Public method, SaveName assigned to prototype
     * @Object, user
     */
+    this.saveLastVisit = function () {
+      this.user.set("lastVisit", new Date());
+      return _saveUser();
+    }
+
+    /**
+    * Public method, SaveName assigned to prototype
+    * @Object, user
+    */
     this.saveName = function (user) {
       this.user.set("name", user.name);
       return _saveUser();

@@ -7,7 +7,7 @@ angular.module('ngVet.pet.list', [ ])
 
     // Module routing.
     $stateProvider
-      .state('pets.list', {
+      .state('petsList', {
         url         : '/list',
         controller  : 'ListPetCtrl',
         authenticate: true,
@@ -27,18 +27,17 @@ angular.module('ngVet.pet.list', [ ])
 
     // console.log(data);
     $scope.activePet = $rootScope.user.currentPet;
-    $scope.colmd = 4;
-    $scope.colsm = 6;
     $scope.pets = json;
+    // $scope.colmd = 4;
+    // $scope.colsm = 6;
 
-    if (json.length == 1) {
-       $scope.colmd = 6;
-       $scope.colsm = 8;
-    } else if (json.length <= 3 ) {
-      $scope.colmd = 12 / json.length;
-      $scope.colsm = 12 / (json.length);
-    }
-
+    // if (json.length == 1) {
+    //    $scope.colmd = 6;
+    //    $scope.colsm = 8;
+    // } else if (json.length <= 3 ) {
+    //   $scope.colmd = 12 / json.length;
+    //   $scope.colsm = 12 / (json.length);
+    // }
 
     $scope.edit = function (pet) {
 

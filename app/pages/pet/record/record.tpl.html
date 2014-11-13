@@ -2,7 +2,7 @@
   <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
     <div class="page-header">
       <h1>
-        <a ui-sref="pets.list">
+        <a ui-sref="petsList">
           <i class="glyphicon glyphicon-chevron-left"></i>
         </a> Add <small>New</small> Record
       </h1>
@@ -10,31 +10,65 @@
   </div>
 </div>
 
+
+<div class="row">
+  <div class="col-sm-offset-3 col-md-offset-3 col-sm-8 col-md-6">
+
+    <div ng-show="okRequest" class="alert alert-success" role="alert">
+      <p>Record <strong>info</strong> has been updated successfully !</p>
+    </div>
+
+    <div ng-show="errorSubmitted" class="alert alert-danger" role="alert">
+      <p>{{ user.errorMessage }}</p>
+    </div>
+
+    <div ng-show="warningNoPet" class="alert alert-warning" role="alert">
+      <p>You need to add a pokemon before creating a new record <a href="" ui-sref="petsNew">new pet</a></p>
+    </div>
+
+  </div>
+</div>
+
+
 <form novalidate class="form-horizontal" name="recordForm" role="form">
 
   <div class="form-group">
     <label for="record-title" class="col-sm-3 col-md-4 control-label">Assing to</label>
     <div class="col-sm-7 col-md-5">
-      <select ng-model="record.pet" ng-options="pet.name for pet in record.petList">
+
+      <!-- error -->
+      <span class="label label-danger" ng-show="submitted && recordForm.pet.$error.required">required!</span>
+
+
+      <select required name="pet" class="form-control input-lg" ng-model="record.pet" ng-options="pet.name for pet in record.petList">
       </select>
     </div>
   </div>
   <div class="form-group">
     <label for="record-title" class="col-sm-3 col-md-4 control-label">Info Basica</label>
     <div class="col-sm-7 col-md-5">
-      <input type="email" class="form-control input-lg" name='record-title' ng-model="record.title" id="title" placeholder="Title">
+
+      <!-- error -->
+      <span class="label label-danger" ng-show="submitted && recordForm.title.$error.required">required!</span>
+
+      <input type="text" required class="form-control input-lg" name="title" ng-model="record.title" id="title" placeholder="Title">
     </div>
   </div>
   <div class="form-group">
     <label for="inputPassword3" class="col-sm-3 col-md-4 control-label"></label>
     <div class="col-sm-7 col-md-5">
+
+      <!-- error -->
+      <span class="label label-danger" ng-show="submitted && recordForm.weight.$error.required">required!</span>
+      <span class="label label-danger" ng-show="recordForm.weigth.$error.number">Please use only numbers</span>
+
       <div class="input-group">
-        <input type="number" required min="1" max="100" maxlength="3" ng-model="record.weight" class="form-control input-lg" id="inputPassword3" placeholder="Actual weigth">
+        <input type="number" required min="1" max="100" maxlength="3" ng-model="record.weight" class="form-control input-lg" name="weight" placeholder="Actual weigth">
         <span class="input-group-addon"> kg</span>
       </div>
     </div>
   </div>
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label for="img-record" class="col-sm-3 col-md-4 control-label"></label>
     <div class="col-sm-7 col-md-5">
       <div class="input-group">
@@ -42,34 +76,21 @@
         <span class="input-group-addon">Foto</span>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="form-group">
     <label for="record-comment" class="col-sm-3 col-md-4 control-label">Comments</label>
     <div class="col-sm-7 col-md-5">
-      <textarea type="textarea" name="record-comment" rows="6" class="form-control input-lg" placeholder="Aditional comments"></textarea>
+      <textarea type="textarea" name="comment" ng-model="record.comment" rows="6" class="form-control input-lg" placeholder="Aditional comments"></textarea>
     </div>
   </div>
-
 
   <!-- Save Aditional Info -->
   <div class="form-group">
     <div class="col-sm-offset-3 col-md-offset-4 col-sm-7 col-md-5">
-      <button type="submit" class="btn btn-primary btn-lg btn-block">Save Record</button>
+      <button type="submit" ng-hide="edit" ng-disabled="recordForm.$invalid" ng-click="createRecord()" class="btn btn-primary btn-lg btn-lg btn-block">Save Record</button>
+      <button type="submit" ng-show="edit" ng-disabled="recordForm.$invalid" ng-click="editRecord()" class="btn btn-primary btn-lg btn-lg btn-block">Update Record</button>
     </div>
   </div>
 
 </form>
-<!--
-
-<ul class="profile-tabs">
-  <li class="profile-tabs__tab" ng-click="setTab('about');" ng-class="{ 'profile-tabs__tab--is-active': activeTab === 'about' }">
-    <a ui-sref="profile.about">About me</a>
-  </li>
-
-  <li class="profile-tabs__tab" ng-click="setTab('links');" ng-class="{ 'profile-tabs__tab--is-active': activeTab === 'links' }">
-    <a ui-sref="profile.links">My links</a>
-  </li>
-</ul>
- -->
-<!-- <ui-view></ui-view> -->

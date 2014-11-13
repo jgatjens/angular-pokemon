@@ -2,7 +2,7 @@
 .pet-page {}
 
 
-#pet-remove, #pet-edit, #pet-active {
+#pet-remove, #pet-edit, #pet-active, #pet-add-record {
   color: white;
   font-size: 2em;
   position: absolute; top:  10px;
@@ -12,6 +12,11 @@
   &:hover {
     opacity: 0.8;
   }
+}
+
+#pet-add-record {
+  left: 120px;
+  color: black;
 }
 
 #pet-remove {

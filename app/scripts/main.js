@@ -13,9 +13,8 @@ angular.module('ngVet', [
   'ngVet.common',
 
   // Sections
-  'ngVet.home',
-  'ngVet.notification',
   'ngVet.pet',
+  'ngVet.notification',
   'ngVet.profile'
 ])
 
@@ -152,7 +151,11 @@ angular.module('ngVet', [
         // User isn’t authenticated
         $state.transitionTo('login', { errorCode: 403 });
         event.preventDefault();
+      } else {
+        Profile.saveLastVisit();
       }
+
+
 
     });
 

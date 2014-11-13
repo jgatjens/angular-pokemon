@@ -28,7 +28,7 @@ angular.module('ngVet.common.services.pet', [ ])
       pet.set("crossdog", form.crossdog);
       pet.set("onsale", form.onsale);
       pet.set("description", form.description);
-      pet.set("user", Profile.user.id);
+      pet.set("user", Profile.user);
 
       var defer = $q.defer();
 
@@ -56,8 +56,8 @@ angular.module('ngVet.common.services.pet', [ ])
 
       var defer = $q.defer();
 
-      var Pets = Parse.Object.extend("Pets");
-      var query = new Parse.Query(Pets);
+      var Pet = Parse.Object.extend("Pets");
+      var query = new Parse.Query(Pet);
 
 
       query.get(obejctId, {

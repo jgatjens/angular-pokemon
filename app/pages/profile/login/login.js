@@ -43,7 +43,7 @@ angular.module('ngVet.profile.login', [ ])
             return;
           }
 
-          $state.go('home');
+          $state.go('pets');
 
         }, function(error){
           $scope.errorSubmitted = true;
