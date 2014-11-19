@@ -76,19 +76,22 @@ gulp.task('common', function () {
 gulp.task('partials', ['pages', 'common']);
 
 
-gulp.task('html', ['styles', 'scripts', 'partials'], function () {
+gulp.task('html', ['scripts', 'styles', 'partials'], function () {
   var jsFilter = $.filter('**/*.js');
   var cssFilter = $.filter('**/*.css');
+  var assets;
+
+  // console.log(jsFilter);
 
   return gulp.src('app/*.html')
+
     .pipe($.inject(gulp.src('.tmp/partials/**/*.js'), {
       read: false,
       starttag: '<!-- inject:partials -->',
       addRootSlash: false,
       addPrefix: '../'
     }))
-    // .pipe($.debug({verbose: true, title: "test"}))
-    .pipe($.useref.assets())
+    .pipe(assets = $.useref.assets())
     .pipe($.rev())
     .pipe(jsFilter)
     .pipe($.ngAnnotate())
@@ -98,8 +101,7 @@ gulp.task('html', ['styles', 'scripts', 'partials'], function () {
     .pipe($.replace('bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap','assets/fonts'))
     .pipe($.csso())
     .pipe(cssFilter.restore())
-    .pipe($.useref.restore())
-
+    .pipe(assets.restore())
     .pipe($.useref())
     .pipe($.revReplace())
     .pipe(gulp.dest('dist'))

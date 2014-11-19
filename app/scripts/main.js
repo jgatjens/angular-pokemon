@@ -128,7 +128,6 @@ angular.module('ngVet', [
 
   .run(function( $rootScope, Profile, $state) {
 
-
     $rootScope.$on('$stateChangeStart', function(){
       // start
       NProgress.start();
@@ -154,8 +153,6 @@ angular.module('ngVet', [
       } else {
         Profile.saveLastVisit();
       }
-
-
 
     });
 
