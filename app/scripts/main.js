@@ -147,11 +147,12 @@ angular.module('ngVet', [
       }
 
       if (toState.authenticate && !Profile.isAuthenticated()){
+
+        event.preventDefault();
+
         // User isn’t authenticated
         $state.transitionTo('login', { errorCode: 403 });
-        event.preventDefault();
-      } else {
-        Profile.saveLastVisit();
+
       }
 
     });

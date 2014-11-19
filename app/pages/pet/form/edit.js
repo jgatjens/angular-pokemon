@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngVet.pet.edit', [ ])
+angular.module('ngVet.pet.form.edit', [ ])
 
   // Module configuration.
   .config(function ($stateProvider) {

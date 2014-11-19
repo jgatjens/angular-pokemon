@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngVet.record.new', [ ])
+angular.module('ngVet.pet.record', [ ])
 
   // Module configuration.
   .config(function ($stateProvider) {
