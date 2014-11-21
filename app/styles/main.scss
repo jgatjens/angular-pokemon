@@ -1,15 +1,17 @@
 
-$border-radius-base: 0;
+$border-radius-base:  0;
 $input-border-radius: 0;
-$border-radius-base: 0;
+$border-radius-base:  0;
 $border-radius-large: 0;
+$font-size-base:      18px;
 
-$link-color:            #2C3E50;
+//** Global textual link color.
+$link-color:            #3498DB;
 //** Link hover color set via `darken()` function.
-// $link-hover-color:      darken($link-color, 10%);
+$link-hover-color:      darken($link-color, 10%);
 
-$icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
-@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap";
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
 
 // inject:scss
 @import "../pages/notification/notification.scss";
@@ -29,12 +31,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 @import "card";
 
 body {
-  // font-family: 'Lato';
+  font-family: 'Lato';
 }
 
 
 // NProgress error color
-$redcolor: #a94442;
+$redcolor: #ea3767;
 #nprogress.fail .bar{
   background: $redcolor;
 }
@@ -44,6 +46,10 @@ $redcolor: #a94442;
 #nprogress.fail .spinner-icon {
   border-top-color: $redcolor;
   border-left-color: $redcolor;
+}
+
+.glyphicon-heart {
+  color: $redcolor;
 }
 
 .browsehappy {
@@ -106,11 +112,17 @@ form .label-danger, form .label-info {
       float: none !important;
       display: block;
       text-align: center;
-      font-size: 15px;
+      font-size: 30px;
+      // background-color: $redcolor;
+      margin-bottom: 10px;
 
       > li {
         float: none;
         display: inline-block;
+      }
+
+      a {
+        // color: #333;
       }
     }
   }

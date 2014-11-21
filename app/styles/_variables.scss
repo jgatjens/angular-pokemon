@@ -30,9 +30,9 @@ $body-bg:               #fff;
 $text-color:            $brand-primary;
 
 //** Global textual link color.
-$link-color:            $brand-success;
+$link-color:            $brand-info;
 //** Link hover color set via `darken()` function.
-$link-hover-color:      $link-color;
+$link-hover-color:      darken($link-color, 10%);
 
 
 //== Typography
