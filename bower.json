@@ -2,7 +2,6 @@
   "name": "myVet",
   "version": "0.0.0",
   "dependencies": {
-    "modernizr": "latest",
     "nprogress": "latest",
     "angular": "latest",
     "angular-animate": "latest",
@@ -12,10 +11,16 @@
     "angular-bootstrap": "latest",
     "parse-js-sdk": "latest",
     "sweetalert": "latest",
-    "angular-ui-router": "0.2.12-pre1"
+    "angular-ui-router": "0.2.12-pre1",
+    "modernizr": "~2.8.3",
+    "angular-filereader": "~1.0.0"
   },
   "devDependencies": {
     "angular-mocks": "1.2.x"
   },
-  "overrides": {}
+  "overrides": {
+    "angular-filereader": {
+      "main": "src/filereader.service.js"
+    }
+  }
 }

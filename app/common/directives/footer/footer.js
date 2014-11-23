@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('ngVet.common.directives.footer', [])
+angular.module('ngApp.common.directives.footer', [])
   // footer directive.
-  .directive('ngVetFooter', function () {
+  .directive('ngAppFooter', function () {
     return {
       restrict    : 'EA',
       replace     : true,

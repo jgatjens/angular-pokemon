@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngVet.common.factories.store', ['ngVet.config'])
+angular.module('ngApp.common.factories.store', ['ngApp.config'])
 
   .factory('store', function ($http, API_END_POINT, HOST) {
 

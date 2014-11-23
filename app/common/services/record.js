@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngVet.common.services.record', [ ])
+angular.module('ngApp.common.services.record', [ ])
 
   .service('Record', function ($q, $log, $rootScope, Profile) {
 
@@ -9,13 +9,13 @@ angular.module('ngVet.common.services.record', [ ])
     this.list = [];
 
     /**
-    * Public method, createPet
+    * Public method, createPokemon
     * @Object, form
     */
 
     this.create = function (form) {
 
-      var Pet = Parse.Object.extend("Pets");
+      var Pokemon = Parse.Object.extend("Pokemon");
       var Records = Parse.Object.extend("Records");
       var record = new Records();
 
@@ -23,10 +23,10 @@ angular.module('ngVet.common.services.record', [ ])
       record.set("weight", form.weight);
       record.set("comment", form.comment);
 
-      var pet = new Pet();
-      pet.id = form.pet.objectId;
+      var pokemon = new Pokemon();
+      pokemon.id = form.pokemon.objectId;
 
-      record.set("pet", pet);
+      record.set("pokemon", pokemon);
       record.set("user", Profile.user);
 
       var defer = $q.defer();
@@ -52,20 +52,20 @@ angular.module('ngVet.common.services.record', [ ])
 
     this.list = function () {
 
-      var defer = $q.defer(),
-          Pets   = Parse.Object.extend("Records");
+      var defer     = $q.defer(),
+          Pokemon   = Parse.Object.extend("Records");
 
-      var query = new Parse.Query(Pets);
+      var query = new Parse.Query(Pokemon);
 
       query.equalTo("user", Profile.user);
       query.find({
-        success: function(pets) {
+        success: function(pokemon) {
           // userPosts contains all of the posts by the current user.
 
           var list = [];
 
           // angular for each
-          angular.forEach(pets, function(child, key) {
+          angular.forEach(pokemon, function(child, key) {
             // backbone method toJSON, get obj info from model
             this.push(child.toJSON());
           }, list);
@@ -87,7 +87,6 @@ angular.module('ngVet.common.services.record', [ ])
     * Public method, remove
     * @Object, form
     */
-
 
     this.remove = function (obejctId) {
 

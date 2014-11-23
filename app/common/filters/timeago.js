@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngVet.common.filters.timeago', [])
+angular.module('ngApp.common.filters.timeago', [])
     .filter('timeago', function() {
         return function(input, p_allowFuture) {
 

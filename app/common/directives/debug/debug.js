@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngVet.common.directives.debug', [ ])
+angular.module('ngApp.common.directives.debug', [ ])
 
   // Debug directive.
   .directive('debug', function () {

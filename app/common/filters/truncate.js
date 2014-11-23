@@ -7,7 +7,7 @@
  * @Param end, default is "..."
  * @return string */
 
-angular.module('ngVet.common.filters.truncate', [])
+angular.module('ngApp.common.filters.truncate', [])
   .filter('truncate', function () {
     return function (text, length, end) {
       if (isNaN(length))

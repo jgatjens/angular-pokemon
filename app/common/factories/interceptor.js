@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngVet.common.factories.httpInterceptors', [ ])
+angular.module('ngApp.common.factories.httpInterceptors', [ ])
   .config(function ($httpProvider) {
     $httpProvider.responseInterceptors.push('retryInterceptor');
     // $httpProvider.responseInterceptors.push('retryInterceptor2');

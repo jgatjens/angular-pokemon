@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngVet.common.services.profile', [ ])
+angular.module('ngApp.common.services.profile', [ ])
 
   .service('Profile', function ($q, $log, $rootScope) {
 
@@ -124,19 +124,19 @@ angular.module('ngVet.common.services.profile', [ ])
     }
 
     /**
-    * Public method, SaveCurrentPet assigned to prototype
+    * Public method, SaveCurrentPokemon assigned to prototype
     * @Object, id
     */
-    this.saveCurrentPet = function (id) {
-      this.user.set("currentPet", id);
+    this.saveCurrentPokemon = function (id) {
+      this.user.set("currentPokemon", id);
       return _saveUser();
     }
 
     /**
-    * Public method, getCurrentPet assigned to prototype
+    * Public method, getCurrentPokemon assigned to prototype
     */
-    this.getCurrentPetId = function () {
-      return this.user.get("currentPet");
+    this.getCurrentPokemonId = function () {
+      return this.user.get("currentPokemon");
     }
 
     /**

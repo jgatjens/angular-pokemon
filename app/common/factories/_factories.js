@@ -1,7 +1,7 @@
 
 'use strict';
 
-angular.module('ngVet.common.factories', [
-  // 'ngVet.common.factories.profile',
-  // 'ngVet.common.factories._httpInterceptors'
+angular.module('ngApp.common.factories', [
+  // 'ngApp.common.factories.profile',
+  // 'ngApp.common.factories._httpInterceptors'
 ]);

@@ -65,11 +65,11 @@
     </div>
   </div>
   <div class="form-group" ng-class="{ 'has-error': submittedPassword && passwordForm.confirmPassword.$error.required }">
-    <label for="confirmPasword" class="col-sm-3 col-md-4 control-label"></label>
+    <label for="confirmPasword" class="col-sm-3 col-md-4 hidden-xs control-label"></label>
     <div class="col-sm-7 col-md-5">
       <span class="label label-info" ng-if="passwordForm.password.$valid && userInfo.password == userInfo.confirmPassword">Passwords match!</span>
-      <span class="label label-danger" ng-show="submittedPassword && passwordForm.confirmPassword.$error.match">Confirm Passowrd do no match!</span>
-      <input ng-disabled="!passwordForm.password.$valid" required type="password" name="confirmPassword" data-match="userInfo.password" ng-model="userInfo.confirmPassword" class="form-control input-lg" placeholder="Confirm Password">
+      <span class="label label-danger" ng-show="submittedPassword && passwordForm.confirmPassword.$error.passwordMatch">Confirm Passowrd do no match!</span>
+      <input ng-disabled="!passwordForm.password.$valid" required type="password" name="confirmPassword" password-match data-match="userInfo.password" ng-model="userInfo.confirmPassword" class="form-control input-lg" placeholder="Confirm Password">
     </div>
   </div>
 
@@ -104,20 +104,14 @@
   <div class="form-group">
     <label for="temp" class="col-xs-3 col-md-4 control-label"></label>
     <div class="col-sm-7 col-md-5">
-      <div class="form-group form-inline">
-        <div class="radio">
-          <label>
-            <input type="radio" name="male" ng-model="user.gender" value="male">
-            Male
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input type="radio" name="female" ng-model="user.gender" value="female">
-            Female
-          </label>
-        </div>
-      </div>
+      <label class="radio-inline">
+        <input type="radio" name="male" ng-model="user.gender" value="male">
+        Male
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="female" ng-model="user.gender" value="female">
+        Female
+      </label>
     </div>
   </div>
 

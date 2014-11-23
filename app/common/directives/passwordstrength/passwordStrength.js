@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngVet.common.directives.passwordStrength', [])
+angular.module('ngApp.common.directives.passwordStrength', [])
 
 .directive('passwordStrength', function() {
     return {

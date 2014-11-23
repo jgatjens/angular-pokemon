@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('ngVet.common.directives.nav', [ ])
+angular.module('ngApp.common.directives.nav', [ ])
   // nav directive.
-  .directive('ngVetNav', function () {
+  .directive('ngAppNav', function () {
     return {
       restrict    : 'EA',
       replace     : true,

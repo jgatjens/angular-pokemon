@@ -1,7 +1,7 @@
 'use strict';
 
 // 'ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router'
-angular.module('ngVet', [
+angular.module('ngApp', [
 
   // Vendor modules.
   'ngAnimate',
@@ -9,13 +9,13 @@ angular.module('ngVet', [
   // 'angularMoment',
   'ui.bootstrap',
 
-  // Principal submodules.
-  'ngVet.common',
+  // Share common code.
+  'ngApp.common',
 
   // Sections
-  'ngVet.pet',
-  'ngVet.notification',
-  'ngVet.profile'
+  'ngApp.home',
+  'ngApp.notification',
+  'ngApp.profile'
 ])
 
 
@@ -26,7 +26,7 @@ angular.module('ngVet', [
     $locationProvider.hashPrefix('!');
 
     // Default application's url.
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/home');
 
     // Allow assets from local and external sources
     $sceDelegateProvider.resourceUrlWhitelist([
@@ -36,46 +36,25 @@ angular.module('ngVet', [
 
 
     // moment.locale('en', {
-    //   relativeTime : {
-    //     future: "in %s",
-    //     past:   "%s old",
-    //     s:  "seconds",
-    //     m:  "a minute",
-    //     mm: "%d minutes",
-    //     h:  "an hour",
-    //     hh: "%d hours",
-    //     d:  "a day",
-    //     dd: "%d days",
-    //     M:  "a month",
-    //     MM: "%d months",
-    //     y:  "a year",
-    //     yy: "%d years"
-    //   }
+      //   relativeTime : {
+      //     future: "in %s",
+      //     past:   "%s old",
+      //     s:  "seconds",
+      //     m:  "a minute",
+      //     mm: "%d minutes",
+      //     h:  "an hour",
+      //     hh: "%d hours",
+      //     d:  "a day",
+      //     dd: "%d days",
+      //     M:  "a month",
+      //     MM: "%d months",
+      //     y:  "a year",
+      //     yy: "%d years"
+      //   }
     // });
 
     // Parse init
-    Parse.initialize('8WUpXyrczIHufksKvskQ8hrA3eiroUWhvnguAW8l', 'tIDTd21YkMetRjQFLwY29GW5zcKBzgk5DoX6gUEj');
-
-    // Init Facebook
-    window.fbAsyncInit = function() {
-      Parse.FacebookUtils.init({
-        appId: '1548089038758217',
-        channelUrl : '//www.slidebean.com/fbchannel.html',
-        status: true,
-        cookie: true,
-        xfbml: true
-      });
-
-    };
-
-    // Add facebook sdk to the document
-    (function(d, s, id){
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) {return;}
-      js = d.createElement(s); js.id = id;
-      js.src = '//connect.facebook.net/en_US/all.js';
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+    Parse.initialize(config.applicationID, config.jsKey);
 
 
     // Modified XMLHttpRequest to add a listener for start and stop the progress bar

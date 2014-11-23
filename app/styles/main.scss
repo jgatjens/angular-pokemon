@@ -3,7 +3,7 @@ $border-radius-base:  0;
 $input-border-radius: 0;
 $border-radius-base:  0;
 $border-radius-large: 0;
-$font-size-base:      18px;
+$font-size-base:      16px;
 
 //** Global textual link color.
 $link-color:            #3498DB;
@@ -14,9 +14,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
 
 // inject:scss
+@import "../pages/home/home.scss";
 @import "../pages/notification/notification.scss";
-@import "../pages/pet/pet.scss";
 @import "../pages/profile/profile.scss";
+@import "../pages/pokemon/form/form.scss";
 @import "../pages/profile/login/login.scss";
 @import "../pages/profile/password/password.scss";
 @import "../pages/profile/register/register.scss";
@@ -78,11 +79,11 @@ $redcolor: #ea3767;
   }
 }
 
-.alert-danger p:first-letter{
+.alert-danger p:first-letter, .alert-success p:first-letter{
   text-transform: uppercase;
 }
 
-form .label-danger, form .label-info {
+form .label-danger, form .label-success, form .label-info {
   position: absolute;
   top: -10px;
   right: 24px;

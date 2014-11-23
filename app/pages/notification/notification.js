@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngVet.notification', ['ngVet.notification.detail'])
+angular.module('ngApp.notification', ['ngApp.notification.detail'])
 
   // Module configuration.
   .config(function ($stateProvider) {

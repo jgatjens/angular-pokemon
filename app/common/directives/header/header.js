@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('ngVet.common.directives.header', [ ])
+angular.module('ngApp.common.directives.header', [ ])
   // header directive.
-  .directive('ngVetHeader', function () {
+  .directive('ngAppHeader', function () {
     return {
       restrict    : 'EA',
       replace     : true,
-      transclude: true,
+      transclude  : true,
       templateUrl : 'common/directives/header/header.tpl.html'
     }
   });

@@ -32,9 +32,9 @@
       <!-- <div class="panel-heading">Login</div> -->
       <div class="panel-body">
 
-        <form novalidate name="registerForm" class="form-horizontal" role="form" action="">
+        <form novalidate ng-submit="register()" name="registerForm" class="form-horizontal" role="form">
 
-          <div class="form-group has-feedback" ng-class="{ 'has-error': submitted && registerForm.username.$error.required }">
+          <div class="form-group has-feedback" ng-class="{ 'has-error': submitted && registerForm.username.$invalid }">
             <div class="col-md-offset-1 col-md-10">
               <span class="label label-danger" ng-show="submitted && registerForm.username.$error.required">Required!</span>
 
@@ -42,32 +42,34 @@
               <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
           </div>
-          <div class="form-group has-feedback" ng-class="{ 'has-error': submitted && registerForm.email.$error.required }">
+          <div class="form-group has-feedback" ng-class="{ 'has-error': submitted && registerForm.email.$invalid }">
             <div class="col-md-offset-1 col-md-10">
               <span class="label label-danger" ng-show="submitted && registerForm.email.$error.required">Required!</span>
+              <span class="label label-danger" ng-show="submitted && registerForm.email.$invalid">Invalid email!</span>
               <input tabindex="0" type="email" name="email" ng-model="user.email" required class="form-control input-lg" placeholder="Email">
               <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
             </div>
           </div>
-          <div class="form-group">
+          <div class="form-group" ng-class="{ 'has-error': submitted && registerForm.password.$invalid }">
             <div class="col-md-offset-1 col-md-10 has-feedback">
-              <span class="label label-danger" data-ng-show="submitted && registerForm.password.$error.required">Required!</span>
-              <input tabindex="0" password-strength type="password" name="password" ng-model="user.password" required class="form-control input-lg" placeholder="Password">
+              <span class="label label-danger" ng-show="submitted && registerForm.password.$error.required">Required!</span>
+              <input tabindex="0" password-strength ng-model="user.password" required type="password" name="password" class="form-control input-lg" placeholder="Password">
             </div>
           </div>
 
-          <div class="form-group" ng-class="{ 'has-error': submitted && registerForm.confirmPassword.$error.match }">
+          <div class="form-group" ng-class="{ 'has-error': submitted && registerForm.confirmPassword.$invalid }">
             <div class="col-md-offset-1 col-md-10 has-feedback">
-              <span class="label label-danger" ng-show="registerForm.confirmPassword.$error.match">Password dont Match!</span>
               <span class="label label-danger" ng-show="submitted && registerForm.confirmPassword.$error.required">Required!</span>
-              <input tabindex="0" type="password" name="confirmPassword" data-match="user.password" ng-model="user.confirmPassword" required class="form-control input-lg" placeholder="Confirm Password">
+              <span class="label label-danger" ng-show="submitted && registerForm.confirmPassword.$error.match">Password dont Match!</span>
+              <span class="label label-info" ng-show="(!registerForm.confirmPassword.$error.match && !registerForm.confirmPassword.$error.required)">Password Match!</span>
+              <input ng-disabled="!registerForm.password.$valid" tabindex="0" password-match data-match="user.password" ng-model="user.confirmPassword" required  type="password" name="confirmPassword" class="form-control input-lg" placeholder="Confirm Password">
             </div>
           </div>
 
           <!-- Save Aditional Info -->
           <div class="form-group">
             <div class="col-md-offset-1 col-md-10">
-              <button tabindex="0" ng-click="register()" ng-disabled="registerForm.$invalid" class="btn btn-primary btn-lg btn-block">Sign in</button>
+              <button tabindex="0" type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
             </div>
           </div>
 

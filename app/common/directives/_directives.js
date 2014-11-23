@@ -1,8 +1,9 @@
 'use strict';
 
-angular.module('ngVet.common.directives', [
-  'ngVet.common.directives.debug',
-  'ngVet.common.directives.nav',
-  'ngVet.common.directives.footer',
-  'ngVet.common.directives.header'
+angular.module('ngApp.common.directives', [
+  'ngApp.common.directives.debug',
+  'ngApp.common.directives.nav',
+  'ngApp.common.directives.footer',
+  'ngApp.common.directives.header',
+  'ngApp.common.directives.fileinput'
 ]);

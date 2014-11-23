@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngVet.profile.login', [ ])
+angular.module('ngApp.profile.login', [ ])
 
   // Module configuration.
   .config(function ($stateProvider) {
@@ -43,7 +43,7 @@ angular.module('ngVet.profile.login', [ ])
             return;
           }
 
-          $state.go('pets');
+          $state.go('home');
 
         }, function(error){
           $scope.errorSubmitted = true;

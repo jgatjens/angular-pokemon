@@ -1,12 +1,11 @@
 <ul id="main-nav" class="nav nav-pills pull-right">
-  <li ui-sref-active="active"><a ui-sref="pets" href="#"><i class="glyphicon glyphicon-home"></i></a></li>
+  <li ui-sref-active="active"><a ui-sref="home" href="#"><i class="glyphicon glyphicon-home"></i></a></li>
   <li class="dropdown" dropdown>
     <a href class="dropdown-toggle" dropdown-toggle>Pokemon <span class="caret"></span></a>
     <ul class="dropdown-menu" role="menu">
-      <li ui-sref-active="active"><a ui-sref="petsNewRecord">New record</a></li>
-      <!-- <li class="divider"></li> -->
-      <li ui-sref-active="active"><a ui-sref="petsNew">New pet</a></li>
-      <li ui-sref-active="active"><a ui-sref="petsList">Pet list</a></li>
+      <li ui-sref-active="active"><a ui-sref="pokemonList">List</a></li>
+      <li ui-sref-active="active"><a ui-sref="pokemonNew">New</a></li>
+      <li ui-sref-active="active"><a ui-sref="pokemonRecord">New record</a></li>
     </ul>
   </li>
   <!-- <li class="dropdown" dropdown>
@@ -37,9 +36,9 @@
     <ul class="dropdown-menu dropdown-menu-right" role="menu">
       <li ui-sref-active="active"><a ui-sref="profile">Account settings</a></li>
       <li class="divider"></li>
-      <li ui-sref-active="active"><a ui-sref="notification">Notification Center</a></li>
+<!--       <li ui-sref-active="active"><a ui-sref="notification">Notification Center</a></li>
       <li><a href="#">Contact us</a></li>
-      <li class="divider"></li>
+      <li class="divider"></li> -->
       <li><a ui-sref="login" ng-click="logout()">Logout</a></li>
     </ul>
   </li>

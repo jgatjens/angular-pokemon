@@ -1,9 +1,11 @@
 
 // Nav
+@media (max-width: $screen-xs-min) {
+  .nav > li > a {
+    padding: 6px 8px;
+  }
 
-#main-nav {
-  // a { color: black; }
-  &.nav-pills > li.active > a {
-    background-color: #C7C7C7
+  .nav-pills > li + li {
+    margin-left: 0;
   }
 }
