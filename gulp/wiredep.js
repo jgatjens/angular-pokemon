@@ -22,7 +22,7 @@ gulp.task('wiredep', function () {
 });
 
 
-// Inject angular modulos into index.html
+// Inject js files into index.html
 var angularFilesort = require('gulp-angular-filesort'),
     es = require('event-stream'),
     inject = require('gulp-inject');
@@ -36,11 +36,15 @@ var options = {
 gulp.task('injectjs', function () {
 
   var target = gulp.src('./app/index.html');
-  var sources = gulp.src(['./app/pages/**/*.js', './app/common/**/*.js']).pipe(angularFilesort());
+  var sources = gulp.src([
+    './app/pages/**/*.js',
+    './app/common/**/*.js',
+    '!./app/common/config.js' // exclude this file
+  ]).pipe(angularFilesort());
 
-  return target.pipe(inject(sources, options))
-              .pipe(gulp.dest('./app'));
-
+  return target
+            .pipe(inject(sources, options))
+            .pipe(gulp.dest('./app'));
 });
 
 gulp.task('injectscss', function () {

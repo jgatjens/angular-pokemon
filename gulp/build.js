@@ -34,8 +34,8 @@ function moduleName (file) {
     var array = file.relative.split('/');
     // console.log('pathname', file.relative, array);
     var path = array.slice(0, array.length - 1);
-    // console.log('ngVet.' + path.join('.'));
-    return 'ngVet.' + path.join('.');
+    // console.log('ngApp.' + path.join('.'));
+    return 'ngApp.' + path.join('.');
 }
 
 // add
@@ -65,7 +65,7 @@ gulp.task('common', function () {
       moduleName: function moduleName (file) {
           var array = file.relative.split('/');
           var path = array.slice(0, array.length - 1);
-          return 'ngVet.common.' + path.join('.');
+          return 'ngApp.common.' + path.join('.');
       },
       prefix: 'common/'
     }))
@@ -80,8 +80,6 @@ gulp.task('html', ['scripts', 'styles', 'partials'], function () {
   var jsFilter = $.filter('**/*.js');
   var cssFilter = $.filter('**/*.css');
   var assets;
-
-  // console.log(jsFilter);
 
   return gulp.src('app/*.html')
 
@@ -98,7 +96,7 @@ gulp.task('html', ['scripts', 'styles', 'partials'], function () {
     .pipe($.uglify({preserveComments: $.uglifySaveLicense}))
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
-    .pipe($.replace('bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap','assets/fonts'))
+    .pipe($.replace('bower_components/bootstrap-sass-official/assets/fonts/bootstrap','assets/fonts'))
     .pipe($.csso())
     .pipe(cssFilter.restore())
     .pipe(assets.restore())
@@ -131,4 +129,4 @@ gulp.task('clean', function () {
   return gulp.src(['.tmp', 'dist'], { read: false }).pipe($.rimraf());
 });
 
-gulp.task('build', ['html', 'partials', 'images', 'fonts']);
+gulp.task('build', ['env_prod', 'html', 'images', 'fonts']);
