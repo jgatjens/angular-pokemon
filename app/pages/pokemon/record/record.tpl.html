@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
+    <div class="page-header">
+      <h1>
+        <a ui-sref="pokemonList">
+          <i class="glyphicon glyphicon-chevron-left"></i>
+        </a> Add <small>New</small> Record
+      </h1>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-offset-3 col-md-offset-3 col-sm-8 col-md-6">
+
+    <div ng-show="okRequest" class="alert alert-success" role="alert">
+      <p>Record <strong>info</strong> has been updated successfully !</p>
+    </div>
+
+    <div ng-show="errorSubmitted" class="alert alert-danger" role="alert">
+      <p>{{ user.errorMessage }}</p>
+    </div>
+
+    <div ng-show="warningNoPokemon" class="alert alert-warning" role="alert">
+      <p>You need to add a pokemon before creating a new record <a href="" ui-sref="pokemonNew">new pokemon</a></p>
+    </div>
+
+  </div>
+</div>
+
+
+<form novalidate ng-submit="submit()" class="form-horizontal" name="recordForm" role="form">
+
+  <div class="form-group">
+    <label for="record-title" class="col-sm-3 col-md-4 control-label">Assing to</label>
+    <div class="col-sm-7 col-md-5">
+
+      <!-- error -->
+      <span class="label label-danger" ng-show="submitted && recordForm.pokemon.$error.required">required!</span>
+
+
+      <select required name="pokemon" class="form-control input-lg" ng-model="record.pokemon" ng-options="pokemon.name for pokemon in record.pokemonList">
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="record-title" class="col-sm-3 col-md-4 control-label">Info Basica</label>
+    <div class="col-sm-7 col-md-5">
+
+      <!-- error -->
+      <span class="label label-danger" ng-show="submitted && recordForm.title.$error.required">required!</span>
+
+      <input type="text" required class="form-control input-lg" name="title" ng-model="record.title" id="title" placeholder="Title">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-3 col-md-4 control-label"></label>
+    <div class="col-sm-7 col-md-5">
+
+      <!-- error -->
+      <span class="label label-danger" ng-show="submitted && recordForm.weight.$error.required">required!</span>
+      <span class="label label-danger" ng-show="recordForm.weigth.$error.number">Please use only numbers</span>
+
+      <div class="input-group">
+        <input type="number" required min="1" max="100" maxlength="3" ng-model="record.weight" class="form-control input-lg" name="weight" placeholder="Actual weigth">
+        <span class="input-group-addon"> kg</span>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="form-group">
+    <label for="img-record" class="col-sm-3 col-md-4 control-label"></label>
+    <div class="col-sm-7 col-md-5">
+      <div class="input-group">
+        <input type="file" name="img-record" class="form-control input-lg">
+        <span class="input-group-addon">Foto</span>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="form-group">
+    <label for="record-comment" class="col-sm-3 col-md-4 control-label">Comments</label>
+    <div class="col-sm-7 col-md-5">
+      <textarea type="textarea" name="comment" ng-model="record.comment" rows="6" class="form-control input-lg" placeholder="Aditional comments"></textarea>
+    </div>
+  </div>
+
+  <!-- Save Aditional Info -->
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-md-offset-4 col-sm-7 col-md-5">
+      <button type="submit" ng-hide="edit" class="btn btn-primary btn-lg btn-lg btn-block">Save Record</button>
+      <button type="submit" ng-show="edit" class="btn btn-primary btn-lg btn-lg btn-block">Update Record</button>
+    </div>
+  </div>
+
+</form>
