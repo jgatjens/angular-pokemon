@@ -16,8 +16,8 @@ angular.module('ngApp.common.directives.match', [])
           scope.$watch(function() {
               var modelValue = ctrl.$modelValue || ctrl.$$invalidModelValue;
 
-              console.log(modelValue, scope.match);
-              console.log(scope.match === modelValue);
+              // console.log(modelValue, scope.match);
+              // console.log(scope.match === modelValue);
 
               return (ctrl.$pristine && angular.isUndefined(modelValue)) || scope.match === modelValue;
           }, function(currentValue) {
