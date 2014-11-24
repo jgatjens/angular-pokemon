@@ -6,6 +6,8 @@ angular.module('ngApp', [
   // Vendor modules.
   'ngAnimate',
   'ui.router',
+  'filereader',  // service
+
   // 'angularMoment',
   'ui.bootstrap',
 

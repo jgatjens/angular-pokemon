@@ -8,7 +8,7 @@ angular.module('ngApp.pokemon.form.edit', [ ])
     // Module routing.
     $stateProvider
       .state('pokemonEdit', {
-        url         : '/edit/:id',
+        url         : '/pokemon/edit/:id',
         controller  : 'PokemonEditCtrl',
         authenticate: true,
         templateUrl : 'pages/pokemon/form/form.tpl.html',
@@ -24,8 +24,7 @@ angular.module('ngApp.pokemon.form.edit', [ ])
   // new pokemon controller.
   .controller('PokemonEditCtrl', function ($scope, FileReader, Pokemon, pokemon) {
 
-    pokemon.picture = pokemon.picture._url;
-
+    if (pokemon.picture) pokemon.picture = pokemon.picture._url;
 
     $scope.edit = true;
     $scope.pokemon = angular.copy(pokemon);
@@ -43,6 +42,9 @@ angular.module('ngApp.pokemon.form.edit', [ ])
       startingDay: 1
     };
 
+    // Pokemons type
+    $scope.types = Pokemon.getTypes();
+
     $scope.open = function($event) {
       $event.preventDefault();
       $event.stopPropagation();
@@ -57,8 +59,10 @@ angular.module('ngApp.pokemon.form.edit', [ ])
         });
     };
 
-    // Pokemons type
-    $scope.types = Pokemon.getTypes();
+    $scope.clickInputFile = function () {
+      var fileInput = document.querySelector('#fileinput');
+      fileinput.click();
+    }
 
     $scope.submit = function () {
 
@@ -73,17 +77,16 @@ angular.module('ngApp.pokemon.form.edit', [ ])
 
       Pokemon.save($scope.pokemon)
         .then(function (result) {
-
-          if (result){
-            $scope.okRequest = true;
-            $scope.pokemon.picture = result.pokemon.get('picture')._url;
+            if (result){
+              $scope.okRequest = true;
+              $scope.pokemon.picture = result.pokemon.get('picture')._url;
+            }
+          },
+          function (error) {
+            $scope.errorSubmitted = true;
+            $scope.user.errorMessage = error.message;
           }
-
-        }, function (error){
-          $scope.errorSubmitted = true;
-          $scope.user.errorMessage = error.message;
-        });
-
+        );
     }
 
   });

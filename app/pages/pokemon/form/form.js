@@ -65,6 +65,11 @@ angular.module('ngApp.pokemon.form', ['ngApp.pokemon.form.edit'])
         });
     };
 
+    $scope.clickInputFile = function () {
+      var fileInput = document.querySelector('#fileinput');
+      fileinput.click();
+    }
+
     $scope.submit = function () {
 
       $scope.okRequest = false;

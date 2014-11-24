@@ -40,7 +40,7 @@ angular.module('ngApp.profile.register', ['ngApp.common.directives.match', 'ngAp
             showCancelButton: true
           },
           function() {
-            $state.go('login');
+            $state.go('login', { username: $scope.user.username });
           });
         }, function(error){
           $scope.errorSubmitted = true;

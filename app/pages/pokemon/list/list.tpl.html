@@ -31,7 +31,7 @@
                 <i id="pokemon-remove" tooltip="Remove" ng-click="remove(pokemon)" class="glyphicon glyphicon-remove-sign"></i>
               </div>
               <div class="user">
-                  <img class="img-circle" alt="Pokemon Avatar" ng-src="{{ pokemon.picture.url }}">
+                  <img ng-show="pokemon.picture.url" class="img-circle" alt="Pokemon Avatar" ng-src="{{ pokemon.picture.url }}">
               </div>
               <div class="content">
                   <div class="main">
@@ -74,7 +74,7 @@
   </div>
 
   <div ng-show="{{ pokemons.length == 0 }}" class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
-    <a href="" class="btn btn-primary btn-block btn-lg"  ui-sref="pokemonNewRecord">Add your first pokemon</a>
+    <a href="" class="btn btn-primary btn-block btn-lg"  ui-sref="pokemonNew">Add your first pokemon</a>
   </div>
 
 

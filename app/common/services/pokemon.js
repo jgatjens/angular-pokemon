@@ -18,6 +18,16 @@ angular.module('ngApp.common.services.pokemon', [ ])
       var Pokemon = Parse.Object.extend("Pokemon");
       var pokemon = new Pokemon();
 
+      // create ACL
+      var acl = new Parse.ACL();
+      // public cannot read data
+      acl.setPublicReadAccess(false);
+      acl.setPublicWriteAccess(false);
+      // user can read data
+      acl.setReadAccess( Profile.user, true );
+      acl.setWriteAccess( Profile.user, true );
+      // save ACL to object
+      pokemon.setACL( acl );
 
       pokemon.set("name", form.name);
       pokemon.set("brand", form.brand);
@@ -130,7 +140,7 @@ angular.module('ngApp.common.services.pokemon', [ ])
       this.pokemon.set('type', form.type);
       this.pokemon.set('weigth', form.weigth);
 
-      if (form.picture) {
+      if (form.file && form.file.name) {
         var file = new Parse.File(form.file.name, { base64: form.picture }, form.file.type);
         this.pokemon.set("picture", file);
       }

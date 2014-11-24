@@ -41,7 +41,9 @@
         </div>
         <div class="col-xs-12 col-md-6">
           <div class="form-group">
-            <div file-input="pokemon.file" on-change="readFile()"></div>
+            <div class="fileinput" id="fileinput" file-input="pokemon.file" on-change="readFile()"></div>
+            <a href="" ng-hide="edit" ng-click="clickInputFile($event)" class="btn btn-danger btn-lg">Add image</a>
+            <a href="" ng-show="edit" ng-click="clickInputFile($event)" class="btn btn-danger btn-lg">Update image</a>
           </div>
           <div id="picture">
               <img ng-src="{{pokemon.picture}}" class="img-responsive">

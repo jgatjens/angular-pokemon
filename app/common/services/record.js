@@ -45,6 +45,33 @@ angular.module('ngApp.common.services.record', [ ])
       return defer.promise;
     };
 
+    /**
+    * Public method, getById
+    * @Object, form
+    */
+
+
+    this.getById = function (obejctId) {
+
+      var defer = $q.defer();
+
+      var Records = Parse.Object.extend("Records");
+      var query = new Parse.Query(Records);
+
+      query.get(obejctId, {
+        success: function(myObj) {
+          self.record = myObj;
+          // The object was retrieved successfully.
+          defer.resolve(myObj.attributes);
+        },
+        error: function(object, error) {
+          // The object was not retrieved successfully.
+           defer.reject(_checkErros(error));
+        }
+      });
+
+      return defer.promise;
+    };
 
     /**
     * Public method, List
@@ -53,19 +80,19 @@ angular.module('ngApp.common.services.record', [ ])
     this.list = function () {
 
       var defer     = $q.defer(),
-          Pokemon   = Parse.Object.extend("Records");
+          Records   = Parse.Object.extend("Records");
 
-      var query = new Parse.Query(Pokemon);
+      var query = new Parse.Query(Records);
 
       query.equalTo("user", Profile.user);
       query.find({
-        success: function(pokemon) {
+        success: function(record) {
           // userPosts contains all of the posts by the current user.
 
           var list = [];
 
           // angular for each
-          angular.forEach(pokemon, function(child, key) {
+          angular.forEach(record, function(child, key) {
             // backbone method toJSON, get obj info from model
             this.push(child.toJSON());
           }, list);

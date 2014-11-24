@@ -8,7 +8,11 @@ angular.module('ngApp.profile.login', [ ])
     // Module routing.
     $stateProvider
       .state('login', {
-        url         : '/login?errorCode',
+        url         : '/login/:username?errorCode',
+        params: {
+          username: { value: '' },
+          errorCode: { value: '' }
+        },
         controller  : 'LoginCtrl',
         templateUrl : 'pages/profile/login/login.tpl.html'
       });
@@ -17,7 +21,9 @@ angular.module('ngApp.profile.login', [ ])
   // Login controller.
   .controller('LoginCtrl', function ($rootScope, $scope, $state, Profile) {
 
-    $scope.user = {};
+    $scope.user = {
+      username: $state.params.username ? $state.params.username : ''
+    };
     $scope.submitted = false;
     $scope.confirmEmail = false;
     $scope.errorSubmitted = false;
