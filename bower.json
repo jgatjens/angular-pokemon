@@ -1,6 +1,6 @@
 {
-  "name": "myVet",
-  "version": "0.0.0",
+  "name": "Pokemon",
+  "version": "0.0.1",
   "dependencies": {
     "nprogress": "latest",
     "angular": "latest",
