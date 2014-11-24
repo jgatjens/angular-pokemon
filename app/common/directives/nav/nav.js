@@ -13,19 +13,7 @@ angular.module('ngApp.common.directives.nav', [ ])
   .controller('navCtrl', function ($scope, Profile) {
 
     $scope.logout = function () {
-
-      // swal({
-      //   title: "Are you sure you want to logout ?",
-      //   type: "info",
-      //   confirmButtonText: 'Logout',
-      //   showCancelButton: true
-      // },
-      // function() {
-      //   Profile.logout();
-      // });
-
       Profile.logout();
-
     };
 
   });

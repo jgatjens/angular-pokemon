@@ -1,5 +1,62 @@
+
+
 <div class="header">
-  <h3 class="company pull-left"><img src="assets/images/logo.png" alt="logo"></h3>
-  <ul ng-show='user.isAuthenticated && user.emailVerified' ng-app-nav></ul>
+  <div ng-show="user.isAuthenticated && user.emailVerified" class="hanburger-menu">
+    <a ng-click="toggleMenu()">
+      <img src="/assets/icon-menu.svg">
+    </a>
+  </div>
+
+  <h3 class="company text-center"><img src="assets/images/logo.png" alt="logo"></h3>
+
+  <nav ng-show="user.isAuthenticated && user.emailVerified" ng-app-nav></nav>
   <div class="clearfix"></div>
+  <!--  -->
+
+  <!-- <ul id="main-nav" class="nav nav-pills pull-right">
+    <li ui-sref-active="active"><a ui-sref="home" href="#"><i class="glyphicon glyphicon-home"></i></a></li>
+    <li class="dropdown" dropdown>
+      <a href class="dropdown-toggle" dropdown-toggle>Pokemon <span class="caret"></span></a>
+      <ul class="dropdown-menu" role="menu">
+        <li ui-sref-active="active"><a ui-sref="pokemonList">List</a></li>
+        <li ui-sref-active="active"><a ui-sref="pokemonNew">New</a></li>
+        <li ui-sref-active="active"><a ui-sref="newRecord">New record</a></li>
+      </ul>
+    </li>
+    <li class="dropdown" dropdown>
+      <a href class="dropdown-toggle" dropdown-toggle><i class="glyphicon glyphicon-bell"></i> <span class="badge">2</span> <span class="caret"></span></a>
+      <ul class="dropdown-menu dropdown-menu-right" style="max-width: 350px; min-width: 300px; right: -110%;" role="menu">
+        <li style="text-align:center">Notifications</li>
+        <li class="divider"></li>
+        <li>
+          <a ui-sref="notification">
+            <h6>C. Pokemon Heredia, 01-08-2014</h6>
+            <h4>Acceso info Pokemon</h4>
+            <p style="white-space: normal;">Lorem ipsum dolor sit amet, consectetur  adipisicing elit, sed do eiusmod tempor incididunt.</p>
+          </a>
+        </li>
+
+        <li>
+          <a ui-sref="notification">
+            <h6>C. Pokemon, 01-09-2014</h6>
+            <h4>Centro Pokemon</h4>
+            <p style="white-space: normal;">Lorem ipsum dolor sit amet, consectetur  adipisicing tempor incididunt.</p>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown" dropdown>
+      <a href class="dropdown-toggle" dropdown-toggle>{{ user.username }} <span class="caret"></span></a>
+      <ul class="dropdown-menu dropdown-menu-right" role="menu">
+        <li ui-sref-active="active"><a ui-sref="profile">Account settings</a></li>
+        <li class="divider"></li>
+        <li ui-sref-active="active"><a ui-sref="notification">Notification Center</a></li>
+        <li><a href="#">Contact us</a></li>
+        <li class="divider"></li>
+        <li><a ui-sref="login" ng-click="logout()">Logout</a></li>
+      </ul>
+    </li>
+    <li>
+    </li>
+  </ul> -->
 </div>

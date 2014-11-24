@@ -1,53 +1,16 @@
-<ul id="main-nav" class="nav nav-pills pull-right">
-  <li ui-sref-active="active"><a ui-sref="home" href="#"><i class="glyphicon glyphicon-home"></i></a></li>
-  <li class="dropdown" dropdown>
-    <a href class="dropdown-toggle" dropdown-toggle>Pokemon <span class="caret"></span></a>
-    <ul class="dropdown-menu" role="menu">
-      <li ui-sref-active="active"><a ui-sref="pokemonList">List</a></li>
-      <li ui-sref-active="active"><a ui-sref="pokemonNew">New</a></li>
-      <li ui-sref-active="active"><a ui-sref="newRecord">New record</a></li>
-    </ul>
-  </li>
-  <!-- <li class="dropdown" dropdown>
-    <a href class="dropdown-toggle" dropdown-toggle><i class="glyphicon glyphicon-bell"></i> <span class="badge">2</span> <span class="caret"></span></a>
-    <ul class="dropdown-menu dropdown-menu-right" style="max-width: 350px; min-width: 300px; right: -110%;" role="menu">
-      <li style="text-align:center">Notifications</li>
-      <li class="divider"></li>
-      <li>
-        <a ui-sref="notification">
-          <h6>C. Pokemon Heredia, 01-08-2014</h6>
-          <h4>Acceso info Pokemon</h4>
-          <p style="white-space: normal;">Lorem ipsum dolor sit amet, consectetur  adipisicing elit, sed do eiusmod tempor incididunt.</p>
-        </a>
-      </li>
+<nav ng-click="toggleMenu()" class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu">
+  <a ui-sref="home" href="#"><i class="glyphicon glyphicon-home"></i> home</a>
+  <a ui-sref-active="active" ui-sref="pokemonList"><i class="glyphicon glyphicon-th-list"></i> list</a>
+  <a ui-sref-active="active" ui-sref="pokemonNew"><i class="glyphicon glyphicon-camera"></i> new</a>
+  <a ui-sref-active="active" ui-sref="newRecord"><i class="glyphicon glyphicon-file"></i> record</a>
+  <a ui-sref-active="active" ui-sref="profile"><i class="glyphicon glyphicon-cog"></i> settings</a>
+  <a ui-sref="login" ng-click="logout()"><i class="glyphicon glyphicon-off"></i> logout</a>
 
-      <li>
-        <a ui-sref="notification">
-          <h6>C. Pokemon, 01-09-2014</h6>
-          <h4>Centro Pokemon</h4>
-          <p style="white-space: normal;">Lorem ipsum dolor sit amet, consectetur  adipisicing tempor incididunt.</p>
-        </a>
-      </li>
-    </ul>
-  </li> -->
+  <!--
+    var body = document.body;
+    var menu = document.getElementById( 'cbp-spmenu' )
 
-  <li class="dropdown" dropdown>
-    <a href class="dropdown-toggle" dropdown-toggle>{{ user.username }} <span class="caret"></span></a>
-    <ul class="dropdown-menu dropdown-menu-right" role="menu">
-      <li ui-sref-active="active"><a ui-sref="profile">Account settings</a></li>
-      <li class="divider"></li>
-<!--       <li ui-sref-active="active"><a ui-sref="notification">Notification Center</a></li>
-      <li><a href="#">Contact us</a></li>
-      <li class="divider"></li> -->
-      <li><a ui-sref="login" ng-click="logout()">Logout</a></li>
-    </ul>
-  </li>
-  <li>
-    <!-- <div
-      class="fb-like"
-      data-share="true"
-      data-width="450"
-      data-show-faces="true">
-    </div> -->
-  </li>
-</ul>
+    $(body).toggleClass('cbp-spmenu-push-toright')
+    ;$(menu).toggleClass('cbp-spmenu-open' );
+  -->
+</nav>
