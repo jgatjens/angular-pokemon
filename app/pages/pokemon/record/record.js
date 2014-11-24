@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('ngApp.pokemon.record', [ ])
+angular.module('ngApp.pokemon.record', ['ngApp.pokemon.record.edit'])
 
   // Module configuration.
   .config(function ($stateProvider) {
 
     // Module routing.
     $stateProvider
-      .state('pokemonRecord', {
+      .state('newRecord', {
         url: '/record/:id',
         params: {
           id: { value: null }

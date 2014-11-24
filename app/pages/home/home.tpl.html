@@ -44,6 +44,7 @@
         <p>{{record.comment}}</p>
         <!-- <a href="" ui-sref="pokemonEditRecord()" class="btn btn-primary">edit</a> -->
         <a href="" ng-click="delete(record)" class="btn btn-danger">delete</a>
+        <a href="" ui-sref="editRecord({ id: record.objectId })" class="btn btn-info">Edit</a>
       </div>
     </div>
 
@@ -51,7 +52,7 @@
   </div>
 
   <div ng-show="{{ records.length == 0 }}" class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
-    <a href="" class="btn btn-primary btn-block btn-lg"  ui-sref="pokemonRecord">Add Record</a>
+    <a href="" class="btn btn-primary btn-block btn-lg"  ui-sref="newRecord">Add Record</a>
   </div>
 
 

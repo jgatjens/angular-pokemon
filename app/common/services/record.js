@@ -45,6 +45,42 @@ angular.module('ngApp.common.services.record', [ ])
       return defer.promise;
     };
 
+     /**
+    * Public method, save
+    * @Object, form
+    */
+
+
+    this.save = function (form) {
+
+      var Pokemon = Parse.Object.extend("Pokemon");
+
+      this.record.set("title", form.title);
+      this.record.set("weight", form.weight);
+      this.record.set("comment", form.comment);
+
+      var pokemon = new Pokemon();
+      pokemon.id = form.pokemon.objectId;
+
+      this.record.set("pokemon", pokemon);
+
+      var defer = $q.defer();
+
+      this.record.save(null, {
+        success: function(obj) {
+          // Hooray! Let them use the app now.
+          defer.resolve(obj);
+        },
+        error: function(obj, error) {
+          // Show the error message somewhere and let the user try again.
+          defer.reject(_checkErros(error));
+        }
+      });
+
+      return defer.promise;
+    };
+
+
     /**
     * Public method, getById
     * @Object, form
@@ -60,9 +96,10 @@ angular.module('ngApp.common.services.record', [ ])
 
       query.get(obejctId, {
         success: function(myObj) {
+
           self.record = myObj;
           // The object was retrieved successfully.
-          defer.resolve(myObj.attributes);
+          defer.resolve(myObj.toJSON());
         },
         error: function(object, error) {
           // The object was not retrieved successfully.

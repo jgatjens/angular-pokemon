@@ -7,17 +7,23 @@ angular.module('ngApp.pokemon.record.edit', [ ])
 
     // Module routing.
     $stateProvider
-      .state('pokemonRecord', {
+      .state('editRecord', {
         url: '/record/edit/:id',
         params: {
           id: { value: null }
         },
-        controller  : 'RecordEditCtrl',
+        controller  : 'EditRecordCtrl',
         authenticate: true,
         templateUrl : 'pages/pokemon/record/record.tpl.html',
         resolve: {
-          record: function (Record) {
-            return Record.getById().then(function(record) {
+          pokemonList: function (Pokemon) {
+            return Pokemon.list().then(function(pokemons) {
+              return pokemons;
+            });
+          },
+          record: function (Record,  $stateParams) {
+            var id =  $stateParams.id;
+            return Record.getById(id).then(function(record) {
               return record;
             });
           }
@@ -26,33 +32,31 @@ angular.module('ngApp.pokemon.record.edit', [ ])
   })
 
   // Record controller.
-  .controller('RecordEditCtrl', function ($scope, $state, record, Profile, Record) {
+  .controller('EditRecordCtrl', function ($scope, $state, Profile, Record, pokemonList, record) {
 
     $scope.okRequest = false;
     $scope.errorSubmitted = false;
     $scope.submitted = false;
+    var currentPokemon, i = 0;
 
     // No Pokemons
-    // if (pokemonList.length === 0 ) {
-    //   $scope.warningNoPokemon = true
-    // }
+    if (pokemonList.length === 0 ) {
+      $scope.warningNoPokemon = true
+    }
 
-    // angular.forEach(pokemonList, function(pokemon) {
+    angular.forEach(pokemonList, function(pokemon) {
 
-    //   if ($state.params.id) {
-    //     if (pokemon.objectId === $state.params.id) {
-    //       currentPokemon = i;
-    //     }
-    //   } else {
-    //     if (pokemon.objectId === id) {
-    //       currentPokemon = i;
-    //     }
-    //   }
+      if (pokemon.objectId === record.pokemon.objectId) {
+        currentPokemon = i;
+      }
 
-    //   i++;
-    // });
+      i++;
+    });
+
     $scope.edit = true;
     $scope.record = angular.copy(record);
+    $scope.record.pokemon = pokemonList[currentPokemon];
+    $scope.record.pokemonList = pokemonList;
 
     $scope.submit = function (){
 
@@ -73,7 +77,7 @@ angular.module('ngApp.pokemon.record.edit', [ ])
 
             setTimeout(function () {
               $state.go('home');
-            }, 500);
+            }, 1000);
 
         }, function (error){
           $scope.errorSubmitted = true;

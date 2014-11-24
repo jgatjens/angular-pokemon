@@ -25,7 +25,7 @@
       <div class="card" ng-class="{active:  pokemon.objectId == activePokemon }">
           <div class="front">
               <div class="cover">
-                <i id="pokemon-add-record" tooltip="New Record"  ui-sref="pokemonRecord({ id: pokemon.objectId })" class="glyphicon glyphicon-plus"></i>
+                <i id="pokemon-add-record" tooltip="New Record"  ui-sref="newRecord({ id: pokemon.objectId })" class="glyphicon glyphicon-plus"></i>
                 <i id="pokemon-active" tooltip="Set default" ng-click="active(pokemon)"  class="glyphicon glyphicon glyphicon-heart"></i>
                 <i id="pokemon-edit" tooltip="Edit" ui-sref="pokemonEdit({ id: pokemon.objectId })" class="glyphicon glyphicon-edit"></i>
                 <i id="pokemon-remove" tooltip="Remove" ng-click="remove(pokemon)" class="glyphicon glyphicon-remove-sign"></i>
