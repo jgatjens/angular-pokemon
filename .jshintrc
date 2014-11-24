@@ -22,6 +22,7 @@
   "globals": {
     "angular": false,
     "$": false,
+    "config": false,
     "Parse": false,
     "window": false,
     "XMLHttpRequest": false,

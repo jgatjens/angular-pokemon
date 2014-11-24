@@ -55,6 +55,8 @@ angular.module('ngApp', [
       //   }
     // });
 
+    // var config = config || {};
+
     // Parse init
     Parse.initialize(config.applicationID, config.jsKey);
 
