@@ -111,9 +111,17 @@ angular.module('ngApp', [
 
   .run(function( $rootScope, Profile, $state) {
 
-    $rootScope.$on('$stateChangeStart', function(){
+    $rootScope.$on('$stateChangeStart', function(event, toState){
       // start
       NProgress.start();
+
+      // Profile Auth
+      if ((toState.authenticate && !Profile.isAuthenticated()) || (toState.authenticate && !Profile.isEmailVerified()) ){
+        event.preventDefault();
+        // User isn’t authenticated
+        $state.go('login', { errorCode: 403 });
+      }
+
     });
 
     // $rootScope.$on('$stateChangeSuccess',function(event, toState, toParams, fromState, fromParams){
@@ -127,15 +135,6 @@ angular.module('ngApp', [
         $rootScope.activePage = toState.name.split('.')[0];
       } else {
         $rootScope.activePage = toState.name;
-      }
-
-      if (toState.authenticate && !Profile.isAuthenticated()){
-
-        event.preventDefault();
-
-        // User isn’t authenticated
-        $state.transitionTo('login', { errorCode: 403 });
-
       }
 
     });
