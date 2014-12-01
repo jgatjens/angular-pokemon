@@ -14,23 +14,21 @@ angular.module('ngApp.common.directives.header', [ ])
 
   .controller('HeaderCtrl', function ($rootScope) {
 
-    var body = document.body,
-        menu = document.getElementById('cbp-spmenu');
-
     var svgMorpheus = new SVGMorpheus('#iconsvg');
 
     var toggleSvg =  function (id) {
       svgMorpheus.to(id, {duration: 500, easing: 'linear', rotation: 'Clockwise'});
-    }
+    };
 
-    toggleSvg('hamburguer');
+
+    var menu = $('body > .container');
 
     $rootScope.toggleMenu = function () {
 
-      $(document.body).toggleClass('cbp-spmenu-push-toright')
+      menu.toggleClass('cbp-spmenu-push-toright')
       $('#cbp-spmenu').toggleClass('cbp-spmenu-open');
 
-      if ($(document.body).hasClass('cbp-spmenu-push-toright')){
+      if (menu.hasClass('cbp-spmenu-push-toright')){
         toggleSvg('exit_to_app');
       } else {
         toggleSvg('hamburguer');
@@ -38,7 +36,5 @@ angular.module('ngApp.common.directives.header', [ ])
 
     }
 
-
-
-
+    toggleSvg('hamburguer');
   });
