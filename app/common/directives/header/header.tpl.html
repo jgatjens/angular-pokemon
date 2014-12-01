@@ -3,7 +3,20 @@
 <div class="header">
   <div ng-show="user.isAuthenticated && user.emailVerified" class="hanburger-menu">
     <a ng-click="toggleMenu()">
-      <img src="/assets/images/icon-menu.svg">
+      <svg id="iconsvg" viewBox="0 0 48 48" style="background-color:#ffffff00" version="1.1"
+      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+
+        <g id="exit_to_app" style="display:none">
+          <path d="M20.2,31.2L23,34l10-10L23,14l-2.8,2.8l5.2,5.2H6v4h19.3L20.2,31.2z" fill="#336699"/>
+          <path d="M38,6H10c-2.2,0-4,1.8-4,4v8h4v-8h28v28H10v-8H6v8c0,2.2,1.8,4,4,4h28c2.2,0,4-1.8,4-4V10C42,7.8,40.2,6,38,6z" fill="#336699"/>
+        </g>
+        <g id="hamburguer" style="display:none">
+          <path d="M6,44l3-3l3,3l3-3l3,3l3-3l3,3l3-3l3,3l3-3l3,3l3-3l3,3V4l-3,3l-3-3l-3,3l-3-3l-3,3l-3-3l-3,3l-3-3l-3,3l-3-3L9,7L6,4V44z" fill="#336699"/>
+          <path d="M36,34H12v-4h24V34z" fill="#FFF"/>
+          <path d="M36,26H12v-4h24V26z" fill="#FFF"/>
+          <path d="M36,18H12v-4h24V18z" fill="#FFF"/>
+        </g>
+      </svg>
     </a>
   </div>
 

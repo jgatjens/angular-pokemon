@@ -3,15 +3,17 @@
   position: fixed;
   border-right: 1px solid #eeeeee;
 
-  &:after {
-    content: " ";
-    top: 0;
-    position: absolute;
-    right: 0;
-    width: 20px;
-    height: 100%;
-    box-shadow: inset -7px 0 9px -7px rgba(0,0,0,0.4);
-  }
+    &:after {
+        content: " ";
+        top: 0;
+        position: absolute;
+        right: 0;
+        width: 20px;
+        height: 100%;
+        box-shadow: inset -7px 0 9px -7px rgba(0,0,0,0.4);
+    }
+
+
 
 
   .glyphicon {
@@ -52,6 +54,13 @@
 }
 
 
+#iconsvg {
+  display: block;
+  box-sizing: border-box;
+  width: auto;
+  height: 50px;
+  background: #FFF;
+}
 
 
 

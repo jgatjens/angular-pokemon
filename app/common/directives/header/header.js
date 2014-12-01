@@ -17,9 +17,25 @@ angular.module('ngApp.common.directives.header', [ ])
     var body = document.body,
         menu = document.getElementById('cbp-spmenu');
 
+    var svgMorpheus = new SVGMorpheus('#iconsvg');
+
+    var toggleSvg =  function (id) {
+      svgMorpheus.to(id, {duration: 500, easing: 'linear', rotation: 'Clockwise'});
+    }
+
+    toggleSvg('hamburguer');
+
     $rootScope.toggleMenu = function () {
+
       $(document.body).toggleClass('cbp-spmenu-push-toright')
       $('#cbp-spmenu').toggleClass('cbp-spmenu-open');
+
+      if ($(document.body).hasClass('cbp-spmenu-push-toright')){
+        toggleSvg('exit_to_app');
+      } else {
+        toggleSvg('hamburguer');
+      }
+
     }
 
 
