@@ -17,7 +17,7 @@ angular.module('ngApp.common.directives.header', [ ])
     var svgMorpheus = new SVGMorpheus('#iconsvg');
 
     var toggleSvg =  function (id) {
-      svgMorpheus.to(id, {duration: 500, easing: 'linear', rotation: 'Clockwise'});
+      svgMorpheus.to(id, {duration: 250, easing: 'linear', rotation: 'Clockwise'});
     };
 
 
