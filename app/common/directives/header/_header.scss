@@ -1,28 +1,54 @@
 /* General styles for all menus */
 .cbp-spmenu {
-    position: fixed;
+  position: fixed;
+  border-right: 1px solid #eeeeee;
 
-    .glyphicon {
-        font-size: 18px;
-        margin-right: 5px;
+  &:after {
+    content: " ";
+    top: 0;
+    position: absolute;
+    right: 0;
+    width: 20px;
+    height: 100%;
+    box-shadow: inset -7px 0 9px -7px rgba(0,0,0,0.4);
+  }
+
+
+  .glyphicon {
+    font-size: 18px;
+    margin-right: 5px;
+  }
+
+  a {
+    display: block;
+    font-size: 1.1em;
+    font-weight: 300;
+    text-decoration: none;
+    text-transform: capitalize;
+    border-bottom: 1px solid #eeeeee;
+    position: relative;
+
+    &:hover, &.active {
+      background: #f8f8f8;
+      color: #327cb9;
+
+      &:before {
+        content: " ";
+        top: 0;
+        position: absolute;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background-color: #327cb9;
+      }
+
     }
 
-    a {
-        display: block;
-        font-size: 1.1em;
-        font-weight: 300;
-        text-decoration: none;
-        text-transform: capitalize;
-
-        &:hover {
-            background: #DCE3E7;
-        }
-
-         &:active {
-            background: #DCE3E7;
-            color: #37576C;
-        }
+     &:active {
+        background: #f8f8f8;
+        color: #327eba;
     }
+  }
 }
 
 
@@ -44,15 +70,14 @@
 /* Orientation-dependent styles for the content of the menu */
 
 .cbp-spmenu-vertical {
-    width: 240px;
+    width: 340px;
     height: 100%;
     top: 0;
     z-index: 1000;
-    padding-top: 24px;
 
     a {
-        padding: 0.2em 3em;
-        color: #37576C;
+        padding: 30px 40px;
+        color: #666666;
     }
 }
 
@@ -80,11 +105,11 @@
 /* Vertical menu that slides from the left or right */
 
 .cbp-spmenu-left {
-    left: -240px;
+    left: -340px;
 }
 
 .cbp-spmenu-right {
-    right: -240px;
+    right: -340px;
 }
 
 .cbp-spmenu-left.cbp-spmenu-open {
@@ -105,7 +130,7 @@
 }
 
 .cbp-spmenu-push-toright {
-    left: 240px;
+    left: 340px;
 }
 
 /* Transitions */
