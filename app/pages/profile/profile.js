@@ -1,6 +1,12 @@
 'use strict';
 
-angular.module('ngApp.profile', ['ngApp.common.directives.match', 'ngApp.profile.password', 'ngApp.profile.login', 'ngApp.profile.register' ])
+angular.module('ngApp.profile', [
+    'ngApp.common.directives.match',
+    'ngApp.profile.password',
+    'ngApp.profile.login',
+    'ngApp.profile.email',
+    'ngApp.profile.register'
+  ])
 
   // Module configuration.
   .config(function ($stateProvider) {

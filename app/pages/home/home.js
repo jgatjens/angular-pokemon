@@ -1,6 +1,10 @@
 'use strict';
 
-angular.module('ngApp.home', ['ngApp.pokemon.list', 'ngApp.pokemon.form', 'ngApp.pokemon.record'])
+angular.module('ngApp.home', [
+    'ngApp.pokemon.list',
+    'ngApp.pokemon.form',
+    'ngApp.pokemon.record'
+  ])
 
   // Module configuration.
   .config(function ($stateProvider) {

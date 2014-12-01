@@ -16,7 +16,7 @@
   <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
 
     <div ng-show="confirmEmail" class="alert alert-info" role="alert">
-      <p>Please confirm your email before login !</p>
+      <p>Please confirm your email before login <a ui-sref="emailVerification">Resent Email </a> !</p>
     </div>
 
     <div ng-show="{{ accessDenied == 403 }}" class="alert alert-warning" role="alert">
@@ -39,7 +39,7 @@
       <div class="panel-body">
         <!-- <a ng-click="loginWithFacebook()" class="btn btn-primary btn-lg btn-block">Login with Facebook</a> -->
         <!-- <br> -->
-        <form novalidate name="loginForm" class="form-horizontal" role="form">
+        <form novalidate ng-submit="login()" name="loginForm" class="form-horizontal" role="form">
 
           <div class="form-group has-feedback" ng-class="{ 'has-error': submitted && loginForm.username.$error.required }">
             <div class="col-md-12">
@@ -60,14 +60,15 @@
           <!-- Save Aditional Info -->
           <div class="form-group">
             <div class="col-md-12">
-              <button ng-click="login()" ng-disabled="loginForm.$invalid" class="btn btn-primary btn-lg btn-block">Login</button>
+              <button tabindex="0" type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
             </div>
           </div>
         </form>
       </div>
     </div>
-    <p class="pull-left">Not have an account <a ui-sref="register">Sign In</a></p>
-    <a class="pull-right" ui-sref="forgotPassword">Forgot Password</a>
+    <!-- <p class="pull-left">Not have an account <a ui-sref="register">Sign In</a></p>
+    <a class="pull-right" ui-sref="forgotPassword">Forgot Password</a> -->
+    <div class="form-links" form-links></div>
 
   </div>
 </div>

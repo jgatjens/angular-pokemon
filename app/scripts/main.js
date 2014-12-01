@@ -1,6 +1,5 @@
 'use strict';
 
-// 'ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router'
 angular.module('ngApp', [
 
   // Vendor modules.

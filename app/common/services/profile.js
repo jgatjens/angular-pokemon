@@ -97,6 +97,51 @@ angular.module('ngApp.common.services.profile', [ ])
     }
 
     /**
+    * Public method, getById
+    * @Object, form
+    */
+
+
+    this.getByUsername = function (username) {
+
+      var defer = $q.defer();
+
+      var User = Parse.Object.extend("User");
+      var query = new Parse.Query(User);
+      query.equalTo("username", username);
+
+      query.find({
+        success: function(user) {
+          // The object was retrieved successfully.
+
+          if (user.length < 1 ) {
+            defer.resolve({ error: true, message: 'User not found' });
+            return;
+          }
+
+          if ( user[0].get('username') === username) {
+
+            // Do stuff after successful login.
+            self.user = user[0];
+
+            _setUser(user[0]);
+
+            defer.resolve(true);
+            return;
+          }
+
+          defer.resolve({ error: true, message: 'User not found' });
+        },
+        error: function(object, error) {
+          // The object was not retrieved successfully.
+           defer.reject(_checkErros(error));
+        }
+      });
+
+      return defer.promise;
+    };
+
+    /**
     * Public method, SaveName assigned to prototype
     * @Object, user
     */
@@ -111,6 +156,15 @@ angular.module('ngApp.common.services.profile', [ ])
     */
     this.saveName = function (user) {
       this.user.set("name", user.name);
+      return _saveUser();
+    }
+
+    /**
+    * Public method, SaveName assigned to prototype
+    * @Object, user
+    */
+    this.saveEmail = function (user) {
+      this.user.set("email", user.email);
       return _saveUser();
     }
 

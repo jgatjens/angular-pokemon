@@ -2,7 +2,7 @@
   <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
     <div class="page-header">
       <h1 class="text-center">
-        Request password
+        Resend email verification
       </h1>
     </div>
   </div>
@@ -13,7 +13,7 @@
   <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
 
     <div ng-show="okRequest" class="alert alert-info" role="alert">
-      <p>Password reset request was sent successfully !</p>
+      <p>Email verification was sent successfully !</p>
     </div>
 
 
@@ -31,27 +31,27 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <br>
-        <form novalidate name="passwordForm" class="form-horizontal" role="form">
+        <form  novalidate ng-submit="resendEmailVerification()" name="emailForm" class="form-horizontal" role="form">
 
-          <div class="form-group" ng-class="{ 'has-error': submitted && passwordForm.email.$error.required }">
+          <div class="form-group" ng-class="{ 'has-error': submitted && emailForm.username.$error.required }">
             <div class="col-md-12">
-              <span class="label label-danger" ng-show="submitted && passwordForm.email.$error.required">Password required!</span>
-              <span class="label label-danger" ng-show="submitted && !passwordForm.email.$valid">Bad email!</span>
-              <input type="email" name="email" ng-model="user.email" required class="form-control input-lg" placeholder="Email">
+              <span class="label label-danger" ng-show="submitted && emailForm.username.$error.required">Username required!</span>
+              <input type="text" name="username" ng-model="user.username" required class="form-control input-lg" placeholder="Username">
             </div>
           </div>
 
           <!-- Save Aditional Info -->
           <div class="form-group">
             <div class="col-md-12">
-              <button ng-click="resetPassword()" ng-disabled="passwordForm.$invalid" class="btn btn-primary btn-lg btn-block">Request Password</button>
+              <button tabindex="0" type="submit" ng-disabled="emailForm.$invalid" class="btn btn-primary btn-lg btn-block">Resend email verification</button>
             </div>
           </div>
         </form>
       </div>
     </div>
 
-    <div class="form-links" form-links></div>
+    <!-- <div form-links class="form-links"></div> -->
+
 
   </div>
 </div>

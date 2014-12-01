@@ -5,5 +5,6 @@ angular.module('ngApp.common.directives', [
   'ngApp.common.directives.nav',
   'ngApp.common.directives.footer',
   'ngApp.common.directives.header',
+  'ngApp.common.directives.links',
   'ngApp.common.directives.fileinput'
 ]);
