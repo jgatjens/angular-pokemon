@@ -11,6 +11,7 @@ I started learning angular for fun so I made this stupid App.
 * Nice Alerts with sweetalert
 * Sidebar Navigation
 * Svg Animation
+
 ## Usage
 
 Install the required tools: `gulp`, `bower`
