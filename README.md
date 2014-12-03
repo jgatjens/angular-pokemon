@@ -44,7 +44,7 @@ gulp serve
 * `gulp serve` to launch a browser sync server on your source files
 * `gulp serve:dist` to launch a server on your optimized application
 * `gulp wiredep` to fill bower dependencies in your `.html` file(s)
-* `gulp injectjs` to fill angular modulos in your `.html` file(s)
+* `gulp injectjs` to fill angular modules in your `.html` file(s)
 
 
 ### Directory structure
