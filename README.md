@@ -1,4 +1,4 @@
-# [http://development.pokemon.divshot.io/] (http://development.pokemon.divshot.io/)
+# [http://development.pokemon.divshot.io/](http://development.pokemon.divshot.io/)
 
 Take control of your pokemon's history  with a web app for users.
 App created to learn angular.
@@ -28,7 +28,7 @@ gulp serve
 
 ## Upload to Divshot
 
-[http://docs.divshot.com/guides/getting-started] (http://docs.divshot.com/guides/getting-started)
+[http://docs.divshot.com/guides/getting-started](http://docs.divshot.com/guides/getting-started)
 
 After installing divshot cli you can run the build:
 ```
@@ -54,7 +54,7 @@ divshot push
 ### 0.0.1
 * Layout with bootstrap.
 * Authentification with Parse.com
-* Login, Register, Recover Password. 
+* Login, Register, Recover Passwor, Email Confirmation 
 * Save forms from angular
 * Use of directives, services and filters
 * Nice Alerts with sweetalert
