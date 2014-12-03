@@ -50,7 +50,7 @@
         {{record.title}}
       </div>
       <div class="panel-footer">
-        <h4><small>by You</small><small> on {{ record.createdAt | date : medium}} </small></h4>
+        <h4><small>by You </small><small> on {{ record.createdAt | date : medium}} </small></h4>
         <p>{{record.comment}}</p>
         <!-- <a href="" ui-sref="pokemonEditRecord()" class="btn btn-primary">edit</a> -->
         <a href="" ng-click="delete(record)" class="btn btn-danger">delete</a>
