@@ -52,11 +52,12 @@ divshot push
 [Best Practice Recommendations for Angular App Structure](https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/pub)
 
 ### 0.0.1
-* Layout with bootstrap
+* Layout with bootstrap.
 * Authentification with Parse.com
+* Login, Register, Recover Password. 
 * Save forms from angular
 * Use of directives, services and filters
 * Nice Alerts with sweetalert
 * Sidebar Navigation
 * Svg Animation
-* 
+
