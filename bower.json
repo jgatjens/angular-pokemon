@@ -1,0 +1,30 @@
+{
+  "name": "Pokemon",
+  "version": "0.0.1",
+  "dependencies": {
+    "nprogress": "latest",
+    "angular": "latest",
+    "angular-animate": "latest",
+    "angular-touch": "latest",
+    "angular-sanitize": "latest",
+    "bootstrap-sass-official": "latest",
+    "angular-bootstrap": "latest",
+    "parse-js-sdk": "latest",
+    "sweetalert": "latest",
+    "angular-ui-router": "0.2.12-pre1",
+    "modernizr": "~2.8.3",
+    "angular-filereader": "~1.0.0",
+    "svg-morpheus": "~0.1.7"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.2.x"
+  },
+  "overrides": {
+    "angular-filereader": {
+      "main": "src/filereader.service.js"
+    },
+    "svg-morpheus": {
+      "main": "compile/unminified/svg-morpheus.js"
+    }
+  }
+}

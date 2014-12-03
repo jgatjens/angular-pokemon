@@ -1,0 +1,9 @@
+.debug {
+  background-color : #e5e5e5;
+  padding          : 10px;
+}
+
+.debug strong {
+  display       : block;
+  margin-bottom : 10px;
+}

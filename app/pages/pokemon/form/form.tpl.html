@@ -1,0 +1,157 @@
+
+<div class="row">
+  <div class="col-sm-offset-2 col-md-offset-2 col-sm-8 col-md-8">
+    <div class="page-header">
+      <h1>
+        <a onclick="window.history.back()" href="">
+          <i class="glyphicon glyphicon-chevron-left"></i>
+        </a> <small ng-hide="edit">new</small>  <small ng-show="edit">edit</small> Pokemon
+      </h1>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-offset-2 col-md-offset-2 col-sm-8 col-md-8">
+
+    <div ng-show="okRequest" class="alert alert-success" role="alert">
+      <p>Pokemon <strong>info</strong> has been updated successfully !</p>
+    </div>
+
+    <div ng-show="errorSubmitted" class="alert alert-danger" role="alert">
+      <p>{{ user.errorMessage }}</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-offset-2 col-md-offset-2 col-sm-8 col-md-8">
+    <form novalidate ng-submit="submit()" role="form" name="pokemonForm">
+
+      <div class="row">
+        <div class="col-xs-12 col-md-6">
+          <div class="form-group" ng-class="{ 'has-error': submitted && pokemonForm.name.$error.required }">
+
+            <!-- error -->
+            <span class="label label-danger" ng-show="submitted && pokemonForm.name.$error.required">required!</span>
+
+            <input required type="text" name="name" ng-model="pokemon.name" class="form-control input-lg" placeholder="Name">
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+          <div class="form-group">
+            <div class="fileinput" id="fileinput" file-input="pokemon.file" on-change="readFile()"></div>
+            <a href="" ng-hide="edit" ng-click="clickInputFile($event)" class="btn btn-danger btn-lg">Add image</a>
+            <a href="" ng-show="edit" ng-click="clickInputFile($event)" class="btn btn-danger btn-lg">Update image</a>
+          </div>
+          <div id="picture">
+              <img ng-src="{{pokemon.picture}}" class="img-responsive">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-6">
+         <div class="input-group form-group" ng-class="{ 'has-error': submitted && pokemonForm.weigth.$error.required || pokemonForm.weigth.$error.number || pokemonForm.weigth.$error.max}">
+            <!-- erros -->
+            <span class="label label-danger" ng-show="submitted && pokemonForm.weigth.$error.required">required!</span>
+            <span class="label label-danger" ng-show="submitted && pokemonForm.weigth.$error.number">Please use only numbers</span>
+            <span class="label label-danger" ng-show="submitted && pokemonForm.weigth.$error.max">is it a horse ?</span>
+
+            <input required min="0.1" max="100" type="number" maxlength="4" name="weigth" ng-model="pokemon.weigth" class="form-control input-lg" placeholder="Weigth">
+            <span class="input-group-addon">KG</span>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-6">
+          <div class="form-group" ng-class="{ 'has-error': submitted && pokemonForm.type.$error.required }">
+            <!-- erros -->
+            <span class="label label-danger" ng-show="submitted && pokemonForm.weigth.$error.required">required!</span>
+
+            <select required ng-model="pokemon.type" name="type" ng-options="type for type in types" class="form-control input-lg">
+              <option value="">-- choose type --</option>
+            </select>
+           </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+          <div class="form-group">
+            <input type="text" ng-model="pokemon.brand" typeahead="brand for brand in brands | filter:$viewValue | limitTo:8" class="form-control input-lg" placeholder="Food">
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-6">
+
+          <div class="form-group" ng-class="{ 'has-error': submitted && pokemonForm.birthday.$invalid }">
+            <div class="input-group">
+              <!-- erros -->
+              <span class="label label-danger" ng-show="submitted && pokemonForm.birthday.$invalid && !pokemonForm.birthday.$error.required">Invalid date !</span>
+              <span class="label label-danger" ng-show="submitted && pokemonForm.birthday.$error.required">required!</span>
+
+              <input type="text" class="form-control input-lg" name="birthday" datepicker-popup="dd-MM-yyyy" ng-model="pokemon.birthday" is-open="opened" datepicker-options="dateOptions" min-date="'1990-01-01'" ng-required="true" close-text="Close" placeholder="Birthday (dd-mm-yyyy)">
+              <a href="" ng-click="open($event)" class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-md-6">
+          <div class="form-group">
+
+            <label class="radio-inline">
+              <input type="radio" ng-checked="true" ng-model="pokemon.gender" name="gender" id="male" value="Male">
+              Male
+            </label>
+            <label class="radio-inline">
+              <input type="radio"  ng-model="pokemon.gender" name="gender" id="female" value="Female">
+              Female
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-3 col-md-3 ">
+
+          <div class="form-group form-inline">
+           <!--  <div class="checkbox">
+              <label>
+                <input ng-model="pokemon.pedigree" type="checkbox"> Pedigree
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input ng-model="pokemon.crossdog" type="checkbox"> Cross dogs
+              </label>
+            </div> -->
+            <!-- <div class="checkbox">
+              <label>
+                <input ng-model="pokemon.onsale" type="checkbox"> On sale
+              </label>
+            </div> -->
+          </div>
+
+        </div>
+        <div class="col-xs-9 col-md-9">
+          <div class="form-group">
+            <textarea ng-model="pokemon.description" class="form-control input-lg" placeholder="Description" rows="4"></textarea>
+           </div>
+        </div>
+      </div>
+
+      <button type="submit" ng-hide="edit" class="btn btn-primary btn-lg btn-block">Save Pokemon</button>
+      <button type="submit" ng-show="edit" class="btn btn-primary btn-lg btn-block">Update Pokemon</button>
+
+      <!--
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" checked="true"> select new pokemon as default
+        </label>
+      </div>
+      -->
+    </form>
+  </div>
+</div>

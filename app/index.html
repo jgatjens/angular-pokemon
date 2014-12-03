@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html class="no-js" ng-app="ngApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Pokemon - App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+    <!-- build:css styles/vendor.min.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/nprogress/nprogress.css" />
+    <link rel="stylesheet" href="bower_components/sweetalert/lib/sweet-alert.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css({.tmp,app}) styles/app.min.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <!-- build:js scripts/modernizr.min.js -->
+    <!-- // <script src="bower_components/modernizr/modernizr.js"></script> -->
+    <!-- endbuild -->
+  </head>
+  <body class="{{activePage}}-page">
+    <div id="fb-root"></div>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="container cbp-spmenu-push">
+      <div ng-app-header></div>
+
+      <div ui-view class="fadeZoom"></div>
+
+      <div ng-app-footer></div>
+
+    </div>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/nprogress/nprogress.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/parse-js-sdk/lib/parse.js"></script>
+    <script src="bower_components/sweetalert/lib/sweet-alert.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="bower_components/angular-filereader/src/filereader.service.js"></script>
+    <script src="bower_components/svg-morpheus/compile/unminified/svg-morpheus.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+
+    <!-- build:js({.tmp,app}) scripts/main.js -->
+    <!-- inject:js -->
+
+    <script src="common/directives/passwordstrength/passwordStrength.js"></script>
+
+    <script src="common/directives/nav/nav.js"></script>
+
+    <script src="common/directives/match/match.js"></script>
+
+    <script src="common/directives/links/links.js"></script>
+
+    <script src="common/directives/header/header.js"></script>
+
+    <script src="common/directives/footer/footer.js"></script>
+
+    <script src="common/directives/fileinput/fileinput.js"></script>
+
+    <script src="common/directives/debug/debug.js"></script>
+
+    <script src="common/services/record.js"></script>
+
+    <script src="common/services/profile.js"></script>
+
+    <script src="common/services/pokemon.js"></script>
+
+    <script src="common/services/_services.js"></script>
+
+    <script src="common/filters/truncate.js"></script>
+
+    <script src="common/filters/timeago.js"></script>
+
+    <script src="common/filters/_filters.js"></script>
+
+    <script src="common/factories/store.js"></script>
+
+    <script src="common/factories/interceptor.js"></script>
+
+    <script src="common/factories/_factories.js"></script>
+
+    <script src="common/directives/_directives.js"></script>
+
+    <script src="common/common.js"></script>
+
+    <script src="pages/profile/register/register.js"></script>
+
+    <script src="pages/profile/password/password.js"></script>
+
+    <script src="pages/profile/login/login.js"></script>
+
+    <script src="pages/profile/email/email.js"></script>
+
+    <script src="pages/pokemon/record/record.js"></script>
+
+    <script src="pages/pokemon/record/edit.js"></script>
+
+    <script src="pages/pokemon/list/list.js"></script>
+
+    <script src="pages/pokemon/form/form.js"></script>
+
+    <script src="pages/pokemon/form/edit.js"></script>
+
+    <script src="pages/notification/detail/detail.js"></script>
+
+    <script src="pages/profile/profile.js"></script>
+
+    <script src="pages/notification/notification.js"></script>
+
+    <script src="pages/home/home.js"></script>
+
+    <!-- endinject -->
+
+    <!-- inject:partials -->
+    <!-- angular templates will be automaticaly converted in js and inserted here -->
+    <!-- endinject -->
+    <script src="scripts/config.js"></script>
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+
+  </body>
+</html>

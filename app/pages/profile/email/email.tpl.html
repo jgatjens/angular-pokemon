@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
+    <div class="page-header">
+      <h1 class="text-center">
+        Resend email verification
+      </h1>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
+
+    <div ng-show="okRequest" class="alert alert-info" role="alert">
+      <p>Email verification was sent successfully !</p>
+    </div>
+
+
+    <div ng-show="errorSubmitted" class="alert alert-danger" role="alert">
+      <p>{{ user.errorMessage }}</p>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <br>
+        <form  novalidate ng-submit="resendEmailVerification()" name="emailForm" class="form-horizontal" role="form">
+
+          <div class="form-group" ng-class="{ 'has-error': submitted && emailForm.username.$error.required }">
+            <div class="col-md-12">
+              <span class="label label-danger" ng-show="submitted && emailForm.username.$error.required">Username required!</span>
+              <input type="text" name="username" ng-model="user.username" required class="form-control input-lg" placeholder="Username">
+            </div>
+          </div>
+
+          <!-- Save Aditional Info -->
+          <div class="form-group">
+            <div class="col-md-12">
+              <button tabindex="0" type="submit" ng-disabled="emailForm.$invalid" class="btn btn-primary btn-lg btn-block">Resend email verification</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div form-links class="form-links"></div>
+
+
+  </div>
+</div>

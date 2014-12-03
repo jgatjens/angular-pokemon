@@ -1,0 +1,148 @@
+
+$border-radius-base:  0;
+$input-border-radius: 0;
+$border-radius-base:  0;
+$border-radius-large: 0;
+$font-size-base:      16px;
+
+//** Global textual link color.
+$link-color:            #3498DB;
+//** Link hover color set via `darken()` function.
+$link-hover-color:      darken($link-color, 10%);
+
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
+
+// inject:scss
+@import "../pages/home/home.scss";
+@import "../pages/notification/notification.scss";
+@import "../pages/profile/profile.scss";
+@import "../pages/pokemon/form/form.scss";
+@import "../pages/profile/login/login.scss";
+@import "../pages/profile/password/password.scss";
+@import "../pages/profile/register/register.scss";
+@import "../common/directives/footer/footer.scss";
+@import "../common/directives/header/header.scss";
+@import "../common/directives/nav/nav.scss";
+@import "../common/directives/links/links.scss";
+@import "../common/directives/passwordstrength/passwordStrength.scss";
+// endinject
+
+// Modules
+@import "animate";
+@import "card";
+
+body {
+  font-family: 'Lato';
+}
+
+
+// NProgress error color
+$redcolor: #ea3767;
+#nprogress.fail .bar{
+  background: $redcolor;
+}
+#nprogress.fail .peg {
+  box-shadow: 0 0 10px $redcolor, 0 0 5px $redcolor;
+}
+#nprogress.fail .spinner-icon {
+  border-top-color: $redcolor;
+  border-left-color: $redcolor;
+}
+
+.glyphicon-heart {
+  color: $redcolor;
+}
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.thumbnail {
+  height: 200px;
+
+  img.pull-right {
+    width: 50px;
+  }
+}
+
+.footer {
+  text-align: center;
+}
+
+.page-header {
+  margin-top: 15px;
+  h1 {
+    margin-top: 5px;
+  }
+}
+
+.alert-danger p:first-letter, .alert-success p:first-letter{
+  text-transform: uppercase;
+}
+
+form .label-danger, form .label-success, form .label-info {
+  position: absolute;
+  top: -10px;
+  right: 24px;
+  z-index: 4;
+}
+
+
+.header {
+  .company {
+    @media (max-width: $screen-xs-min) {
+      float: none !important;
+      display: block;
+      text-align: center;
+      font-size: 30px;
+    }
+  }
+
+  .badge {
+    background-color: #5bc0de;
+  }
+
+  .nav-pills {
+    margin-top: 10px;
+    font-size: 20px;
+
+    @media (max-width: $screen-xs-min) {
+      float: none !important;
+      display: block;
+      text-align: center;
+      font-size: 30px;
+      // background-color: $redcolor;
+      margin-bottom: 10px;
+
+      > li {
+        float: none;
+        display: inline-block;
+      }
+
+      a {
+        // color: #333;
+      }
+    }
+  }
+}
+
+.page-header h1 {
+  @media (max-width: $screen-xs-min) {
+    font-size: 33px;
+  }
+}
+
+
+// Alerts
+
+.sweet-alert {
+  box-sizing: content-box;
+  button {
+    border-radius: 0;
+    margin-bottom: 20px;
+  }
+}

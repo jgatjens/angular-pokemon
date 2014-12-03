@@ -1,0 +1,35 @@
+// home custom
+.home-page {}
+
+
+#pokemon-remove, #pokemon-edit, #pokemon-active, #pokemon-add-record {
+  color: white;
+  font-size: 2em;
+  position: absolute; top:  10px;
+  cursor: pointer;
+  display: inline-block;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+#pokemon-add-record {
+  left: 120px;
+}
+
+#pokemon-remove {
+  right: 10px;
+}
+
+#pokemon-edit {
+  left: 10px;
+}
+
+#pokemon-active {
+  left: 60px;
+
+  .active & {
+    color: rgb(213, 92, 92);
+  }
+}

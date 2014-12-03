@@ -1,0 +1,81 @@
+
+<div class="row">
+  <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
+    <div class="page-header">
+      <h1>
+      <a ui-sref="home">
+          <i class="glyphicon glyphicon-chevron-left"></i>
+        </a> Pokemon <small>List</small>
+      </h1>
+    </div>
+  </div>
+</div>
+
+<div ng-show="{{ pokemons.length > 0 }}" class="row">
+  <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
+    <input type="text" ng-model="search.name" class="form-control" placeholder="Search for Pokemon">
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6" ng-repeat="pokemon in pokemons | orderBy:'rank' | filter:search ">
+    <div class="card-container">
+      <div class="card" ng-class="{active:  pokemon.objectId == activePokemon }">
+          <div class="front">
+              <div class="cover">
+                <i id="pokemon-add-record" tooltip="New Record"  ui-sref="newRecord({ id: pokemon.objectId })" class="glyphicon glyphicon-plus"></i>
+                <i id="pokemon-active" tooltip="Set default" ng-click="active(pokemon)"  class="glyphicon glyphicon glyphicon-heart"></i>
+                <i id="pokemon-edit" tooltip="Edit" ui-sref="pokemonEdit({ id: pokemon.objectId })" class="glyphicon glyphicon-edit"></i>
+                <i id="pokemon-remove" tooltip="Remove" ng-click="remove(pokemon)" class="glyphicon glyphicon-remove-sign"></i>
+              </div>
+              <div class="user">
+                  <img ng-show="pokemon.picture.url" class="img-circle" alt="Pokemon Avatar" ng-src="{{ pokemon.picture.url }}">
+              </div>
+              <div class="content">
+                  <div class="main">
+                      <h3 class="name" ng-bind="pokemon.name"></h3>
+                      <p class="birthday" ng-clock> {{ pokemon.birthday.iso | timeago }} </p>
+                      <!-- <p class="birthday" am-time-ago="pokemon.birthday.iso"></p> -->
+                      <h5 ng-clock>"{{ pokemon.description | truncate:40 }}"</h5>
+                  </div>
+                 <!--  <div class="footer">
+                      <div class="rating">
+                          <i class="glyphicon glyphicon-star"></i>
+                          <i class="glyphicon glyphicon-star"></i>
+                          <i class="glyphicon glyphicon-star"></i>
+                          <i class="glyphicon glyphicon-star"></i>
+                      </div>
+                  </div> -->
+              </div>
+          </div> <!-- end front panel -->
+          <!-- <div class="back">
+              <div class="header">
+                  <h5 class="motto">"140 caracteres of de descripcion hacerca de la mascota ..."</h5>
+              </div>
+              <div class="content">
+                  <div class="main">
+                      <h4 class="text-center">Experince</h4>
+                      <p>In the project since 2011</p>
+                      <h4 class="text-center">Areas of Expertise</h4>
+                      <p>Web design, Adobe Photoshop, HTML5, CSS3, Corel and many others...</p>
+                  </div>
+              </div>
+              <div class="footer">
+                  <div class="social-links text-center">
+                      <a href="http://cretive-tim.com" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                      <a href="http://cretive-tim.com" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                  </div>
+              </div>
+          </div> --> <!-- end back panel -->
+      </div> <!-- end card -->
+    </div> <!-- end card-container -->
+  </div>
+
+  <div ng-show="{{ pokemons.length == 0 }}" class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
+    <a href="" class="btn btn-primary btn-block btn-lg"  ui-sref="pokemonNew">Add your first pokemon</a>
+  </div>
+
+
+</div>

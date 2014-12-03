@@ -1,0 +1,12 @@
+
+// Nav
+@media (max-width: $screen-xs-min) {
+  .nav > li > a {
+    padding: 6px 8px;
+    font-size: 25px;
+  }
+
+  .nav-pills > li + li {
+    margin-left: 0;
+  }
+}
