@@ -1,4 +1,4 @@
-# [http://development.pokemon.divshot.io/](http://development.pokemon.divshot.io/)
+# [https://ng-pokemon.firebaseapp.com](https://ng-pokemon.firebaseapp.com)
 
 I started learning angular for fun so I made this stupid App.
 
